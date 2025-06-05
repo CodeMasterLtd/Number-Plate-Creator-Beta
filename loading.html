@@ -86,12 +86,14 @@
     let updateAnimating = false;
     
     let estimatedTime;
-    let currentSize = 2;
-    if (currentSize < 5) {
+    let currentSize = 1;
+    if (currentSize < 4) {
+    estimatedTime = 2000 + Math.random() * 1000;
+    } else if (currentSize = 5) {
     estimatedTime = 5000 + Math.random() * 5000; 
     } else if (currentSize < 10) {
         estimatedTime = 10000 + Math.random() * 5000; 
-    }else if (currentSize < 50) {
+    } else if (currentSize < 50) {
     estimatedTime = 20000 + Math.random() * 10000; 
     } else {
     estimatedTime = 40000 + Math.random() * 20000; 

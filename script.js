@@ -58,6 +58,62 @@ const plateDimensions = {
     }
   }; 
 
+  function updatePlateSize() {
+    const plateType = document.getElementById("plateType").value;
+    const showCarPreivBtn = document.getElementById('showCarPreview');
+    const showBikePreivBtn = document.getElementById('showBikePreview'); 
+    const dimensions = plateDimensions[plateType];
+
+    if (plateType === "motorbike") {    
+        plateb.style.display = "block";
+        plateb.style.width = `${dimensions.width}px`;
+        plateb.style.height = `${dimensions.height}px`;
+        plateb.style.margin = "0 auto";
+
+        platef.style.display = "block";
+        platef.style.width = `${dimensions.width}px`;
+        platef.style.height = `${dimensions.height}px`;
+        platef.style.margin = "0 auto";
+        platef.style.marginBottom = "5px";
+        platef.style.marginTop = "30px";
+
+        styleSelect.disabled = true;
+
+        showCarPreivBtn.style.display = 'none';
+
+        showBikePreivBtn.style.display = 'block';
+        showBikePreivBtn.style.position = 'relative';
+        showBikePreivBtn.style.margin = '0 auto'; 
+        showBikePreivBtn.style.left = '0';
+        showBikePreivBtn.style.right = '0';
+    } else {
+        styleSelect.disabled = false;
+    
+        plateb.style.display = "block";
+    
+        platef.style.width = `${dimensions.width}px`;
+        platef.style.height = `${dimensions.height}px`;
+        plateb.style.width = `${dimensions.width}px`;
+        plateb.style.height = `${dimensions.height}px`;
+    
+        platef.style.display = "block";
+        buttonfront.style.display = "block";
+        buttonboth.style.display = "block";
+        platef.style.marginTop = "30px";
+        platef.style.marginBottom = "5px";
+
+        styleSelect.disabled = false;
+
+        showBikePreivBtn.style.display = 'none';
+
+        showCarPreivBtn.style.position = 'relative';
+        showCarPreivBtn.style.margin = '0 auto'; 
+        showCarPreivBtn.style.display = 'block';
+        showCarPreivBtn.style.left = '0';
+        showCarPreivBtn.style.right = '0';
+    }    
+  }
+
 const elements = [
     frontPlateScrew2, backPlateScrew2, frontPlateScrew4, backPlateScrew4,
     plateInput, sloganInput, BSDInput, frontPlate, backPlate,
@@ -74,9 +130,8 @@ const elements = [
     `;
   }
 
-  function updatePlateStyles() {
+  function updatePlateStyles() { 
     const plateTypes = document.getElementById("plateTypes").value;
-    const dimensions = plateDimensions[plateTypes === "type-car" ? "car" : "motorbike"];
     const front = document.querySelector(".front");
     const back = document.querySelector(".back");
 
@@ -84,38 +139,6 @@ const elements = [
     let backBase = "#ffe70b";
     let frontSloganBase = "#ffffff";
     let backSloganBase = "#ffe70b";
-
-    if (plateTypes.startsWith('type-')) {
-        if (plateTypes === "type-motorbike") {
-            styleSelect.disabled = true;
-
-            plateb.style.display = "block";
-            plateb.style.width = `${dimensions.width}px`;
-            plateb.style.height = `${dimensions.height}px`;
-            plateb.style.margin = "0 auto";
-
-            platef.style.display = "block";
-            platef.style.width = `${dimensions.width}px`;
-            platef.style.height = `${dimensions.height}px`;
-            platef.style.margin = "0 auto";
-            platef.style.marginBottom = "5px";
-            platef.style.marginTop = "30px";
-        } else if (plateTypes === "type-car") {
-            styleSelect.disabled = false;
-
-            plateb.style.display = "block";
-            platef.style.width = `${dimensions.width}px`;
-            platef.style.height = `${dimensions.height}px`;
-            plateb.style.width = `${dimensions.width}px`;
-            plateb.style.height = `${dimensions.height}px`;
-
-            platef.style.display = "block";
-            buttonfront.style.display = "block";
-            buttonboth.style.display = "block";
-            platef.style.marginTop = "30px";
-            platef.style.marginBottom = "5px";
-        }
-    }
 
     if (plateTypes.startsWith('colour-')) {
         if (plateTypes === "colour-old")
@@ -218,32 +241,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("plateTypes").addEventListener("change", updatePlateModeVisibility);
     document.getElementById("genPlate").addEventListener("change", updateGenPlateYearsVisibility);
 
-    const plateElementStyle = document.getElementById("plateTypes");
-    const plateStyles = localStorage.getItem("plateTypes");
-
-    if (savedPlateMode) {
-        plateModeElement.value = savedPlateMode;
-    } 
-
-    if (plateStyles) {
-        plateElementStyle.value = plateStyles;
-    }
-
     updatePlate(); // Ensure the plate updates on page load
     updatePlateStyles();
-    hideCarPreview();
-
-    // Ensure changes are saved whenever the user selects a different mode
-    plateModeElement.addEventListener("change", () => {
-        localStorage.setItem("plateTypes", plateModeElement.value);
-        updatePlate();
-    });
-
-    plateElementStyle.addEventListener("change", () => {
-        localStorage.setItem("plateStyles", plateElementStyle.value);
-        updatePlateStyles();
-        hideCarPreview();
-    });
+    updatePlateSize();
 
 plateInput.addEventListener("input", function () {
     const plateMode = document.getElementById("plateTypes").value;
@@ -400,19 +400,25 @@ function GenPlate() {
     let PlateText;
     let PlateSlogan;
 
-    const allowedTypes = ["private", "private1", "private2", "normal", "urz", "ic", "tvp", "msp", "met", "gmp", "scot", "hp", "rbfrs", "hfrs", "lfb", "las", "scas", "wmas"];
+    const allowedTypes = ["private", "private1", "private2", "normal", "urz", "ic"];
+    const allowedTypesForce = ["tvp", "msp", "met", "gmp", "scot", "hp", "rbfrs", "hfrs", "lfb", "las", "scas", "wmas"];
 
-    if (allowedTypes.includes(genplateValue)) {
+    if (allowedTypesForce.includes(genplateValue)) {
+            sloganInput.disabled = true;
+            sloganInput.style.backgroundColor = "rgba(255,0,0,0.5)";
+            sloganInput.style.color = "rgba(255,255,255,0.2)";
+            sloganInput.textContent = "";
+    } else if (allowedTypes.includes(genplateValue)) {
+            sloganInput.disabled = false;
+            sloganInput.style.backgroundColor = "";
+            sloganInput.style.color = "";
+    }
+    if (allowedTypes.includes(genplateValue) || allowedTypesForce.includes(genplateValue)) {
         generateButton.style.display = "block";
         plateInput.disabled = true;
         plateInput.style.backgroundColor = "rgba(255,0,0,0.5)";
         plateInput.style.color = "rgba(255,255,255,0.2)";
         plateInput.textContent = "";
-
-        sloganInput.disabled = true;
-        sloganInput.style.backgroundColor = "rgba(255,0,0,0.5)";
-        sloganInput.style.color = "rgba(255,255,255,0.2)";
-        sloganInput.textContent = "";
 
         generateButton.onclick = function () {
             const plate = generatePlate(genplateValue);
@@ -1370,38 +1376,38 @@ function getLastModifiedDate() {
     return `${day}|${month}|${year} • ${hour}:${min}${type} (${timeZone})`;
 }
 
-function hideCarPreview() {
-    const plateType = document.getElementById("plateTypes").value;
-    const showCarPreivBtn = document.getElementById('showCarPreiv');
-    if (plateType === "type-motorbike") {
-        showCarPreivBtn.style.display = 'none';
+function showCarPreview(type) {
+    if (type === "car") {
+        document.getElementById('carPreviewModal').style.display = 'flex';
+
+        const plateElement = document.querySelector('.plate.front');
+        const previewCanvas = document.getElementById('plateOnCar');
+        const ctx = previewCanvas.getContext('2d');
+        ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+        html2canvas(plateElement, {backgroundColor: null, scale: 2}).then(canvas => {
+            ctx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
+        });
     } else {
-        showCarPreivBtn.style.display = 'block';
-        showCarPreivBtn.style.position = 'relative';
-        showCarPreivBtn.style.margin = '0 auto'; 
-        showCarPreivBtn.style.display = 'block';
-        showCarPreivBtn.style.left = '0';
-        showCarPreivBtn.style.right = '0';
+        document.getElementById('bikePreviewModal').style.display = 'flex';
+
+        const plateElement = document.querySelector('.plate.back');
+        const previewCanvas = document.getElementById('plateOnBike');
+        const ctx = previewCanvas.getContext('2d');
+        ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+
+        html2canvas(plateElement, {backgroundColor: null, scale: 2}).then(canvas => {
+            ctx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
+        });
     }
 }
 
-function showCarPreview() {
-    document.getElementById('carPreviewModal').style.display = 'flex';
-
-    const plateElement = document.querySelector('.plate.front');
-    const previewCanvas = document.getElementById('plateOnCar');
-    const ctx = previewCanvas.getContext('2d');
-    ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
-
-
-    html2canvas(plateElement, {backgroundColor: null, scale: 2}).then(canvas => {
-        ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
-        ctx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
-    });
-}
-
-function closeCarPreview() {
+function closeCarPreview(type) {
+    if (type === "car") {
     document.getElementById('carPreviewModal').style.display = 'none';
+    } else {
+    document.getElementById('bikePreviewModal').style.display = 'none';
+    }
 }
 
 showMiscs();
@@ -1411,7 +1417,6 @@ syncSloganBackground();
 updatePlateStyles();
 //toggleTintedPlate();
 ElectricBoxStyle();
-hideCarPreview();
 
 setInterval(() => {
     if (document.getElementById("genPlate").value !== "hide") {

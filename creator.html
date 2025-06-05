@@ -54,19 +54,20 @@
         <input type="text" id="sloganInput" placeholder="Enter plate slogan eg:(Code Master)" autocomplete="on" />
         <input type="text" id="BSDInput" placeholder="Enter plate BSD eg:(CO DE 025m)" autocomplete="on" maxlength="8"/>
         <br>
+        <label for="plateType">Plate Type:</label>
+    <select id="plateType" onchange="updatePlateSize()">
+        <option value="car" selected>Car</option>
+        <option value="motorbike">Motorcycle</option>
+        </select>
         <label for="plateTypes">Plate Misc:</label>
         <select id="plateTypes" onchange="updatePlateStyles()">
-            <optgroup label="Plate Type">
-                <option value="type-car" selected>Car</option>
-                <option value="type-motorbike">Motorcycle</option>
-            </optgroup>
             <optgroup label="Plate Mode">
-                <option value="mode-default" selected>Default (CO25 MSR)</option>
+                <option value="mode-default">Default (CO25 MSR)</option>
                 <option value="mode-private">Private (C06 MSR)</option>
                 <option value="mode-show">Show (C M4S7ER)</option>
             </optgroup>
             <optgroup label="Plate Colour">
-                <option value="colour-old" selected>Classic</option>
+                <option value="colour-old">Classic</option>
                 <option value="colour-new">Remastered</option>
             </optgroup>
             <optgroup label="Plate Style">
@@ -132,21 +133,21 @@
                     <option value="stamp-no" style="color: red;">Hide</option>
                 </optgroup>
                 <optgroup label="Slogan">
-                    <option value="slogan-yes" selected>Show</option>
+                    <option value="slogan-yes">Show</option>
                     <option value="slogan-no" style="color: red;">Hide</option>
                 </optgroup>
                 <optgroup label="Screws">
-                    <option value="screws-hide" selected style="color: red;">Hide</option>
+                    <option value="screws-hide" style="color: red;">Hide</option>
                     <option value="screws-2">2 Screws</option>
                     <option value="screws-4">4 Screws</option>
                 </optgroup>
                 <optgroup label="Border">
                     <option value="border-yes">Show</option>
-                    <option value="border-no" selected style="color: red;">Hide</option>
+                    <option value="border-no" style="color: red;">Hide</option>
                 </optgroup>
                 <optgroup label="4D Text">
                     <option value="4d-yes">Show</option>
-                    <option value="4d-no" selected style="color: red;">Hide</option>
+                    <option value="4d-no" style="color: red;">Hide</option>
                 </optgroup>
             </select>
         <div id="borderOptions" style="display:none;">
@@ -269,20 +270,39 @@
             <div class="bottom-right" id="backStamp">CO DE 025m</div>
         </div>
         <br>
-        <button id="showCarPreiv" class="button1 button5col" onclick="showCarPreview()">Preview On Car</button>
+        <button id="showCarPreview" class="button1 button5col" onclick="showCarPreview('car')">Preview On Car</button>
+        <button id="showBikePreview" class="button1 button5col" onclick="showCarPreview('bike')">Preview On Bike</button>
 
         <div id="carPreviewModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:9999;">
-            <span onclick="closeCarPreview()" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
+            <span onclick="closeCarPreview('car')" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
             <div style="position:relative; display:inline-block;">
-                <img id="carImage" src="img/carPreview/bmw-m2.png" style="width:950px; max-width:440vw; border-radius:12px;">
+                <img id="carImage" src="img/carPreview/bmw-m2.png" style="width:1000px; max-width:550vw; border-radius:12px;">
                 <canvas id="plateOnCar"
                 width="400" height="300"
                 style="
                 position:absolute;
-                left:340px;   
-                top:416px;   
-                width:265px; 
-                height:56px;
+                left:360px;   
+                top:436px;   
+                width:275px; 
+                height:60px;
+                border-radius:3px;
+                box-shadow: 8px 0 12px -4px #000, -8px 0 12px -4px #000;
+                ">
+            </div>
+        </div>
+
+        <div id="bikePreviewModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:9999;">
+            <span onclick="closeCarPreview('bike')" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
+            <div style="position:relative; display:inline-block;">
+                <img id="carImage" src="img/carPreview/pulsar-ns.png" style="width:1200px; max-width:650vw; border-radius:12px;">
+                <canvas id="plateOnBike"
+                width="400" height="300"
+                style="
+                position:absolute;
+                left:560px;   
+                top:200px;   
+                width:110px; 
+                height:100px;
                 border-radius:3px;
                 box-shadow: 8px 0 12px -4px #000, -8px 0 12px -4px #000;
                 ">

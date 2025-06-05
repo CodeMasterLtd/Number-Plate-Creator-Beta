@@ -193,7 +193,7 @@ function showLoadingModal() {
     modal.style.display = 'flex';
     setTimeout(() => {
         document.getElementById('loadingModalContent').focus();
-    }, 10);
+    }, 50);
 }
 function hideLoadingModal() {
     document.getElementById('loadingModal').style.display = 'none';
