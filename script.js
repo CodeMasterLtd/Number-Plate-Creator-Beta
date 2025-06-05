@@ -1362,12 +1362,12 @@ document.getElementById("discordInfo").addEventListener("click", function() {
 
 function getLastModifiedDate() {
     let modifiedDate = new Date(this.document.lastModified);
-    let day = "29";
-    let month = "May"; // Months are zero-based
+    let day = "05";
+    let month = "June"; // Months are zero-based
     let year = modifiedDate.getFullYear();
 
-    let hour = "09";
-    let min = "32";
+    let hour = "19";
+    let min = "24";
     let type = hour > 12 ? "pm" : "am";
 
     let isBST = new Date().getTimezoneOffset() === -60;

@@ -1,10 +1,10 @@
 const fileBegin = "CM";
 let lastSelectedPosition = "front";
 
-const type = document.getElementById('plateTypes').value;
+const type = document.getElementById('plateType').value;
 
-if (type !== 'type-motorbike') {
-    type = 'type-car';
+if (type !== 'motorbike') {
+    type = 'car';
 }
 
 function showSaveModal() {
@@ -361,7 +361,7 @@ function setMapCanvas(type, imageData, width, height) {
 
 function downloadPreview(mapType) {
     let saveType;
-    const plateTypeInput = document.getElementById("plateTypes").value;
+    const plateTypeInput = document.getElementById("plateType").value;
     const saveTypes = document.getElementById('eType').value;
     const canvas = document.getElementById(`canvas-${mapType}`);
     if (!canvas) return;
@@ -371,7 +371,7 @@ function downloadPreview(mapType) {
         let heightSize;
         let widthSize;
 
-        if (plateTypeInput === "type-car") {
+        if (plateTypeInput === "car") {
             if (lastSelectedPosition === "both") {
                 heightSize = 2048;
                 widthSize = 4096;
@@ -379,7 +379,7 @@ function downloadPreview(mapType) {
                 heightSize = 1024;
                 widthSize = 2048;
             }
-        } else if (plateTypeInput === "type-motorbike") {
+        } else if (plateTypeInput === "motorbike") {
             if (lastSelectedPosition === "both") {
                 heightSize = 6990;
                 widthSize = 4096;
@@ -404,14 +404,7 @@ function downloadPreview(mapType) {
     const ctx = scaledCanvas.getContext('2d', { willReadFrequently: true });
     ctx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
 
-    const plateTypeSave = plateTypeInput?.value || "type-car";
-    if (plateTypeSave === "type-car") {
-        saveType = "car";
-    } else if (plateTypeSave === "type-motorbike") {
-        saveType = "motorcycle";
-    } else {
-        saveType = "car";
-    }
+    const plateTypeSave = plateTypeInput?.value || "car";
 
     let positionLabel = "";
     switch (lastSelectedPosition) {
@@ -422,7 +415,7 @@ function downloadPreview(mapType) {
     }
 
     const link = document.createElement('a');
-    link.download = `${fileBegin}-${saveType}_${positionLabel}_plate_${mapType}.${saveTypes}`;
+    link.download = `${fileBegin}-${plateTypeSave}_${positionLabel}_plate_${mapType}.${saveTypes}`;
     link.href = scaledCanvas.toDataURL('image/png');
     link.click();
 }
