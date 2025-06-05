@@ -58,7 +58,6 @@
         let storedVersion = localStorage.getItem("version");
         let version = storedVersion ? `Outdated ${storedVersion}` : "Unknown Version";
     let loadingStages;
-    let pageName;
         if (!storedVersion || compareVersions(currentVersion, storedVersion) > 0) {
             loadingStages = [
                 "🔍 Checking current build version...",
@@ -69,23 +68,14 @@
                 `🟢 System status: Up to date (V${currentVersion})`,
                 "🚀 Launching Plate Creator..."
             ];
-            pageName = "Update In Progress";
-            setTimeout(() => {
-                pageName = "Outdated Version Detected";
-            }, 2000); 
         } else {
             loadingStages = [
                 "🔍 Checking current build version...",
                 `🟢 System status: Up to date (V${currentVersion})`,
                 "🚀 Launching Plate Creator..."
             ];
-            pageName = "Up To Date";
         }
 
-    const titleElement = document.getElementById('title');
-
-    titleElement.textContent = `Number Plate Creator | ${pageName}`;
-    document.title = titleElement.textContent;
     let stageIndex = 0;
     const textElement = document.getElementById('loading-text');
     const loadingBarContainer = document.getElementById('loading-bar-container');

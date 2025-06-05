@@ -27,8 +27,8 @@
             if (allTimeElem) allTimeElem.style.display = "none";
         }
 
-        const dailyCount = (dailyData && typeof dailyData.count !== "undefined") ? dailyData.count : 0;
-        const allTimeCount = (allTimeData && typeof allTimeData.count !== "undefined") ? allTimeData.count : 0;
+        const dailyCount = (dailyData && typeof dailyData.count !== "undefined") ? dailyData.count : "";
+        const allTimeCount = (allTimeData && typeof allTimeData.count !== "undefined") ? allTimeData.count : "";
         if (dailyElem) dailyElem.textContent = `Daily Visitors: ${dailyCount}`;
         if (allTimeElem) allTimeElem.textContent = `All-Time Visitors: ${allTimeCount}`;
     } catch (error) {
