@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/slideShow.css">
+    <link rel="stylesheet" href="css/btn.css">
+
+    <title id="title"></title>
+<script src="favicon.js"></script>
+</head>
+<div class="bg-slideshow"></div>
+<body>
+    <script src="version.js"></script>
+    <script src="utils.js"></script>
+    <audio id="loading-music" autoplay>
+        <source src="audio/TheFeeling.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="music-info">
+        <span id="discordInfo" title="Click Me!" class="cd-icon">💿 </span><p><strong>Now Playing:</strong></p> 
+    </div>
+
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <div id="loading-text" class="loading-text">Retrieving current version information...</div>
+        <div id="loading-bar-container">
+          <div id="loading-bar"></div>
+        </div>
+      </div>
+
+    <div id="popup" class="popup">
+        <p>We were unable to load the Plate Creator. The page will automatically reload. If the issue persists, please proceed to the "Report a Bug" page for assistance.</p>
+        <button onclick="goToBugReport()">Report a Bug</button>
+    </div>
+    <footer class="footer">
+        <div>
+            <p id="copyright"></p>
+            <p>🤝 In partnership with <a style="color: #ccc;" href="https://discord.com/invite/ZDCGZCguBW" target="_blank">Crip Developments</a></p>
+            <div class="social-media">
+                <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
+                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
+                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
+                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
+            </div> 
+        </div>
+    </footer>
+    <script>
+        let storedVersion = localStorage.getItem("version");
+        let version = storedVersion ? `Outdated ${storedVersion}` : "Unknown Version";
+    let loadingStages;
+    let pageName;
+        if (!storedVersion || compareVersions(currentVersion, storedVersion) > 0) {
+            loadingStages = [
+                "🔍 Checking current build version...",
+                `📦 Detected version: ${version}`,
+                "⬇️ Fetching latest update files...",
+                "⚙️ Installing updates and optimizing performance...",
+                `✅ Update complete — now running V${currentVersion}`,
+                `🟢 System status: Up to date (V${currentVersion})`,
+                "🚀 Launching Plate Creator..."
+            ];
+            pageName = "Update In Progress";
+            setTimeout(() => {
+                pageName = "Outdated Version Detected";
+            }, 2000); 
+        } else {
+            loadingStages = [
+                "🔍 Checking current build version...",
+                `🟢 System status: Up to date (V${currentVersion})`,
+                "🚀 Launching Plate Creator..."
+            ];
+            pageName = "Up To Date";
+        }
+
+    const titleElement = document.getElementById('title');
+
+    titleElement.textContent = `Number Plate Creator | ${pageName}`;
+    document.title = titleElement.textContent;
+    let stageIndex = 0;
+    const textElement = document.getElementById('loading-text');
+    const loadingBarContainer = document.getElementById('loading-bar-container');
+    const loadingBar = document.getElementById('loading-bar');
+    
+
+    let updateProgress = 0;
+    let updateAnimating = false;
+    
+    let estimatedTime;
+    let currentSize = 2;
+    if (currentSize < 5) {
+    estimatedTime = 5000 + Math.random() * 5000; 
+    } else if (currentSize < 10) {
+        estimatedTime = 10000 + Math.random() * 5000; 
+    }else if (currentSize < 50) {
+    estimatedTime = 20000 + Math.random() * 10000; 
+    } else {
+    estimatedTime = 40000 + Math.random() * 20000; 
+    }
+
+    const updateInterval = 500; 
+    const totalSteps = estimatedTime / updateInterval;
+    const increment = 100 / totalSteps;
+
+    function animateUpdate() {
+    if (!updateAnimating) return;
+    
+    updateProgress += increment;
+    if (updateProgress > 100) updateProgress = 100;
+    
+    loadingBar.style.width = updateProgress.toFixed(2) + "%";
+
+    if (updateProgress < 100) {
+                setTimeout(animateUpdate, updateInterval);
+            } else {
+                setTimeout(() => {
+                    textElement.textContent = `Successfully updated to version V${currentVersion}.`;
+                    localStorage.setItem("version", currentVersion);
+                    setTimeout(() => {
+                        localStorage.setItem("version", currentVersion);
+                    }, 2000); 
+                }, 1000); 
+            }
+        }
+    
+    function changeText() {
+        if (stageIndex < loadingStages.length) {
+            const currentStage = loadingStages[stageIndex];
+            textElement.textContent = currentStage;
+
+            if (currentStage === "⚙️ Installing updates and optimizing performance...") {
+                loadingBarContainer.style.display = 'block';
+                updateProgress = 0;
+                updateAnimating = true;
+                animateUpdate();
+            } else {
+                loadingBarContainer.style.display = 'none';
+                updateAnimating = false;
+            }
+            stageIndex++;
+            let delay = currentStage === "⚙️ Installing updates and optimizing performance..." ? 20000 : 2500;
+            requestAnimationFrame(() => setTimeout(changeText, delay));
+        } else {
+            setTimeout(handleFinalStage, 2500);
+        }
+    }
+    
+    function handleFinalStage() {
+      localStorage.setItem("version", currentVersion);
+      window.location.href = "creator.html"; 
+    }
+    
+    changeText();
+    
+    function goToBugReport() {
+      window.location.href = "underconstruction.html";
+    }
+  </script>
+  <script src="music.js"></script>
+  <script defer src="copyright.js"></script>
+  <script src="slideShow.js"></script>
+</body>
+</html>

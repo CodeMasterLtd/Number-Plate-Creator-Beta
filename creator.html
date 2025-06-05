@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/slideShow.css">
+    <link rel="stylesheet" href="css/btn.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<title>Number Plate Creator | Creator</title>
+    <script src="favicon.js"></script>
+</head>
+<body>
+    <audio id="loading-music" autoplay>
+        <source src="audio/TheFeeling.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="video-overlay">
+        <iframe id="myVideo"></iframe>
+            </div>
+
+    <div class="container">
+        <div id="weather" class="weather">Fetching temperature...</div>
+        <div class="header-container">
+            <div class="music-info">
+                <span id="discordInfo" title="Click Me!" class="cd-icon">💿 </span><p><strong>Now Playing:</strong></p> 
+            </div>
+            <div class="version-container">
+                <a id="update"></a>
+                <br>
+                <a id="version"></a>
+            </div>
+        </div>
+            <div class="button-container">
+        <button class="homeButton" onclick="window.location.href='music.html'">Music Controls</button>
+        <button class="homeButton" onclick="window.location.href='miscPlates.html'">Non Premium Plates</button>
+        <button class="homeButton" onclick="window.location.href='version.html'">Version History</button>
+        <button class="homeButton" onclick="window.location.href='slideshow.html'">Slideshow</button>
+        </div>
+        <h2>NUMBER PLATE CREATOR</h2>
+        <p>Empower yourself to craft and preserve custom uk number plates, seamlessly integrating them into your personalized vehicle designs for Grand Theft Auto V or any other creative project you have in mind.</p>
+        <p style="font-size: medium; font-weight: bolder;">-----------------------------------------------------</p>
+        <button class="button button2" onclick="Reload();">RESET</button>
+        <br>
+        <input type="text" id="plateInput" autocomplete="on" maxlength="7"/>
+        <input type="text" id="sloganInput" placeholder="Enter plate slogan eg:(Code Master)" autocomplete="on" />
+        <input type="text" id="BSDInput" placeholder="Enter plate BSD eg:(CO DE 025m)" autocomplete="on" maxlength="8"/>
+        <br>
+        <label for="plateTypes">Plate Misc:</label>
+        <select id="plateTypes" onchange="updatePlateStyles()">
+            <optgroup label="Plate Type">
+                <option value="type-car" selected>Car</option>
+                <option value="type-motorbike">Motorcycle</option>
+            </optgroup>
+            <optgroup label="Plate Mode">
+                <option value="mode-default" selected>Default (CO25 MSR)</option>
+                <option value="mode-private">Private (C06 MSR)</option>
+                <option value="mode-show">Show (C M4S7ER)</option>
+            </optgroup>
+            <optgroup label="Plate Colour">
+                <option value="colour-old" selected>Classic</option>
+                <option value="colour-new">Remastered</option>
+            </optgroup>
+            <optgroup label="Plate Style">
+            <optgroup id="plateStyleContainer">
+                <option value="style-none" style="color: red;">None</option>
+                <option value="style-metal">Metal</option>
+                <option value="style-tinted">Tinted x2</option>
+                <option value="style-tineded">Tinted x5</option>
+                <option value="style-honeycomb">Honeycomb</option>
+                <option value="style-shine">Shine</option>
+            </optgroup>
+            </optgroup>
+        </select>
+        <label class="label-inline" for="styleSelect">Badge:</label>
+        <select id="styleSelect" onchange="toggleBoxStyle()">
+            <option value="none" selected style="color: red;">None</option>
+            <option style="color: green; font-weight: bolder;" disabled>EV</option>
+            <option value="electric">EV</option>
+            <option value="electric1">EV (ICON)</option>
+            <option value="electric8">EV (ICON 2)</option>
+            <option value="electric7">EV (ICON 3)</option>
+            <option value="electric9">EV (ICON 4)</option>
+            <option value="electric2">EV (Text EV)</option>
+            <option value="electric3">EV (GB)</option>
+            <option value="electric4">EV (UK)</option>
+            <option value="electric5">EV (CYMRU)</option>
+            <option value="electric6">EV (IOW)</option>
+            <option style="color: #00a4d3; font-weight: bolder;" disabled>Non EV</option>
+            <option value="gb">GREAT BRITIAN</option>
+            <option value="eng">ENGLAND</option>
+            <option value="uk">UNITED KINGDOM</option>
+            <option value="cym">CYMRU</option>
+            <option value="sco">SCOTLAND</option>
+            <option value="eu">EU (GB)</option>
+            <option value="eu1">EU (UK)</option>
+            <option value="euirl">EU (IRELAND)</option>
+            <option value="iow">IOW</option>
+            <option style="color: #d3ac00; font-weight: bolder;" disabled>Custom</option>
+            <option value="crip">Disabled EV</option>
+            <option value="crip2">Disabled Non EV</option>
+            <option value="crip3">Crip (Text)</option>
+        </select>
+        <div id="boxStyleContainer">
+        <label class="label-inline" for="boxStyle">Badge Style:</label>
+        <select id="boxStyle" onchange="ElectricBoxStyle()">
+        <option style="color: red; font-weight: bolder;" disabled>BETA</option>
+        <optgroup label="Bagde Shape">
+            <option value="shape-default" selected>Default</option>
+            <option value="shape-compact">Compact</option>
+        </optgroup>
+        <optgroup label="Badge Colour">
+            <option style="background-color: #019e4d;" value="colour-green">Green</option>
+            <option style="background-color: #104188;" value="colour-blue">Blue</option>
+            <option style="background-color: #0000007c;" value="colour-transparant">Transparant</option>
+            <option style="background-color: #00a4d3;" value="colour-iow">IOW</option>
+        </optgroup>
+        </select>
+        </div>
+        <label class="label-inline" for="showMisc">Misc:</label>
+            <select id="showMisc" onchange="showMiscs()">
+                <optgroup label="British Standard">
+                    <option value="stamp-yes" selected>Show</option>
+                    <option value="stamp-no" style="color: red;">Hide</option>
+                </optgroup>
+                <optgroup label="Slogan">
+                    <option value="slogan-yes" selected>Show</option>
+                    <option value="slogan-no" style="color: red;">Hide</option>
+                </optgroup>
+                <optgroup label="Screws">
+                    <option value="screws-hide" selected style="color: red;">Hide</option>
+                    <option value="screws-2">2 Screws</option>
+                    <option value="screws-4">4 Screws</option>
+                </optgroup>
+                <optgroup label="Border">
+                    <option value="border-yes">Show</option>
+                    <option value="border-no" selected style="color: red;">Hide</option>
+                </optgroup>
+                <optgroup label="4D Text">
+                    <option value="4d-yes">Show</option>
+                    <option value="4d-no" selected style="color: red;">Hide</option>
+                </optgroup>
+            </select>
+        <div id="borderOptions" style="display:none;">
+            <br></br>
+            <label for="borderColor">Border Color:</label>
+            <input type="color" id="borderColor" onchange="changeBorderColor()">
+            <br></br>
+        </div>
+        <div id="textShadowOptions" style="display:none;">
+            <label for="textShadowX">4D Shadow X:</label>
+            <input type="range" id="textShadowX" min="-10" max="10" value="6" step="1" onchange="changeTextShadow()">
+            <br>
+            <label for="textShadowY">4D Shadow Y:</label>
+            <input type="range" id="textShadowY" min="-10" max="10" value="-3" step="1" onchange="changeTextShadow()">
+            <br>
+            <label for="textShadowBlur">4D Shadow Blur:</label>
+            <input type="range" id="textShadowBlur" min="0" max="10" value="4" step="1" onchange="changeTextShadow()">
+            <br>
+            <label for="textShadowColor">4D Shadow Color:</label>
+            <input type="color" id="textShadowColor" value="#292929" onchange="changeTextShadow()">
+            <br>
+        </div>
+        <br></br> 
+        <label class="label-inline" for="genPlate">Random Plate Format:</label>
+        <select id="genPlate" onchange="GenPlate()">
+            <option value="hide" style="font-weight: bolder; background-color: rgb(255, 0, 0);" selected>Hide Button</option>
+            <optgroup label="British Formats ▼" style="color: rgb(246, 255, 0); font-weight: bolder; background-color: black;">
+                <option value="normal">Default Format (<span>CO63 MSR</span>)</option>
+                <option value="private">Private Format (<span>C06 MSR</span>)</option>
+                <option value="private1">Private Format 1 (<span>C1 MSR</span>)</option>
+                <option value="private2">Private Format 2 (<span>1 MSR</span>)</option>
+            </optgroup>
+            <optgroup label="Additional Formats ▼" style="color: rgb(0, 157, 29); font-weight: bolder; background-color: black;">
+                <option value="urz">URZ Format (<span>URZ 1234</span>)</option>
+                <option value="ic">IC Format (<span>IC 12345</span>)</option>
+            </optgroup>
+            <optgroup label="Police Formats ▼" style="color: rgb(0, 115, 255); font-weight: bolder; background-color: black;">
+                <option value="tvp">TVP Format (<span>OU21 BHJ</span>)</option>
+                <option value="hp">HP Format (<span>HX70 BVP</span>)</option>
+                <option value="msp">MSP Format (<span>DK70 FRL</span>)</option>
+                <option value="met">MET Format (<span>EU68 FZT</span>)</option>
+                <option value="gmp">GMP Format (<span>MX68 FNV</span>)</option>
+                <option value="scot">SCOT Format (<span>SF20 DVP</span>)</option>
+            </optgroup>
+            <optgroup label="Fire Formats ▼" style="color: rgb(255, 0, 30); font-weight: bolder; background-color: black;">
+                <option value="rbfrs">RBFRS Format (<span>KY71 ELU</span>)</option>
+                <option value="hfrs">HFRS Format (<span>KR16 XMH</span>)</option>
+                <option value="lfb">LFB Format (<span>WX69 ZFP</span>)</option>
+            </optgroup>
+            <optgroup label="Ambulance Formats ▼" style="color: rgb(136, 255, 0); font-weight: bolder; background-color: black;">
+                <option value="scas">SCAS Format (<span>HX69 YZK</span>)</option>
+                <option value="wmas">WMAS Format (<span>BU20 YOO</span>)</option>
+                <option value="las">LAS Format (<span>EK72 ZFU</span>)</option>
+            </optgroup>
+        </select>
+        <div id="genPlateYearsContainer">
+            <label class="label-inline" for="genPlateYears">Random Plate Years:</label>
+            <select id="genPlateYears" onchange="GenPlateYears()">
+                <option value="ran" selected>Random Years</option>
+                <option value="00-03">2000 - 2003</option>
+                <option value="04-06">2004 - 2006</option>
+                <option value="07-09">2007 - 2009</option>
+                <option value="10-12">2010 - 2012</option>
+                <option value="13-15">2013 - 2016</option>
+                <option value="17-19">2017 - 2019</option>
+                <option value="20-23">2020 - 2023</option>
+                <option value="24-25">2024 - 2025</option>
+            </select>
+        </div>
+            <button style="display: none;" class="btnGen" id="generatePlate">! P14TE 3RR0R !</button>  
+            <br>
+            
+        <div class="plate front">
+            <div id="frontPlateScrew2">
+                <div class="screw-left2"></div>
+                <div class="screw-right2"></div>
+            </div>
+            <div id="frontPlateScrew4">
+                <div class="screw-left-top4"></div>
+                <div class="screw-right-top4"></div>
+                <div class="screw-left-bottom4"></div>
+                <div class="screw-right-bottom4"></div>
+            </div>
+            <div class="plate-text-container" id="frontPlateTextContainer">
+            <div class="plate-text-container" id="frontPlate">
+                <div class="plate-text-wrapper">
+                    <div class="plate-text" id="frontPlate"></div>
+                </div>
+            </div>
+        </div>           
+            <div class="fslogan" id="frontSlogan">Code Master</div>
+            <div class="electric-box" id="frontGreenBox">
+            <div id="frontBoxIcon"></div></div>            
+            <div class="fbackground" id="frontBackground"></div>
+            <div class="border" id="frontBorder"></div>
+            <div class="bottom-right" id="frontStamp">CO DE 025m</div>
+        </div>
+        <div class="plate back">
+            <div id="backPlateScrew2">
+            <div class="screw-left2"></div>
+            <div class="screw-right2"></div>
+        </div>
+        <div id="backPlateScrew4">
+            <div class="screw-left-top4"></div>
+            <div class="screw-right-top4"></div>
+            <div class="screw-left-bottom4"></div>
+            <div class="screw-right-bottom4"></div>
+        </div>
+            <div class="plate-text-container" id="backPlateTextContainer">
+            <div class="plate-text-container" id="backPlate">
+                <div class="plate-text-wrapper">
+            <div class="plate-text" id="backPlate"></div>
+                </div>
+            </div>
+        </div>
+            <div class="bslogan" id="backSlogan">Code Master</div>
+            <div class="electric-box" id="backGreenBox"><div id="backBoxIcon"></div></div>
+            <div class="bbackground" id="backBackground"></div>
+            <div class="border" id="backBorder"></div>
+            <div class="bottom-right" id="backStamp">CO DE 025m</div>
+        </div>
+        <br>
+        <button id="showCarPreiv" class="button1 button5col" onclick="showCarPreview()">Preview On Car</button>
+
+        <div id="carPreviewModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:9999;">
+            <span onclick="closeCarPreview()" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
+            <div style="position:relative; display:inline-block;">
+                <img id="carImage" src="img/carPreview/bmw-m2.png" style="width:950px; max-width:440vw; border-radius:12px;">
+                <canvas id="plateOnCar"
+                width="400" height="300"
+                style="
+                position:absolute;
+                left:340px;   
+                top:416px;   
+                width:265px; 
+                height:56px;
+                border-radius:3px;
+                box-shadow: 8px 0 12px -4px #000, -8px 0 12px -4px #000;
+                ">
+            </div>
+        </div>
+<br>
+        <p style="background-color: rgba(0,0,0,0.5); border-radius: 3px; padding: 10px; box-shadow: #ccc 0 0 10px, inset #ccc 0 0 10px;">
+    <span style="color: #d3ac00; font-weight: bolder;">Please note:</span> Loading the Texture Preview for plate downloads (PNG) may take a few moments depending on your device and browser. The preview will appear shortly—thank you for your patience.<br><br>
+    <button class="button1 button4col" onclick="showSaveModal()">Save Plate</button>
+</p>
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeSaveModal()">&times;</span>
+                <h2 id="saveTitle">Save Plate</h2><br><br>
+                <div class="button-container">
+                    <button class="button1 button2col" onclick="openMapPreview('front')">Save Front Plate</button>
+                    <button class="button1 button3col" onclick="openMapPreview('both')">Save Both Plates</button>
+                    <button class="button1 button1col" onclick="openMapPreview('back')">Save Rear Plate</button>
+                </div>
+            </div>
+        </div>
+        <div id="loadingModal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;">
+        <div style="background:#222;color:#ffe066;padding:32px 48px;border-radius:16px;font-size:1.5rem;box-shadow:0 4px 32px #0008;" tabindex="0" id="loadingModalContent">
+            Generating preview, please wait...
+        </div>
+        </div>
+        <!-- Map Preview Modal -->
+        <div id="mapModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeMapModal()">&times;</span>
+                <h2>Texture Preview</h2>
+                <div id="canvasEnlargeModal" class="modal" style="display:none;">
+                <div class="modal-content" style="max-width:90vw; max-height:90vh; text-align:center;">
+                    <span class="close-btn" onclick="closeCanvasEnlargeModal()" style="float:right; font-size:2em; cursor:pointer;">&times;</span>
+                    <canvas id="enlargedCanvas" style="max-width:100%; height:auto; border-radius: 15px;"></canvas>
+                </div>
+                </div>
+                <div id="mapPreviewContainer" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                <div class="map-preview">
+                    <h3>Diffuse</h3>
+                    <canvas id="canvas-diffuse" width="256" height="128" onclick="showEnlargedCanvas('canvas-diffuse')" style="cursor:zoom-in;"></canvas>
+                    <button onclick="downloadPreview('diffuse')">Download</button>
+                </div>
+                <div class="map-preview">
+                    <h3>Specular</h3>
+                    <canvas id="canvas-spec" width="256" height="128" onclick="showEnlargedCanvas('canvas-spec')" style="cursor:zoom-in;"></canvas>
+                    <button onclick="downloadPreview('spec')">Download</button>
+                </div>
+                <div class="map-preview">
+                    <h3>Normal</h3>
+                    <canvas id="canvas-normal" width="256" height="128" onclick="showEnlargedCanvas('canvas-normal')" style="cursor:zoom-in;"></canvas>
+                    <button onclick="downloadPreview('normal')">Download</button>
+                </div>
+                <div class="map-preview">
+                    <h3>Dirt</h3>
+                    <canvas id="canvas-dirt" width="256" height="128" onclick="showEnlargedCanvas('canvas-dirt')" style="cursor:zoom-in;"></canvas>
+                    <button onclick="downloadPreview('dirt')">Download</button>
+                </div>
+                <div class="map-preview">
+                    <h3>Burnt</h3>
+                    <canvas id="canvas-burnt" width="256" height="128" onclick="showEnlargedCanvas('canvas-burnt')" style="cursor:zoom-in;"></canvas>
+                    <button onclick="downloadPreview('burnt')">Download</button>
+                </div>
+            </div>
+                <label class="label-inline" for="savedRes">Export Quality:</label>
+                <select id="savedRes">
+                <option value="1k">1K (Compressed)</option>
+                <option value="2k">2K (Moderate)</option>
+                <option value="4k">4K (High-res)</option>
+                <option value="8k">8K (Ultra-res)</option>
+                </select>
+                <label class="label-inline" for="eType">Export Type:</label>
+                <select id="eType">
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                    <option value="dds">DDS</option>
+                </select>
+                <div style="margin-top:8px; font-size:0.97em; color:#222; background:#e67e22; padding:8px 12px; border-radius:6px; max-width:650px; text-align: left;">
+            <strong>⚠️ Performance Tips for GTA V / FiveM:</strong><br>
+            Cars usually perform great at <b>2K</b> or <b>4K</b>.<br>
+            Use <b>DXT compression</b> (like DXT5) in OpenIV or texture tools to reduce memory use.<br>
+            If supporting multiple quality levels, name them accordingly (e.g., <code>vehicle_2k.ytd</code>, <code>vehicle_4k.ytd</code>) and let users choose.
+        </div>
+            </div>
+        </div>
+        <br>
+                    <div class="controls-info">
+                <div id="infoBox" style="display: none; margin-top: 10px; padding: 10px; background: #00000081; border: 1px solid #ddd; border-radius: 5px; color: white;">
+                    <strong>Music Controls:</strong><br>
+                    <b>Digit1 (1):</b> ⏮ Prev<br>
+                    <b>Digit2 (2):</b> ⏭ Next<br>
+                    <b>Digit3 (3):</b> 🔊 Up<br>
+                    <b>Digit4 (4):</b> 🔉 Down<br>
+                    <b>Space:</b> Mute/Unmute<br>
+                </div>
+            </div>
+        <div class="footer">
+                <p>We understand that there may be bugs or other issues present in the UK Number Plate Creator. If you encounter any problems, please don't hesitate to contact us.</p>
+            <div class="disclaimer">
+                <p><b>DISCLAMIER:</b> This tool is for creative purposes only. Users are prohibited from using it to create or clone real number plates. The use of DVLA text or other registered trademarks inappropriately may be subject to legal action. Please respect the laws and regulations regarding vehicle number plates.</p>
+                <!--<a href="https://www.gov.uk/displaying-number-plates" target="_blank">UK Government (DVLA) on Number Plates</a>
+                <br></br>
+                <a href="https://www.gov.uk/intellectual-property-trademarks" target="_blank">UK Copyright and Trademark Laws</a>-->
+            </div>
+            <div class="user-counts">
+                <h4><span id="dailyUserCount">0</span></h4>
+                <h4><span id="allTimeUserCount">0</span></h4>
+            </div>
+                -----------------------------------------------------
+                <footer>
+                <div class="foot">
+                <p id="copyright"></p>
+            <p>🤝 In partnership with <a style="color: #ccc;" href="https://discord.com/invite/ZDCGZCguBW" target="_blank">Crip Developments</a></p>
+                <div class="social-media">
+                    <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
+                    <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
+                    <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
+                    <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
+                </div> 
+            </footer>              
+        </div>
+    </div>
+    <script src="userCount.js"></script>
+    <script src="version.js"></script>
+    <script src="weather.js"></script>
+    <script defer src="music.js"></script>
+    <script defer src="script.js"></script>
+    <script defer src="copyright.js"></script>
+    <script src="savePlate.js"></script>
+    <script src="slideShow.js"></script>
+    <script src="inactive.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+</body>
+</html>
