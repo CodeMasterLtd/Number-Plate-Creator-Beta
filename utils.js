@@ -1,11 +1,9 @@
 (function(_) {
   const W = window,
         L = W.location,
-        U = L.href,
-        I = 'index.html',
         R = 'noShow.html';
 
-  if (W.innerWidth < 768 && !U.includes(I)) {
+  if (W.innerWidth < 768) {
     L.href = R;
   }
 })();
