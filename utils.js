@@ -1,14 +1,4 @@
 (function(_) {
-  const $ = (v) => v.split('.').map(Number),
-        C = (A, B) => {
-          const a = $(A), b = $(B), m = Math.max(a.length, b.length);
-          for (let i = 0; i < m; i++) {
-            const x = a[i] || 0, y = b[i] || 0;
-            if (x !== y) return x > y ? 1 : -1;
-          }
-          return 0;
-        };
-
   const W = window,
         L = W.location,
         U = L.href,
@@ -19,3 +9,17 @@
     L.href = R;
   }
 })();
+
+function compareVersions(verA, verB) {
+    const partsA = verA.split('.').map(Number);
+    const partsB = verB.split('.').map(Number);
+    
+    for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
+      const a = partsA[i] || 0;
+      const b = partsB[i] || 0;
+      if (a > b) return 1;
+      if (a < b) return -1;
+    }
+    return 0;
+  }
+  
