@@ -1,0 +1,246 @@
+@import url('https://fonts.cdnfonts.com/css/rubik-dirt');
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #0080ff, #ff0000);
+    color: white;
+    margin: 0;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.mainBtnPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    min-height: 800px;
+    overflow-y: auto;
+    margin: 10px auto 0 auto;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, ul, ol, li, label, span, .para {
+    color: #fff !important;
+}
+
+.logobackground {
+    display: inline-block;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 18px;
+    box-shadow: 0 0 20px inset rgb(42, 42, 42), 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 24px auto;
+    margin-top: -150px;
+}
+
+.logo {
+width: 100%;
+height: auto;
+padding: 0;
+margin: 0;
+margin-top: -170px;
+margin-bottom: -180px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px auto;
+    background: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 10px rgb(0, 255, 0), inset 0 0 10px rgb(0, 255, 0);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    justify-content: center;
+    font-family: 'Charles Wright', sans-serif;
+}
+.btn:hover {
+    background: rgb(0, 255, 0);
+    color: #333;
+}
+.btn2 {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px auto;
+    background: rgba(255, 0, 212, 0.2);
+    box-shadow: 0 0 10px #ff00d4, inset 0 0 10px #ff00d4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    justify-content: center;
+    font-family: 'Charles Wright', sans-serif;
+}
+.btn2:hover {
+    background: #ff00d4;
+    color: #333;
+}
+.btn3 {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px auto;
+    background: rgba(255, 183, 0, 0.2);
+    box-shadow: 0 0 10px #ffb700, inset 0 0 10px #ffb700;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    justify-content: center;
+    font-family: 'Charles Wright', sans-serif;
+}
+.btn3:hover {
+    background:#ffb700;
+    color: #333;
+}
+.btn4 {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px auto;
+    background: rgba(0, 153, 255, 0.2);
+    box-shadow: 0 0 10px #0099ff, inset 0 0 10px #0099ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    justify-content: center;
+    font-family: 'Charles Wright', sans-serif;
+}
+.btn4:hover {
+    background:#0099ff;
+    color: #333;
+}
+.btn5 {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px auto;
+    background: rgba(0, 255, 242, 0.2);
+    box-shadow: 0 0 10px #00fff2, inset 0 0 10px #00fff2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+    justify-content: center;
+    font-family: 'Charles Wright', sans-serif;
+}
+.btn5:hover {
+    background:#00fff2;
+    color: #333;
+}
+.para {
+    font-size: 14px;
+}
+.para b {
+    color: #fffb00;
+    font-weight: bold;
+}
+
+
+#loginModal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 99999;
+    background: radial-gradient(ellipse at center, #232526e7 0%, #000000dc 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInBg 5s;
+}
+@keyframes fadeInBg {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#loginForm {
+    background: linear-gradient(120deg, #232526 60%, #ffe066 200%);
+    padding: 48px 40px 36px 40px;
+    border-radius: 22px;
+    box-shadow: 0 8px 40px #000a, 0 1.5px 0 #fff3 inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 340px;
+    max-width: 95vw;
+    animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+#loginForm h2 {
+    color: #ffe066;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 28px;
+    font-size: 2.1rem;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 12px #0007;
+}
+#loginForm input[type="text"],
+#loginForm input[type="password"] {
+    margin-bottom: 18px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    font-size: 1.08rem;
+    background: transparent;
+    color: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.486);
+    outline: none;
+    transition: box-shadow 0.2s, background 0.2s;
+}
+#loginForm input:focus {
+    box-shadow: 0 0 12px #f7b009, inset 0 0 6px #f7b009;
+    background: transparent;
+}
+#loginForm button[type="submit"] {
+    background: linear-gradient(90deg,#ffe066 0%,#f7b009 100%);
+    color: #222;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 12px 38px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 12px #0002;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+    letter-spacing: 0.04em;
+}
+#loginForm button[type="submit"]:hover, #loginForm button[type="submit"]:focus {
+    background: linear-gradient(90deg,#f7b009 0%,#ffe066 100%);
+    color: #b8860b;
+    transform: translateY(-2px) scale(1.03);
+}
+#loginError {
+    color: #f73711;
+    margin-top: 18px;
+    display: none;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 6px #0002;
+}

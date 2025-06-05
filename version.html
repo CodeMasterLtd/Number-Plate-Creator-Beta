@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
+    <link rel="stylesheet" href="css/version.css">
+    <link rel="stylesheet" href="css/btn.css">
+
+    <!-- Favicons -->
+	<script src="favicons.js"></script>
+    <title id="title"></title>
+</head>
+<body>
+ <script src="version.js"></script>
+    <div class="button-container">
+    <button class="homeButton" id="musicBtn">Music Controls</button>
+    <button class="homeButton" id="creatorBtn">Plate Creator</button>
+    <button class="homeButton" id="miscBtn">Non Premium Plates</button>
+    <button class="homeButton" onclick="window.location.href='slideshow.html'">Slideshow</button>
+</div>
+
+    <h1><i class="fa-solid fa-code-branch" style="color: #f1c40f;"></i><br> Number Plate Creator<br> Version History</h1>
+    <!--<button onclick="captureChangelog()">Download Changelog as PNG</button>-->
+
+    <div class="changelog">
+        <h2 style="color: rgb(0, 175, 0);" id="currentVersion"></h2>
+        <p>Some features on this site which were introduced in V4.0.1.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f73711;" >🗑️ Removed:</strong>
+                <li> ‣  Removed the <strong>Export Quality</strong> option from the Save Plate feature in Texture Preview due to a critical export bug.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f78711;" >🐛 Fixed Bugs:</strong>
+                <li> ‣  Resolved issues with all-time and daily visit counters, which were previously affected by API unresponsiveness. Visitor statistics now update reliably in real time.</li>
+            <br>       
+            <strong style="text-align: left; display: flex; font-size: large; color: #11f769;" >🛠️ Improved:</strong>
+                <li> ‣  Enhanced the primary button on the homepage for greater visibility and a more polished, user-friendly appearance.</li>
+                <li> ‣  Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
+                <li> ‣  Enlarged the <strong>Preview On Car</strong> photo and plate to provide greater visibility and a more engaging, immersive preview experience.</li>
+                <li> ‣  Improved the <strong style="color: red; border: red 2px solid; border-radius: 50px; padding: 5px; text-shadow: red 0 0 10px;">RESET</strong> button in the creator for greater clarity and accessibility, and repositioned it above the plate input fields for a more intuitive user experience.</li>
+                <li> ‣  Enhanced the <strong>Badge Style</strong> feature, retaining both <i>Default</i> and <i>Compact</i> options, and introduced the ability for users to customize badge colours <span style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 20px; border: 1px #f1c40f solid;"><i style="color: #019e4d;">Green</i>, <i style="color: #104188;">Blue</i>, <i style="color: #00a4d3;">IOW</i>, or <i style="color: rgba(255, 255, 255, 0.2);">Transparant</i></span> directly within the dropdown menu for greater personalization.</li>
+                <li> ‣  Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
+                <li> ‣  Refined and consolidated dropdown menus within the creator to optimize space and streamline the user interface by merging related options and eliminating unnecessary selections.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #11b2f7;" >🆕 Newly Added:</strong>
+                <li> ‣  Introduced a dedicated <strong>Not Supported</strong> page for users accessing the site on devices with screen widths of 768px or less, ensuring clear communication that Number Plate Creator is optimized for desktop use (Will work on a iPad, possible a tablet also).</li>
+                <li> ‣  Added a <strong>Generating Preview</strong> modal to the <strong>Save Front, Back or Both Plate</strong> feature, clearly informing users to "Please wait" while their texture preview is being prepared, ensuring a smoother and more transparent experience during the loading process.</li>                
+                <li> ‣  Introduced a dedicated <strong>Slideshow</strong> page that automatically appears after 2 minutes of user inactivity, or can be launched instantly via the Slideshow button.</li>
+                <li> ‣  Added more <strong>Random Plate Style</strong> formats — <strong>(Royal Berkshire Fire Service)</strong>, <strong>(Hampshire Fire Service)</strong>, <strong>(London Fire Brigade)</strong>, <strong>(South Central Ambulance Service)</strong>, <strong>(West Midlands Ambulance Service)</strong>, and <strong>(London Ambulance Service)</strong>.</li>
+                <li> ‣  Added two new songs for improved user experience. <strong>Rage (Charlotte Plank (Lens Remix))</strong> & <strong>Overdrive (Ofenbach (ft. Norma Jean Matrine))</strong>.</li>
+
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f79b11;" >🆕 Newly Added<span style="color: #f1c40f;">(Admin Only)</span>:</strong>
+                <li> ‣  Introduced a secure <strong>Admin Login</strong> portal to facilitate access for BETA development and management.</li>
+            </ul>
+        </div>
+
+    <div class="changelog">
+        <h2>Version 4.0.1.1</h2>
+        <p>Some features on this site which were introduced in V4.0.1.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f78711;" >🐛 Fixed Bugs:</strong>
+                <li> ‣  Resolved an issue where the <strong>Creator</strong> page background was displaying incorrectly as white. The intended background is now restored for a consistent and professional appearance.</li>
+            </ul>
+        </div>
+    
+    <div class="changelog">
+        <h2>Version 4.0.1.0</h2>
+        <p>Some features on this site which were introduced in V4.0.1.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f73711;" >🗑️ Removed:</strong>
+                <li> ‣  Removed the <strong>Number Plate Creator</strong> title from the main page for a cleaner and more modern interface.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f78711;" >🐛 Fixed Bugs:</strong>
+                <li> ‣  Resolved an issue where the save button was unresponsive when selecting <strong>Motorbike</strong> in <strong>Plate Type</strong>. This functionality now works as intended.</li>
+            <br>       
+            <strong style="text-align: left; display: flex; font-size: large; color: #11f769;" >🛠️ Improved:</strong>
+                <li> ‣  Refined the dynamic slideshow to deliver a more immersive and visually engaging experience.</li>
+                <li> ‣  Refined the main page button colors and implemented additional visual enhancements for a more polished user interface.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #11b2f7;" >🆕 Newly Added:</strong>
+                <li> ‣  Introduced a dynamic slideshow background to the <strong>Loading</strong> page for an enhanced visual experience.</li>
+                <li> ‣  Expanded the dynamic slideshow with additional high-quality images.</li>
+                <li> ‣  Featured the <strong>NPC</strong> logo prominently on the main page and as a background image for improved branding.</li>
+                <li> ‣  Added a professional <strong>Welcome to</strong> introduction on the main page for a more engaging user experience.</li>
+                <li> ‣  Included a dedicated credits section: <em>Developed by Code Master — Crafted with HTML, CSS, and JavaScript</em> for enhanced transparency and recognition.</li>
+                <li> ‣  Introduced a dedicated <strong>Version History</strong> button on the main page to enhance accessibility and user navigation.</li>
+                <li> ‣  Introduced a dynamic gradient sweep effect featuring <strong><span style="color: #0080ff;">Blue</span></strong> and <strong style="color: #ff0000;">Red</strong> hues to the slideshow for enhanced visual appeal.</li>
+                <li> ‣  <span title="BETA STAGES" class="Beta">BETA</span> Added a professional <strong>Preview On Car</strong> feature, allowing you to instantly visualize your custom plate on a real vehicle before downloading. Simply click the <strong>Preview On Car</strong> button to experience your design in context.</li>
+            </ul>
+        </div>
+
+    <div class="changelog">
+        <h2>Version 4.0.0.0</h2>
+        <p>Some features on this site which were introduced in V4.0.0.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <p class="note1">We are pleased to announce that Code Master has officially merged with Crip Developments. This strategic decision was driven by a shift in customer engagement and marks an exciting new chapter for the Plate Creator project. Originally developed entirely from scratch by Smurfy using HTML, CSS, and JavaScript — within just two years of beginning his coding journey — the Plate Creator has grown into what you see today. While Smurfy is currently managing some personal matters that may occasionally impact his schedule, he remains committed to the continued development and improvement of the Number Plate Creator. <br><span style="font-weight: bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Join <a href="https://discord.gg/ZDCGZCguBW">Crip Developments</a> Discord Today!</span></p>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f73711;" >🗑️ Removed:</strong>
+                <li> ‣  Removed the font selection menu to ensure all character styles strictly comply with official standards and maintain authenticity.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #f78711;" >🐛 Fixed Bugs:</strong>
+                <li> ‣  Fixed multiple JavaScript issues to improve performance and stability.</li>
+                <li> ‣  Overhauled the <strong>Save Plate</strong> functionality — now opens a dedicated save menu with options for <strong>Save Front Plate</strong>, <strong>Save Both Plate's</strong>, and <strong>Save Back Plate</strong>. Additionally, pressing <code>CTRL+S</code> will trigger this menu for convenience.</li>
+                <li> ‣  Resolved an issue where clearing the BSD input did not restore the default "CO DE 025m" stamp to the plates.</li>
+                <li> ‣  Corrected the Instagram link in the footer to direct users to the official account.</li>
+            <br>       
+            <strong style="text-align: left; display: flex; font-size: large; color: #11f769;" >🛠️ Improved:</strong>
+                <li> ‣  Refined the color rendering of the <strong>Old</strong> rear license plate for greater visual accuracy.</li>
+                <li> ‣  Replaced legacy music tracks with updated, high-quality versions.</li>
+                <li> ‣  Upgraded music display font for better readability and modern appeal.</li>
+                <li> ‣  The always-visible clock has been removed from the creator. To view the current time, simply hover over the <strong>☀️</strong> or <strong>🌙</strong> icon next to the current temperature.</li>
+                <li> ‣  The current temperature display has been revamped — it now shows weather icons alongside the temperature.</li>
+            <br>
+            <strong style="text-align: left; display: flex; font-size: large; color: #11b2f7;" >🆕 Newly Added:</strong>
+                <li> ‣  Added a <strong>Plate Colour</strong> dropdown menu that lets you choose between <strong>Original</strong> and <strong>Remastered</strong> plate backgrounds — now defaults to <strong>Original</strong> for a more classic look.</li>    
+                <li> ‣  Added dynamic slideshow background images featuring vehicles created with the Plate Creator. If your vehicle is showcased, you will be credited, and a Discord link will be provided for further recognition.</li>                
+                <li> ‣  Added <strong>Random Plate Style</strong> dropdown with four format options — <strong>Default Format</strong> (e.g. <span class="numberPlates">CR25 DEV</span>), <strong>Private Format</strong> (e.g. <span class="numberPlates">C19 DEV</span>), <strong>Private 1 Format</strong> (e.g. <span class="numberPlates">C1 DEV</span>), and <strong>Private 2 Format</strong> (e.g. <span class="numberPlates">1 DEV</span>). The 'Generate Plate' button now updates its label and functionality based on the selected style. New formats now also support real-world styles like <span class="numberPlates">URZ 1234</span>, <span class="numberPlates">IC 12345</span>, <span class="numberPlates">OU21 BHJ</span> <strong>(Thames Valley Police)</strong>, <span class="numberPlates">DK70 FRL</span> <strong>(Merseyside Police)</strong>, <span class="numberPlates">MX68 FNV</span> <strong>(Greater Manchester Police)</strong>, <span class="numberPlates">EU68 FZT</span> <strong>(Met Police)</strong>, and <span class="numberPlates">SF20 DVP</span> <strong>(Scottish Police)</strong>. Also, each police force plate now displays its corresponding slogan. ie (Thames Valley Police / Hampshire Police).</li>
+                <li> ‣  Introduced the <strong>Texture Preview Modal</strong>, activated via <em>Save Plate</em> then <em>Save Front Plate</em>, <em>Save Both Plate's</em> or <em>Save Back Plate</em> button. Users can now preview and download <strong>Diffuse</strong>, <strong>Specular</strong>, <strong>Normal</strong>, <strong>Dirt</strong>, or <strong>Burnt</strong> maps of their plates. Additionally, the save process for both plates has been refined for improved quality.</li>
+                <li> ‣  Introduced <strong>Show Plate</strong> option in dropdown of Plate Mode to allow custom chars — (e.g. <span class="numberPlates">CRIPPLE</span>), (<span class="numberPlates">AM0 2 TOE</span>), (<span class="numberPlates">P1110T H</span>).</li>
+                <li> ‣  Introduced a dynamic styling feature enabling support for <strong>Shine</strong> plates.</li>
+                <li> ‣  Introduced an <strong>Export Quality</strong> option in the save plate pop-up, allowing users to select from <em>1K</em>, <em>2K</em>, <em>4K</em>, or <em>8K</em> resolutions for optimal balance between image quality and performance.</li>                
+                <li> ‣  Enhanced the <strong>Generate Plate</strong> feature to display corresponding <button id="openBtn" class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#areaCodesList" aria-expanded="false" aria-controls="areaCodesList"> 📍 Show Area Codes by Region
+            </button>.</li>
+        </ul>
+    <div class="collapse mt-3" id="areaCodesList">
+        <div class="card card-body text-dark">
+            <ul>
+                <button id="closeBtn" class="btn btn-danger d-none" type="button" data-bs-toggle="collapse" data-bs-target="#areaCodesList" aria-expanded="true" aria-controls="areaCodesList"> ❌ Hide Area Codes
+                </button>
+                <li><strong>Berkshire</strong>
+                    <ul>
+                        <li>Reading:
+                            <span class="numberPlateCode">RA<span class="plate"></span></span>
+                            <span class="numberPlateCode">RB<span class="plate"></span></span>
+                            <span class="numberPlateCode">RC<span class="plate"></span></span>
+                            <span class="numberPlateCode">RD<span class="plate"></span></span>
+                            <span class="numberPlateCode">RE<span class="plate"></span></span>
+                            <span class="numberPlateCode">RF<span class="plate"></span></span>
+                            <span class="numberPlateCode">RG<span class="plate"></span></span>
+                            <span class="numberPlateCode">RH<span class="plate"></span></span>
+                            <span class="numberPlateCode">RJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">RK<span class="plate"></span></span>
+                            <span class="numberPlateCode">RL<span class="plate"></span></span>
+                            <span class="numberPlateCode">RM<span class="plate"></span></span>
+                            <span class="numberPlateCode">RN<span class="plate"></span></span>
+                            <span class="numberPlateCode">RO<span class="plate"></span></span>
+                            <span class="numberPlateCode">RP<span class="plate"></span></span>
+                            <span class="numberPlateCode">RR<span class="plate"></span></span>
+                            <span class="numberPlateCode">RS<span class="plate"></span></span>
+                            <span class="numberPlateCode">RT<span class="plate"></span></span>
+                            <span class="numberPlateCode">RU<span class="plate"></span></span>
+                            <span class="numberPlateCode">RV<span class="plate"></span></span>
+                            <span class="numberPlateCode">RW<span class="plate"></span></span>
+                            <span class="numberPlateCode">RX<span class="plate"></span></span>
+                            <span class="numberPlateCode">RY<span class="plate"></span></span>
+                        <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Anglia</strong>
+                    <ul>
+                        <li>Peterborough:
+                            <span class="numberPlateCode">AA<span class="plate"></span></span>
+                            <span class="numberPlateCode">AB<span class="plate"></span></span>
+                            <span class="numberPlateCode">AC<span class="plate"></span></span>
+                            <span class="numberPlateCode">AD<span class="plate"></span></span>
+                            <span class="numberPlateCode">AE<span class="plate"></span></span>
+                            <span class="numberPlateCode">AF<span class="plate"></span></span>
+                            <span class="numberPlateCode">AG<span class="plate"></span></span>
+                            <span class="numberPlateCode">AH<span class="plate"></span></span>
+                            <span class="numberPlateCode">AJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">AK<span class="plate"></span></span>
+                            <span class="numberPlateCode">AL<span class="plate"></span></span>
+                            <span class="numberPlateCode">AM<span class="plate"></span></span>
+                            <span class="numberPlateCode">AN<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Norwich:
+                            <span class="numberPlateCode">AO<span class="plate"></span></span>
+                            <span class="numberPlateCode">AP<span class="plate"></span></span>
+                            <span class="numberPlateCode">AR<span class="plate"></span></span>
+                            <span class="numberPlateCode">AS<span class="plate"></span></span>
+                            <span class="numberPlateCode">AT<span class="plate"></span></span>
+                            <span class="numberPlateCode">AU<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Ipswich:
+                            <span class="numberPlateCode">AV<span class="plate"></span></span>
+                            <span class="numberPlateCode">AW<span class="plate"></span></span>
+                            <span class="numberPlateCode">AX<span class="plate"></span></span>
+                            <span class="numberPlateCode">AY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Birmingham</strong>
+                    <ul>
+                        <li>Birmingham:
+                            <span class="numberPlateCode">BA<span class="plate"></span></span>
+                            <span class="numberPlateCode">BB<span class="plate"></span></span>
+                            <span class="numberPlateCode">BC<span class="plate"></span></span>
+                            <span class="numberPlateCode">BD<span class="plate"></span></span>
+                            <span class="numberPlateCode">BE<span class="plate"></span></span>
+                            <span class="numberPlateCode">BF<span class="plate"></span></span>
+                            <span class="numberPlateCode">BG<span class="plate"></span></span>
+                            <span class="numberPlateCode">BH<span class="plate"></span></span>
+                            <span class="numberPlateCode">BJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">BK<span class="plate"></span></span>
+                            <span class="numberPlateCode">BL<span class="plate"></span></span>
+                            <span class="numberPlateCode">BM<span class="plate"></span></span>
+                            <span class="numberPlateCode">BN<span class="plate"></span></span>
+                            <span class="numberPlateCode">BO<span class="plate"></span></span>
+                            <span class="numberPlateCode">BP<span class="plate"></span></span>
+                            <span class="numberPlateCode">BR<span class="plate"></span></span>
+                            <span class="numberPlateCode">BS<span class="plate"></span></span>
+                            <span class="numberPlateCode">BT<span class="plate"></span></span>
+                            <span class="numberPlateCode">BU<span class="plate"></span></span>
+                            <span class="numberPlateCode">BV<span class="plate"></span></span>
+                            <span class="numberPlateCode">BW<span class="plate"></span></span>
+                            <span class="numberPlateCode">BX<span class="plate"></span></span>
+                            <span class="numberPlateCode">BY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Cymru (Wales)</strong>
+                    <ul>
+                        <li>Cardiff:
+                            <span class="numberPlateCode">CA<span class="plate"></span></span>
+                            <span class="numberPlateCode">CB<span class="plate"></span></span>
+                            <span class="numberPlateCode">CC<span class="plate"></span></span>
+                            <span class="numberPlateCode">CD<span class="plate"></span></span>
+                            <span class="numberPlateCode">CE<span class="plate"></span></span>
+                            <span class="numberPlateCode">CF<span class="plate"></span></span>
+                            <span class="numberPlateCode">CG<span class="plate"></span></span>
+                            <span class="numberPlateCode">CH<span class="plate"></span></span>
+                            <span class="numberPlateCode">CJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">CK<span class="plate"></span></span>
+                            <span class="numberPlateCode">CL<span class="plate"></span></span>
+                            <span class="numberPlateCode">CM<span class="plate"></span></span>
+                            <span class="numberPlateCode">CN<span class="plate"></span></span>
+                            <span class="numberPlateCode">CO<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Swansea:
+                            <span class="numberPlateCode">CP<span class="plate"></span></span>
+                            <span class="numberPlateCode">CR<span class="plate"></span></span>
+                            <span class="numberPlateCode">CS<span class="plate"></span></span>
+                            <span class="numberPlateCode">CT<span class="plate"></span></span>
+                            <span class="numberPlateCode">CU<span class="plate"></span></span>
+                            <span class="numberPlateCode">CV<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Bangor:
+                            <span class="numberPlateCode">CW<span class="plate"></span></span>
+                            <span class="numberPlateCode">CX<span class="plate"></span></span>
+                            <span class="numberPlateCode">CY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Deeside to Shrewsbury</strong>
+                    <ul>
+                        <li>Chester:
+                            <span class="numberPlateCode">DA<span class="plate"></span></span>
+                            <span class="numberPlateCode">DB<span class="plate"></span></span>
+                            <span class="numberPlateCode">DC<span class="plate"></span></span>
+                            <span class="numberPlateCode">DD<span class="plate"></span></span>
+                            <span class="numberPlateCode">DE<span class="plate"></span></span>
+                            <span class="numberPlateCode">DF<span class="plate"></span></span>
+                            <span class="numberPlateCode">DG<span class="plate"></span></span>
+                            <span class="numberPlateCode">DH<span class="plate"></span></span>
+                            <span class="numberPlateCode">DJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">DK<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Shrewsbury:
+                            <span class="numberPlateCode">DL<span class="plate"></span></span>
+                            <span class="numberPlateCode">DM<span class="plate"></span></span>
+                            <span class="numberPlateCode">DN<span class="plate"></span></span>
+                            <span class="numberPlateCode">DO<span class="plate"></span></span>
+                            <span class="numberPlateCode">DP<span class="plate"></span></span>
+                            <span class="numberPlateCode">DR<span class="plate"></span></span>
+                            <span class="numberPlateCode">DS<span class="plate"></span></span>
+                            <span class="numberPlateCode">DT<span class="plate"></span></span>
+                            <span class="numberPlateCode">DU<span class="plate"></span></span>
+                            <span class="numberPlateCode">DV<span class="plate"></span></span>
+                            <span class="numberPlateCode">DW<span class="plate"></span></span>
+                            <span class="numberPlateCode">DX<span class="plate"></span></span>
+                            <span class="numberPlateCode">DY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Essex</strong>
+                    <ul>
+                        <li>Chelmsford:
+                            <span class="numberPlateCode">EA<span class="plate"></span></span>
+                            <span class="numberPlateCode">EB<span class="plate"></span></span>
+                            <span class="numberPlateCode">EC<span class="plate"></span></span>
+                            <span class="numberPlateCode">ED<span class="plate"></span></span>
+                            <span class="numberPlateCode">EE<span class="plate"></span></span>
+                            <span class="numberPlateCode">EF<span class="plate"></span></span>
+                            <span class="numberPlateCode">EG<span class="plate"></span></span>
+                            <span class="numberPlateCode">EH<span class="plate"></span></span>
+                            <span class="numberPlateCode">EJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">EK<span class="plate"></span></span>
+                            <span class="numberPlateCode">EL<span class="plate"></span></span>
+                            <span class="numberPlateCode">EM<span class="plate"></span></span>
+                            <span class="numberPlateCode">EN<span class="plate"></span></span>
+                            <span class="numberPlateCode">EO<span class="plate"></span></span>
+                            <span class="numberPlateCode">EP<span class="plate"></span></span>
+                            <span class="numberPlateCode">ER<span class="plate"></span></span>
+                            <span class="numberPlateCode">ES<span class="plate"></span></span>
+                            <span class="numberPlateCode">ET<span class="plate"></span></span>
+                            <span class="numberPlateCode">EU<span class="plate"></span></span>
+                            <span class="numberPlateCode">EV<span class="plate"></span></span>
+                            <span class="numberPlateCode">EW<span class="plate"></span></span>
+                            <span class="numberPlateCode">EX<span class="plate"></span></span>
+                            <span class="numberPlateCode">EY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Forest and Fens</strong>
+                    <ul>
+                        <li>Nottingham:
+                            <span class="numberPlateCode">FA<span class="plate"></span></span>
+                            <span class="numberPlateCode">FB<span class="plate"></span></span>
+                            <span class="numberPlateCode">FC<span class="plate"></span></span>
+                            <span class="numberPlateCode">FD<span class="plate"></span></span>
+                            <span class="numberPlateCode">FE<span class="plate"></span></span>
+                            <span class="numberPlateCode">FF<span class="plate"></span></span>
+                            <span class="numberPlateCode">FG<span class="plate"></span></span>
+                            <span class="numberPlateCode">FH<span class="plate"></span></span>
+                            <span class="numberPlateCode">FJ<span class="plate"></span></span>
+                            <span class="numberPlateCode">FK<span class="plate"></span></span>
+                            <span class="numberPlateCode">FL<span class="plate"></span></span>
+                            <span class="numberPlateCode">FM<span class="plate"></span></span>
+                            <span class="numberPlateCode">FN<span class="plate"></span></span>
+                            <span class="numberPlateCode">FP<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <li>Lincoln:
+                            <span class="numberPlateCode">FR<span class="plate"></span></span>
+                            <span class="numberPlateCode">FS<span class="plate"></span></span>
+                            <span class="numberPlateCode">FT<span class="plate"></span></span>
+                            <span class="numberPlateCode">FV<span class="plate"></span></span>
+                            <span class="numberPlateCode">FW<span class="plate"></span></span>
+                            <span class="numberPlateCode">FX<span class="plate"></span></span>
+                            <span class="numberPlateCode">FY<span class="plate"></span></span>
+                            <br>
+                        </li>
+                        <br></br>
+                        <p>Explore additional details and resources here: <a style="color: rgb(62, 197, 241);" href="https://www.newreg.co.uk/dvla-number-plate-identifiers/">DVLA Number Plate Identifiers</a>.</p>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p>The<span title="BETA STAGES" class="Beta"> BETA </span>features are actively being refined and will be improved in the upcoming updates.</p>
+</div>
+
+
+    <div class="changelog">
+        <h2>Version 3.2.1.0</h2>
+        <p>Some features on this site which were introduced in V3.2.0.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ 🔧 Resolved an issue where the export size for the 'Motorbike' plate type was incorrect.<br><span class="requestTag">(Special thanks to OfficialFilipPlayz for the insightful request.)</span></li>
+            <li> ‣ 🛠️ Introduced a front plate option for the 'Motorbike' plate type, ideal for both motorcycles and vehicles using square plates.<br><span class="requestTag">(Special thanks to OfficialFilipPlayz for the insightful request.)</span></li></li>
+            <li> ‣ 🌡️ Added real-time weather integration to display the current outdoor temperature while designing plates.</li>
+            <!--<li> ‣ 🎉 Enhanced 4D plate customization — when a border is selected, the border’s 4D color can now be matched to the text color for a more cohesive design.</li>-->
+            <li> ‣ 🔎 Introduced a dynamic styling feature enabling support for 'Metal', 'Tinted x5', 'Tinted x2', and 'Honeycomb' plates. The system automatically adjusts front and rear plate styles based on user preferences.</li>
+            <li> ‣ 🖋️ Resolved an issue where the slogan text overlapped with the border. The slogan now renders with a proper background, ensuring clear visibility without interfering with the border styling.</li>
+            <li> ‣ ⚠️ The Tint Plate feature has been temporarily disabled while I work on enhancing its functionality. Use 'Tinted x2' or 'Tinted x5' for plate tints.</li>
+            <li> ‣ 🆕 Added new Non-Premium Plates page featuring accessible designs and improved layout for regular users.</li>
+            <li> ‣ 🆕 Added daily and all-time user visit counters. <br> <strong>Daily Visits:</strong> <span id="dailyUserCount">0</span> | <strong>All-Time Visits:</strong> <span id="allTimeUserCount">0</span></li>
+            <li> ‣ 🎲 Added a Generate Number plate for fun, Using random chars and numbers. ie: <span class="numberPlates">CL64 LDR</span>, <span class="numberPlates">X10 CAR</span>, <span class="numberPlates">C1 DEV</span>, <span class="numberPlates">1 DEV</span><br><span class="requestTag">(Special thanks to Stormy at <a href="https://discord.gg/qkyEyNYAg6">Stormy Modifications</a> for the valuable request.)</span></li>
+            <li> ‣ 💖 Support the Plate Creator. Donate button added on main page.</li>
+            <li> ‣ 🧼 Removed (white) background when exporting plates as PNG files.<br><span class="requestTag">(Special thanks to OfficialFilipPlayz for the insightful request.)</span></li>
+            <li> ‣ 🟩 Badge Style toggle added choose between "default" and "compact" plate badge styles.</li>
+            <li> ‣ 🎵 Music controls updated: use number keys above QWERTY — 1 (⏮ Prev), 2 (⏭ Next), 3 (🔊 Up), 4 (🔉 Down), and Space to mute/unmute.</li>
+            <!--<br><span class="cminfo">We appreciate your patience during our recent inactivity, which was due to personal circumstances. Development on the Number Plate Creator has now resumed, and updates will be released as needed.</span>-->
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.2.0.0</h2>
+        <p>Some features on this site which were introduced in V3.1.0.1 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ 🔧 Fixed an issue where the 'Custom' plate exceeded the character limit, causing layout overlap.<br><span class="requestTag">(Special thanks to Crip at <a href="https://discord.gg/MYsFD6GKzq">Crip Developments</a> for the valuable request.)</span></li>
+            <li> ‣ 🔧 Resolved an issue where the slogan background was displaying above the tinted overlay. The tint no longer overlaps when a badge is applied. <span title="BETA STAGES" class="Beta">BETA</span> For best results, apply the badge first, then enable tinting. When removing, remove the badge first, then toggle the tint off and on again. Please note: this process is still being refined and may be slightly inconsistent in the current version.</li>
+            <li> ‣ 🎵 Replaced an existing track with a newly selected song for improved user experience.</li>
+            <li> ‣ ⚡️ EV ICON 2 is now supported, with the "⚡️" icon denoting electric vehicle status on number plates.</li>
+            <li> ‣ 🔌 Introduced EV ICON 3 integration, featuring the "🔌" symbol to signify electric vehicle classification.</li>
+            <li> ‣ 🔋 EV ICON 4 support has been added, using the "🔋" indicator to clearly mark electric vehicle plates.</li>
+            <li> ‣ 🏅 Renamed two custom badges from "Cripple" to "Disabled" to ensure greater sensitivity and inclusivity.</li>
+            <li> ‣ <span title="BETA STAGES" class="Beta">BETA</span> 🛠️ Added dynamic resizing for <strong>Car</strong> and <strong>Motorbike</strong> plates. You can now switch between vehicle types using the dropdown menu. Please note: this feature is still in early development and may behave inconsistently in some cases. If sizing or alignment appears incorrect, switching from car to bike or vice versa will usually correct the display.<br><span class="requestTag">(A special thanks to eddiestobartboy & Crip at <a href="https://discord.gg/MYsFD6GKzq">Crip Developments</a> for for their valuable request).</span></li>
+    
+            <br><span class="cminfo">We appreciate your patience during our recent inactivity, which was due to personal circumstances. Development on the Number Plate Creator has now resumed, and updates will be released as needed.</span>
+        </ul>
+    </div>
+    
+
+    <div class="changelog">
+        <h2>Version 3.1.0.2 v2</h2>
+        <p>Some features on this site which were introduced in V3.1.0.1 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ 🖋️ A character limit of 100 has been applied to the slogan field.</li>
+            <li> ‣ ⚠️ The Tint Plate feature has been temporarily removed while I work on enhancing its functionality.</li>
+            <li> ‣ 🎉 A new background featuring our recently launched 2024/2025 Volvo EX90 Ambulance Car has been added to the website.<br><span class="requestTag">(<a href="https://codemaster.ltd/b/ex90ambulance">2024 Volvo EX90 Ambulance</a>)</span></li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.1.0.2</h2>
+        <p>Some features on this site which were introduced in V3.1.0.1 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ 🏠 Introduced custom badges functionality.<br><span class="requestTag">(Special thanks to Crip at <a href="https://discord.gg/MYsFD6GKzq">Crip Developments</a> for the valuable request.)</span></li>
+            <li> ‣ 🔧 Resolved an issue with the 'Custom' plate, which previously displayed 'CR-25 DEV' instead of the correct 'CR25 DEV'.</li>    
+            <li> ‣ 🏠 Enhanced the "Last Updated" feature to no longer display the current date or time each time the page is opened.</li>    
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.1.0.1</h2>
+        <p>Some features on this site are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ <span title="BETA STAGES" class="Beta">BETA</span> 🔎 Introduced a dynamic feature that supports 'New' or 'Old' number plate background colours, allowing the front and back plate styles to automatically adjust based on the user's selection!<br><span class="requestTag">(Special thanks to EllieFox for the insightful request).</span></li>
+            <li> ‣ 👀 Implemented various visual refinements and copyright adjustments for a more cohesive user experience.</li>
+            <li> ‣ 🏠 Overhauled the loading page with significant improvements, including automatic updates, more detailed progress messaging, and a refined loading bar for enhanced user feedback.</li>
+            <li> ‣ 🏠 Upgraded the homepage with notable enhancements to improve usability and overall performance.</li>
+            <li> ‣ 🔧 Addressed numerous bug fixes to ensure a smoother, more reliable experience.</li>            
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.1.0.0</h2>
+        <p>Some features on this site are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
+        <ul>
+            <li> ‣ 🚘 Improved the readability of plate text, ensuring it no longer appears small.</li>
+            <li> ‣ 🌍 Integrated support for EV identifiers on number plates, including both CYMRU and UK variants.</li>
+            <li> ‣ 🌍 Integrated support for both EV and non-EV (IOW) identifiers on number plates. <br><span class="requestTag">(A special thanks to Stormy at <a href="https://discord.gg/2d3wuY2TWx">Stormy Modifications</a> for their contribution to the identifier flag).</span></li>
+            <li> ‣ 📄 The 'Wales' identifier has been renamed to 'Cymru' for consistency with official terminology.</li>
+            <li> ‣ 🎵 Songs now automatically transition to the next track, eliminating repeats.</li> 
+            <li> ‣ 🎵 Added 7 new tracks to the music selection, offering more variety.</li> 
+            <li> ‣ 👀 Improved the visual design for the <span style="color: green;">Now Playing</span> and <span style="color: red;">Music Paused</span> notifications.</li>
+            <li> ‣ <span title="BETA STAGES" class="Beta">BETA</span> 🚗 Introduced 'Default' and 'Custom' plate modes, with Default mode limited to 5 characters and Custom mode allowing up to 7 characters.</li>  
+            <li> ‣ 🗓️ Default plates now dynamically update based on the current year and month, ensuring accurate plate numbers (e.g., <span class="numberPlates">CR74 DEV</span> for September 2024, <span class="numberPlates">CR25 DEV</span> for March 2025, and <span class="numberPlates">CR75 DEV</span> for September 2025).</li>  
+            <li> ‣ 🔧 Custom plates now allow complete user-defined customization with support for up to 7 characters, including formats such as <span class="numberPlates">CR19 DEV</span> without the default settings.</li>
+            <li> ‣ 🎉 Enhanced the 4D effect for a more immersive and realistic depth, giving the text a dynamic embossed appearance.</li>
+            <li> ‣ <span title="BETA STAGES" class="Beta">BETA</span> 🚗 Introduced tinted plate option to overlay above all elements, delivering a striking, high-contrast tint that adds a vivid, immersive effect.</li>
+            <li> ‣ 🎵 Disabled music controls while typing in plate, BSD, or slogan inputs to prevent unintended interactions during text entry.</li>
+            <li> ‣ 👀 Various visual adjustments.</li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.0.1.0</h2>
+        <ul>
+            <li> ‣ 🗓️ Implemented dynamic plate years based on the current year and month. If the year is 2025 and the month is March, the plate will be '25'. If the year is 2025 and the month is September, the plate will be '75'. The system adjusts for years up to 2029, with a logic that accounts for changes based on specific months of the year. (Mainly for visual improvements).</li>
+            <li> ‣ 🌍 Added support for EV (GB & UK) and ICON identifiers on number plates.</li>
+            <li> ‣ 🚘 Plate badge text now matches the color of the plates for a more cohesive look.</li>  
+            <li> ‣ 🎵 Expanded the music selection with two additional tracks.</li>  
+            <li> ‣ 💾 Music volume and playback progress are now automatically saved between sessions.</li>  
+            <li> ‣ 🎮 The mute/unmute state of the music is now automatically saved between sessions.</li> 
+            <li> ‣ 🐛 Resolved an issue where the loading screen could become stuck or experience extended load times.<br><span class="requestTag">(We extend our sincere gratitude to Crip at <a href="https://discord.gg/MYsFD6GKzq">Crip Developments</a> and eddiestobartboy for their valuable bug report.)</span></li> 
+            <li> ‣ ⚠️ Added a "Having Issues?" button to the main page, directing users to the bug report form for troubleshooting and feedback. Your input helps us improve the site!<br><span class="requestTag">(A special thanks to Crip at <a href="https://discord.gg/MYsFD6GKzq">Crip Developments</a> for their valuable request.)</span></li>  
+            <li> ‣ 👀 Various visual adjustments.</li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 3.0.0.0</h2>
+        <ul>
+            <li> ‣ 💡 Added a 'Make a Suggestion' feature, allowing users to submit suggestions directly to our Discord server for improved feedback and engagement.</li>
+            <li> ‣ 🐛 Fixed an issue with the 'Report a Bug' feature, where an unexpected error prevented logs from being sent to Discord.</li>        
+            <li> ‣ 🏠 Added new loading & home page for better navigation and an updated layout to enhance user experience.</li>
+            <li> ‣ 🖋️ New font choices added, Users can now choose from 11 additional fonts for customization on the website.</li>
+            <li> ‣ 📌 In the "Report a Bug" or "Make a Suggestion" pages, there is now information on how to get your Discord ID. This is required!</li>
+            <li> ‣ 🎵 Added music with music controls! Click on the 💿 to view music control info. There are also 4 different songs.</li>
+            <li> ‣ 🐛 Resolved an issue where the plate input would not allow users to enter text when engaging with 4D.</li>  
+            <li> ‣ 🚘 Added support for additional plate formats, such as <span class="numberPlates">IC 12345</span> and <span class="numberPlates">URZ 1234</span>, where the plate must begin with "IC" or "URZ" for the format to apply.</li>  
+            <li> ‣ 🌍 EU (IRELAND) Stars is now available on plates.</li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 2.2.2.0</h2>
+        <ul>
+            <li> ‣ 🔩 Introduced a new plate screwhead option (none / 2 or 4), enhancing visual effects.</li>
+            <li> ‣ ♻️ Renamed the badge for improved clarity and consistency.</li>
+            <li> ‣ 🎉 Added 4D effect toggle for number plates, allowing dynamic visual enhancement based on user preferences. Also change the 4D text colour.</li>
+            <li> ‣ 🚫 All text inputs now prohibit DVLA, GOV, and BSAU characters, displaying an <span class="numberPlates">INVALID</span> response if used.<br><span class="requestTag">(A special thanks to EllieFox for for their valuable request).</span></li>
+            <li> ‣ 🐛 Added a 'Report Bug' feature that enables users to submit live issue reports directly to our Discord server.</li>
+            <li> ‣ 👀 Various visual adjustments.</li>
+            <li> ‣ 🌍 EU (GB, UK) Stars are now available on plates.</li>
+            <li> ‣ 📄 Autofill feature for plates is now available.</li>
+            <li> ‣ 🚗 When BSD is exactly 8 characters long, it will be displayed in the format "CO DE 123m" rather than "CODE123m".</li>            
+        </ul>
+    </div>
+      
+
+    <div class="changelog">
+        <h2>Version 2.2.1.0</h2>
+        <ul>
+            <li> ‣ 🔌 EV Plates now available for electric vehicles.</li>
+            <li> ‣ 🐛 Various bug fixes have been implemented to enhance performance.</li>
+            <li> ‣ 🌍 GB, UK, Wales, and Scotland flags are now available on plates.</li>
+            <li> ‣ 🖼️ Plates now display "S4V3D" after being saved, then revert back to the original text.</li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 2.2.0.0</h2>
+        <ul>
+            <li> ‣ 🔴 Plate Colour, Text Colour, and Slogan Colour options removed for simplicity.</li>
+            <li> ‣ ⚠️ BSAU145 (a,b,c,d,e) banned, triggering an INVALID text response.<br><span class="requestTag">(A special thanks to EllieFox for for their valuable request).</span></li>
+            <li> ‣ 🐛 Several bugs were fixed to improve overall functionality.</li>
+        </ul>
+    </div>
+
+    <div class="changelog">
+        <h2>Version 2.1.0.0</h2>
+        <ul>
+            <li> ‣ 🚀 Initial public release with basic features.</li>
+            <li> ‣ 📝 Previous versions were in development, now transitioning to public releases.</li>
+        </ul>
+    </div>
+    <footer class="footer">
+        <div>
+            <p id="copyright">&copy; 2025 Crip Developments. All Rights Reserved.</p>
+            <div class="social-media">
+                <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
+                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
+                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
+                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
+            </div> 
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="userCount.js"></script>
+    <script>
+        const version = document.getElementById("currentVersion");
+        version.textContent = `Version ${currentVersion}`;
+
+        function captureChangelog() {
+    const element = document.querySelector('.changelog');
+    html2canvas(element, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'changelog.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const collapseElement = document.getElementById('areaCodesList');
+
+    collapseElement.addEventListener('show.bs.collapse', () => {
+        openBtn.classList.add('d-none');
+        closeBtn.classList.remove('d-none');
+    });
+
+    collapseElement.addEventListener('hide.bs.collapse', () => {
+        closeBtn.classList.add('d-none');
+        openBtn.classList.remove('d-none');
+    });
+
+    function getCurrentPlateYear2() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const plateYears = currentYear - 2000;
+    const currentMonth = currentDate.getMonth(); // Months are zero-based (0 = January, 1 = February, etc.)
+    let plateYear = '';
+
+    if (currentYear >= 2025 && currentYear <= 2029) {
+        if (currentMonth >= 2 && currentMonth <= 7) { 
+            plateYear = Math.floor(Math.random() * (plateYears + 1)) 
+        } else {  
+            plateYear = plateYears + 50;  
+        }
+    } else {
+        plateYear = plateYears + 50;
+    }
+
+    return plateYear;
+}
+
+const lastChars = "ABCDEFGHIJKLMNOPRSTUVWXYZ";
+
+const getRandomItem = (str) => str[Math.floor(Math.random() * str.length)];
+
+const randomChars = () => {
+    return `${getRandomItem(lastChars)}${getRandomItem(lastChars)}${getRandomItem(lastChars)}`;
+};
+
+// Update all plate elements
+const plates = document.querySelectorAll(".plate");
+plates.forEach(plate => {
+        let randomYear = getCurrentPlateYear2().toString();
+    if (randomYear.length < 2) {
+        randomYear = randomYear.padStart(2, '0');
+    }
+    plate.textContent = `${randomYear} ${randomChars()}`;
+});
+    </script>
+</body>
+</html>

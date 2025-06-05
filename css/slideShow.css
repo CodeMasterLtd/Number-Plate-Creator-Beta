@@ -1,0 +1,36 @@
+.bg-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-slideshow::before, .bg-slideshow::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to right, #000 60%, #222 100%);
+    opacity: 0.5;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bg-slideshow img {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    left: 0; top: 0;
+    opacity: 0;
+    transition: opacity 5s;
+    z-index: 1;
+}
+
+.bg-slideshow img.active {
+    opacity: 1;
+    z-index: 1;
+}

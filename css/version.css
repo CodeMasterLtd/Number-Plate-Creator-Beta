@@ -1,0 +1,215 @@
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center; 
+            font-size: 13px;
+            color: #fff;
+        }
+        .footer p {
+            text-align: center; 
+            font-size: 13px;
+            color: #fff;
+        }
+        .social-media a {
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .changelog {
+            background: rgba(0, 0, 0, 0.50);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 950px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+        }
+        
+        .changelog h2 {
+            font-size: 28px;
+            color: #f1c40f;
+            border-bottom: 2px solid #f1c40f;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .changelog ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .changelog ul li {
+            font-size: 18px;
+            margin: 10px 0;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .changelog ul li i {
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: underline;
+        }
+        .requestTag {
+            font-size: 12px;
+            color: #f1c40f;
+        }
+        .cminfo {
+            font-size: 12px;
+            color: #0fa9f1;
+        }
+        .numberPlates {
+            font-family: 'Charles Wright', sans-serif;
+            background: linear-gradient(180deg, #f7b009, #f78711);
+            border-radius: 2px;
+            padding-left: 2px;
+            padding-right: 2px;
+            color: black;
+        }
+        .Beta {
+            color: red;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        /* Fancy area code dropdown */
+                @keyframes bkground {
+            0%, 100% {
+                box-shadow: 0 0 15px "#f78711"; /* Original gradient */
+            }
+            50% {
+                box-shadow: 0 0 15px "#c6c8ca"; /* Stronger glow on hover */            }
+        }
+
+        #areaCodesList .card {
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            backdrop-filter: blur(8px); /* Blur effect for background */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for definition */
+            border-radius: 12px; /* Rounded corners */
+            color: white; /* Text color */
+            font-size: 16px; /* Font size */
+            transition: all 0.3s ease-in-out; /* Smooth transition for changes */
+            padding: 15px; /* Padding inside the card */
+            animation: bkground 3s ease-in-out infinite; /* Apply box-shadow animation */
+        }
+
+        #areaCodesList a {
+            color: #3ec5f1; /* Highlighted link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        /* Hover effect for links */
+        #areaCodesList a:hover {
+            color: #f1c40f; /* Gold color on hover */
+            text-decoration: underline; /* Underline effect */
+        }
+
+        #areaCodesList li {
+            margin: 6px 0;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        #areaCodesList li > strong {
+            color: #f1c40f;
+            font-size: 18px;
+            text-decoration: underline;
+        }
+
+        .btn-warning {
+            background: none;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px 20px;
+            text-shadow: 0 4px 10px rgba(241, 196, 15, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 6px 16px rgba(252, 252, 252, 0.5);
+            color: #ffffff80;
+            box-shadow: none;
+            background: none;
+        }
+        .numberPlateCode {
+            font-family: 'Charles Wright', sans-serif;
+            background: linear-gradient(180deg, #f7b009, #f78711);
+            padding: 3px 6px;
+            margin: 2px 3px;
+            border-radius: 4px;
+            display: inline-block;
+            color: black;
+            font-size: 15px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 1px #000000, inset 10px 0 0 #004a8f;
+            margin-top: 10px;
+            text-align: right;
+            width: 97px;
+        }
+        .plate {
+            display: inline-block;
+        }
+        .numberPlateCode1 {
+            font-family: 'Charles Wright', sans-serif;
+            background: linear-gradient(180deg, #ffffff, #c6c8ca);
+            padding: 3px 6px;
+            margin: 2px 3px;
+            border-radius: 4px;
+            display: inline-block;
+            color: black;
+            font-size: 15px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 1px #000000, inset 10px 0 0 #0004ff;
+            margin-top: 10px;
+            text-align: right;
+            width: 97px;
+        }
+        .strong {
+            margin-top: 10px;
+        }
+        .note1 {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 15px;
+            animation: infinite ani 1s;
+            font-size: 15px;
+        }
+        @keyframes ani {
+            0%, 100% {
+                box-shadow: #3ec5f1 0 0 10px;
+            }
+            50% {
+                box-shadow: #3ec5f1 0 0 5px;
+            }
+        }

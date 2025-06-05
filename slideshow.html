@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/slideShow.css">
+
+    <title id="title"></title>
+     <script src="favicon.js"></script>
+</head>
+  <title>Number Plate Creator | Slideshow</title>
+</head>
+<style>
+    .btc {
+    display: block;
+    position: fixed;
+    z-index: 1000001;
+    top: 24px;
+    left: 24px;
+    padding: 12px 28px 12px 20px;
+    background: transparent;
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+    outline: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btc:hover, .btc:focus {
+    background: linear-gradient(90deg, #f7b00983 0%, #ffe06681 100%);
+    color: #fff;
+    box-shadow: 0 6px 32px #0003, 0 2px 0 #fff8 inset;
+}
+.btc i {
+    font-size: 1.2em;
+    margin-right: 6px;
+}
+</style>
+<div class="bg-slideshow"></div>
+<button id="btc" class="btc"><i class="fa fa-arrow-left"></i>Back to Creator</button>
+<body>
+<script src="slideShow.js"></script>
+<script src="inactive.js"></script>
+</body>
+</html>
