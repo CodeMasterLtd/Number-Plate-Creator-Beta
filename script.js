@@ -153,6 +153,7 @@ const elements = [
             frontSloganBase = "#c6c8ca";
             backSloganBase = "#f78711";
         }
+        ElectricBoxStyle();
 
         front.style.background = frontBase;
         back.style.background = backBase;
@@ -235,10 +236,8 @@ function getCurrentPlateYear2() {
 document.addEventListener("DOMContentLoaded", () => {
     updateBoxStyleVisibility();
     updateGenPlateYearsVisibility();
-    updatePlateModeVisibility();
     showMiscs();
     document.getElementById("styleSelect").addEventListener("change", updateBoxStyleVisibility);
-    document.getElementById("plateTypes").addEventListener("change", updatePlateModeVisibility);
     document.getElementById("genPlate").addEventListener("change", updateGenPlateYearsVisibility);
 
     updatePlate(); // Ensure the plate updates on page load
@@ -352,18 +351,6 @@ function GenPlateYears() {
 
     window.forcedPlateYear = plateYear;
     
-}
-
-function updatePlateModeVisibility() {
-    const plateMode = document.getElementById("plateTypes");
-    const plateStyleContainer = document.getElementById("plateStyleContainer");
-    if (plateMode && plateStyleContainer) {
-        if (plateMode.value !== 'mode-show') {
-            plateStyleContainer.style.display = "none";
-        } else {
-            plateStyleContainer.style.display = "";
-        }
-    }
 }
 
 function updateBoxStyleVisibility() {
@@ -532,7 +519,7 @@ function GenPlate() {
 }
 
 const codes = {
-    ThamesValleyPolice: ["LJ", "OU", "BX", "FY", "OY", "PO", "LC"],
+    ThamesValleyPolice: ["LJ", "OU", "BX", "FY", "OY", "PO", "LC", "DV"],
     MerseySidePolice: ["DK", "DG", "YJ", "PO", "LJ", "NK", "MD", "PE"],
     MetPolice: ["BX", "YD", "FX", "OE", "LC", "LD", "LJ", "LM", "GM", "BF", "EU"],
     GreaterManchesterPolice: ["MX", "ML", "LJ", "KM", "LD", "GV", "KP", "LB", "KN", "GN"],
@@ -649,7 +636,7 @@ function updatePlate() {
  const currentPlateYear = getCurrentPlateYear().toString();
     const defaultPlate = `${begin}${currentPlateYear}${end}`;
     let plateText = "";
-    
+    if (plateMode.startsWith('mode-')) {
         if (plateMode === "mode-default") {
             let prefix = rawInput.substring(0, 2);
             if (prefix.length < 1) {
@@ -698,6 +685,7 @@ if (plateMode !== "mode-show") {
         plateText = plateText.slice(0, 2) + " " + plateText.slice(2); // Format 12345 -> "12 345"
     }
 }
+    }
     frontPlate.textContent = plateText || defaultPlate;
     backPlate.textContent = plateText || defaultPlate;
 
@@ -840,7 +828,7 @@ function toggleBoxStyle() {
     const plateTexts = document.querySelectorAll('.plate');
 
     plateTexts.forEach(text => {
-        if (style === "electric" || style === "electric1" || style === "electric2" || style === "electric3" || style === "electric4" || style === "electric5" || style === "electric6" || style === "electric7" || style === "electric8" || style === "electric9" || style === "gb" || style === "uk" || style === "eng" || style === "cym" || style === "sco" || style === "eu" || style === "eu1" || style === "euirl" || style === "iow" || style === "crip" || style === "crip2" || style === "crip3") {
+        if (style === "electric" || style === "electric1" || style === "electric5" || style === "electric3" || style === "electric2" || style === "electric4" || style === "gb" || style === "uk" || style === "eng" || style === "cym" || style === "sco" || style === "eu" || style === "eu1" || style === "euirl" || style === "iow" || style === "crip" || style === "crip3" || style === "gbm") {
             text.style.fontSize = '235px';
         }
         else {
@@ -865,7 +853,7 @@ function toggleBoxStyle() {
         showElectricBox("none", 'none');
         translateXValue = "0px";
         borderLeftValue = "8px";
-    } else if (style === "electric" || style === "electric1" || style === "electric2" || style === "electric3" || style === "electric4" || style === "electric5" || style === "electric6" || style === "electric7" || style === "electric8" || style === "electric9" || style === "gb" || style === "uk" || style === "eng" || style === "cym" || style === "sco" || style === "eu" || style === "eu1" || style === "euirl" || style === "iow" || style === "crip" || style === "crip2" || style === "crip3") {
+    } else if (style === "electric" || style === "electric1" || style === "electric5" || style === "electric3" || style === "electric2" || style === "electric4" || style === "gb" || style === "uk" || style === "eng" || style === "cym" || style === "sco" || style === "eu" || style === "eu1" || style === "euirl" || style === "iow" || style === "crip" || style === "crip3" || style === "gbm") {
         showElectricBox("block", style);
     }
 
@@ -885,7 +873,7 @@ function ElectricBoxStyle() {
     let marginLeft = "6px";
     let borderRadius = "10px";
     let shadow = "none";
-    let bgColor = "#019e4d";
+    let bgColor = "transparent";
     let textColorfront = "#fff";
     let textColorback = "#ffe70b";
 
@@ -895,39 +883,48 @@ function ElectricBoxStyle() {
             height = "100%";
             marginLeft = "0px";
             borderRadius = "10px 0 0 10px";
-            shadow = "none";
         } else if (boxStyle === "shape-compact") {
             width = "95px";
             height = "95%";
             marginLeft = "6px";
             borderRadius = "10px";
-            shadow = effect === "4d-yes" ? "0px 0px 0px rgba(0, 0, 0, 0.0)" : "0px 0px 5px rgba(0, 0, 0, 0.5)";
+            shadow = effect === "4d-yes"
+                ? "0px 0px 0px rgba(0, 0, 0, 0.0)"
+                : "0px 0px 5px rgba(0, 0, 0, 0.5)";
         }
     }
 
     if (boxStyle.startsWith("colour-")) {
-        if (boxStyle === "colour-green") {
-            bgColor = "#019e4d";
-        } else if (boxStyle === "colour-blue") {
-            bgColor = "#104188";
-        } else if (boxStyle === "colour-transparant") {
-            bgColor = "transparent";
-            textColorfront = "#rgb(0, 0, 0)";
-            textColorback = "#rgb(0, 0, 0)";
-        } else if (boxStyle === "colour-iow") {
-            bgColor = "#00a4d3";
+        switch (boxStyle) {
+            case "colour-green": bgColor = "#019e4d"; break;
+            case "colour-blue": bgColor = "#104188"; break;
+            case "colour-transparent":
+                bgColor = "transparent";
+                textColorfront = "#000";
+                textColorback = "#000";
+                break;
+            case "colour-iow": bgColor = "#00a4d3"; break;
+            case "colour-black": bgColor = "#000"; break;
         }
     }
 
-    if (plateColour === "colour-new") {
-        textColorfront = "#fff";
-        textColorback = "#f7b009";
-    } else if (plateColour !== "" && boxStyle === "colour-transparant") {
-        textColorfront = "#000";
-        textColorback = "#000";
-    } else if (plateColour === "colour-old") {
-        textColorfront = "#fff";
-        textColorback = "#ffe70b";
+    if (plateColour.startsWith("colour-")) {
+        switch (plateColour) {
+            case "colour-new":
+                textColorfront = "#fff";
+                textColorback = "#f78711";
+                break;
+            case "colour-old":
+                textColorfront = "#fff";
+                textColorback = "#ffe70b";
+                break;
+            default:
+                if (boxStyle === "colour-transparent") {
+                    textColorfront = "#000";
+                    textColorback = "#000";
+                }
+                break;
+        }
     }
 
     [frontGreenBox, backGreenBox].forEach(box => {
@@ -936,13 +933,12 @@ function ElectricBoxStyle() {
         box.style.marginLeft = marginLeft;
         box.style.borderRadius = borderRadius;
         box.style.boxShadow = shadow;
-        box.style.backgroundColor = bgColor 
+        box.style.backgroundColor = bgColor;
     });
 
     frontGreenBox.style.color = textColorfront;
     backGreenBox.style.color = textColorback;
 }
-
 
 function showElectricBox(displayStyle, type) {
     frontGreenBox.style.display = displayStyle;
@@ -987,149 +983,138 @@ function addBadge(type, box, textColor) {
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-    } else if (type === 'electric2') {
+        border = false;
+    } else if (type === 'electric5') {
         fSize = "60px";
         text = "EV";
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-    }else if (type === 'electric3') {
-        fSize = "50px";
-        text = "GB";
-        image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/gb_flag.png";
-        top = "30%"; 
-        fWidth = "80px";
-        fHeight = "40px";
-    } else if (type === 'electric4') {
-        fSize = "50px";
-        text = "UK";
-        image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eng_flag.png";
-        top = "30%"; 
-        fWidth = "80px";
-        fHeight = "40px";
-    } else if (type === 'electric5') {
-        fSize = "25px";
-        text = "CYMRU";
-        image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/wales_flag.png";
-        top = "30%"; 
-        fWidth = "80px";
-        fHeight = "40px";
-    } else if (type === 'electric6') {
-        fSize = "40px";
-        text = 'IOW'
-        image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/iow_flag.png";
-        top = "30%";
-        fWidth = "80px";
-        fHeight = "40px";
-    } else if (type === 'electric7') {
+        border = false;
+    } else if (type === 'electric3') {
         fSize = "70px";
         text = "🔌";
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-    } else if (type === 'electric8') {
+        border = false;
+    } else if (type === 'electric2') {
         fSize = "70px";
         text = "⚡️";
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-    } else if (type === 'electric9') {
+        border = false;
+    } else if (type === 'electric4') {
         fSize = "70px";
         text = "🔋";
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-
+        border = false;
     } else if (type === 'gb') {
         fSize = "50px";
         text = "GB";
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/gb_flag.png";
-        top = "30%"; 
+        top = "20%"; 
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
     } else if (type === 'uk') {
         fSize = "50px";
         text = 'UK'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eng_flag.png";
-        top = "30%"; 
+        top = "20%"; 
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
     } else if (type === 'eng') {
         fSize = "40px";
         text = 'ENG'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eng_flag.png";
-        top = "30%"; 
+        top = "20%";  
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
     } else if (type === 'cym') {
         fSize = "22px";
         text = 'CYMRU'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/wales_flag.png";
-        top = "30%"; 
+        top = "20%";  
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
     } else if (type === 'sco') {
         fSize = "40px";
         text = 'SCO'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/scotland_flag.png";
-        top = "30%";
+        top = "20%"; 
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
+    } else if (type === 'gbm') {
+        fSize = "40px";
+        text = 'GBM'
+        image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/4e056f3a709f6f63e068e4bd3166938834c92580/img/plate/gbm_flag.PNG";
+        top = "20%"; 
+        fWidth = "80px";
+        fHeight = "40px";
+        border = true;
     } else if (type === 'eu') {
         fSize = "50px";
         text = 'GB'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eu_flag.png";
-        top = "30%";
+        top = "20%"; 
         fWidth = "100px";
         fHeight = "60px";
+        border = true;
     } else if (type === 'eu1') {
         fSize = "50px";
         text = 'UK'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eu_flag.png";
-        top = "30%"; 
+        top = "20%";  
         fWidth = "100px";
         fHeight = "60px";
+        border = true;
     } else if (type === 'euirl') {
         fSize = "50px";
         text = 'IRL'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/eu_flag.png";
-        top = "30%"; 
+        top = "20%";  
         fWidth = "100px";
         fHeight = "60px";
+        border = true;
     } else if (type === 'iow') {
         fSize = "40px";
         text = 'IOW'
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/iow_flag.png";
-        top = "30%";
+        top = "20%"; 
         fWidth = "80px";
         fHeight = "40px";
+        border = true;
     } else if (type === 'crip') {
         fSize = "70px";
         text = "♿︎";
         top = "0%"; 
         fWidth = "80px";
         fHeight = "40px";
-    } else if (type === 'crip2') {
-        fSize = "70px";
-        text = "♿︎";
-        top = "0%"; 
-        fWidth = "80px";
-        fHeight = "40px";
+        border = false;
     } else if (type === 'crip3') {
         fSize = "35px";
         text = "CRIP";
         image = "https://raw.githubusercontent.com/CodeMasterLtd/NumberPlateCreator/85f52aa3a7a5d12a85cc0d5182e79a058c8ebadc/img/plate/cripple_flag.png";
-;
-        top = "30%";
+        top = "20%"; 
         fWidth = "80px";
         fHeight = "80px";
+        border = false;
     }
 
     Flag.classList.add("uk-flag");
     Flag.style.position = "absolute";
-    Flag.style.top = "25%"; 
+    Flag.style.top = "30%"; 
     Flag.style.left = "50%";
     Flag.style.transform = "translate(-50%, -50%)"; 
+    Flag.style.border = border ? '1px #fff solid' : 'none';
 
     Text.classList.add("uk-text");
     Text.style.position = "absolute";
@@ -1262,6 +1247,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function checkDVLAInput() {
+    const Banword = "B4N LM4O";
     const dvlaText = BSDInput.value;
     const dvlaText2 = sloganInput.value;
     const dvlaText3 = plateInput.value;
@@ -1270,7 +1256,9 @@ function checkDVLAInput() {
         'fuck', 'shit', 'cunt', 'bitch', 'asshole', 'dick', 'piss', 'slut', 
         'motherfucker', 'twat', 'bastard', 'prick', 'cock', 'fag', 'wanker', 
         'whore', 'douche', 'idiot', 'retard', 'cum', 'pussy', 'gay', 'nigger',
-        'sex', 'sexy', 'trans', 'tranny', 'n1gga', 'nigga', 'n19gga', 'n19gaa'
+        'sex', 'sexy', 'trans', 'tranny', 'n1gga', 'nigga', 'n19gga', 'n19gaa',
+        'd1ck', 'dlck', 'bj69 abj', 'bj69 sex', 'f16 kpm', 'n1gg4r', 'nigg4r', 
+        'n1gg3r', 'nigg3r'
     ];
 
     // Function to check for bad words
@@ -1281,22 +1269,22 @@ function checkDVLAInput() {
     // Check if bad words are in the inputs
     if (containsBadWords(dvlaText))
         {
-            BSDInput.value = "";
-            frontStamp.textContent = "B4D W0RD";
-            backStamp.textContent = "B4D W0RD";
+            BSDInput.value = Banword;
+            frontStamp.textContent = Banword;
+            backStamp.textContent = Banword;
     }
     if (containsBadWords(dvlaText2))
         {
-            sloganInput.value = "";
-            frontSlogan.textContent = "B4D W0RD";
-            backSlogan.textContent = "B4D W0RD";
+            sloganInput.value = Banword;
+            frontSlogan.textContent = Banword;
+            backSlogan.textContent = Banword;
     }
 
     if (containsBadWords(dvlaText3))
         {
-            plateInput.value = "";
-            frontPlate.textContent = "B4D W0RD";
-            backPlate.textContent = "B4D W0RD";
+            plateInput.value = Banword;
+            frontPlate.textContent = Banword;
+            backPlate.textContent = Banword;
     }
 
     // Existing checks for specific patterns
@@ -1362,12 +1350,12 @@ document.getElementById("discordInfo").addEventListener("click", function() {
 
 function getLastModifiedDate() {
     let modifiedDate = new Date(this.document.lastModified);
-    let day = "05";
+    let day = "20";
     let month = "June"; // Months are zero-based
     let year = modifiedDate.getFullYear();
 
-    let hour = "19";
-    let min = "24";
+    let hour = "11";
+    let min = "15";
     let type = hour > 12 ? "pm" : "am";
 
     let isBST = new Date().getTimezoneOffset() === -60;
@@ -1385,7 +1373,7 @@ function showCarPreview(type) {
         const ctx = previewCanvas.getContext('2d');
         ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
 
-        html2canvas(plateElement, {backgroundColor: null, scale: 2}).then(canvas => {
+        html2canvas(plateElement, {useCORS: true, backgroundColor: null , scale: 2}).then(canvas => {
             ctx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
         });
     } else {
@@ -1396,7 +1384,7 @@ function showCarPreview(type) {
         const ctx = previewCanvas.getContext('2d');
         ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
 
-        html2canvas(plateElement, {backgroundColor: null, scale: 2}).then(canvas => {
+        html2canvas(plateElement, {useCORS: true, backgroundColor: null , scale: 2}).then(canvas => {
             ctx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
         });
     }

@@ -25,16 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const creatorBtn = document.getElementById('creatorBtn');
     const miscBtn = document.getElementById('miscBtn');
 
-    if (fromIndex) {
-        musicBtn.addEventListener('click', goToLoading);
-        creatorBtn.addEventListener('click', goToLoading);
-        miscBtn.addEventListener('click', goToLoading);
+    if (musicBtn && creatorBtn && miscBtn) {
+        if (fromIndex) {
+            musicBtn.addEventListener('click', goToLoading);
+            creatorBtn.addEventListener('click', goToLoading);
+            miscBtn.addEventListener('click', goToLoading);
 
-        sessionStorage.removeItem('fromIndex');
-    } else {
-        musicBtn.onclick = () => window.location.href = 'music.html';
-        creatorBtn.onclick = () => window.location.href = 'creator.html';
-        miscBtn.onclick = () => window.location.href = 'miscPlates.html';
+            sessionStorage.removeItem('fromIndex');
+        } else {
+            musicBtn.onclick = () => window.location.href = 'music.html';
+            creatorBtn.onclick = () => window.location.href = 'creator.html';
+            miscBtn.onclick = () => window.location.href = 'miscPlates.html';
+        }
     }
 
     ClearCurrentSettings();

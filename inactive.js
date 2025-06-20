@@ -1,9 +1,30 @@
-const _t = { s: null}, _e = ["mousemove", "keydown", "mousedown", "touchstart"];
-const _ms = { "5s": 5e3, "30s": 3e4, "1m": 6e4, "2m": 12e4, "5m": 3e5, "10m": 6e5 };
-function _iT() { return _ms[_t.localStorage.getItem("inactiveTime", inactiveTime)] || 5e3; }
-function _rT() {
-    clearTimeout(_t.s);
-    _t.s = setTimeout(() => { location.href = "slideshow.html"; }, _iT());
-}
-_e.forEach(ev => addEventListener(ev, _rT));
-_rT();
+const InactivityTimer = {
+    timeoutId: null,
+    events: ["mousemove", "keydown", "mousedown", "touchstart"],
+    timePresets: {
+        "5s": 5e3,
+        "30s": 30e3,
+        "1m": 60e3,
+        "2m": 120e3,
+        "5m": 300e3,
+        "10m": 600e3
+    },
+    getInactiveDuration() {
+        const key = localStorage.getItem("inactiveTime") || "2m";
+        return this.timePresets[key] || 30e3;
+    },
+    resetTimer() {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = setTimeout(() => {
+            window.location.href = "slideshow.html";
+        }, this.getInactiveDuration());
+    },
+    init() {
+        this.events.forEach(event =>
+            window.addEventListener(event, this.resetTimer.bind(this))
+        );
+        this.resetTimer();
+    }
+};
+
+InactivityTimer.init();

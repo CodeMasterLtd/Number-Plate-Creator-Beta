@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
     <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
     <link rel="stylesheet" href="css/version.css">
     <link rel="stylesheet" href="css/btn.css">
 
-    <!-- Favicons -->
 	<script src="favicons.js"></script>
-    <title>Number Plate Creator | Version History</title>
+    <title>Number Plate Creator • Version History</title>
 </head>
 <body>
  <script src="version.js"></script>
@@ -25,38 +20,46 @@
 </div>
 
     <h1><i class="fa-solid fa-code-branch" style="color: #f1c40f;"></i><br> Number Plate Creator<br> Version History</h1>
-    <button onclick="captureChangelog()">Download Changelog as PNG</button>
+    <!--<button onclick="captureChangelog()">Download Changelog as PNG</button>-->
 
     <div class="changelog">
         <h2 style="color: rgb(0, 175, 0);" id="currentVersion"></h2>
+                <span style="color: rgb(155, 155, 0);">June 2025 Update</span>
         <p>Some features on this site which were introduced in V4.0.1.0 are currently in <span title="BETA STAGES" class="Beta">BETA</span> as we gather feedback to enhance and refine the experience.</p>
         <ul>
             <strong style="text-align: left; display: flex; font-size: large; color: #f73711;" >🗑️ Removed:</strong>
-                <li> ‣  Removed the <strong>Export Quality</strong> option from the Save Plate feature in Texture Preview due to a critical export bug.</li>
+                <li> ‣ Removed the <strong>Export Quality</strong> option from the Save Plate feature in Texture Preview due to a critical export bug.</li>
+                <li> ‣ Removed the <strong>Current Temperature</strong> feature, as it offered minimal value in typical usage scenarios.</li>
+                <li> ‣ Removed some <strong>Plate Badges</strong>, due to implementing <strong>Badge Style</strong> which allow changing colour of badge background.</li>  
             <br>
             <strong style="text-align: left; display: flex; font-size: large; color: #f78711;" >🐛 Fixed Bugs:</strong>
-                <li> ‣  Resolved issues with all-time and daily visit counters, which were previously affected by API unresponsiveness. Visitor statistics now update reliably in real time.</li>
-                <li>‣ Resolved an issue where the <strong>Slogan Input</strong> was incorrectly disabled when generating a plate using <strong>British Formats</strong>. This input should only be disabled when using <strong>Police, Fire, or Ambulance Formats</strong>.</li>
+                <li> ‣ Resolved issues with all-time and daily visit counters, which were previously affected by API unresponsiveness. Visitor statistics now update reliably in real time.</li>
+                <li> ‣ Resolved an issue where the <strong>Slogan Input</strong> was incorrectly disabled when generating a plate using <strong>British Formats</strong>. This input should only be disabled when using <strong>Police, Fire, or Ambulance Formats</strong>.</li>
+                <li> ‣ Fixed an issue preventing music from playing automatically without user interaction.</li>
             <br>       
             <strong style="text-align: left; display: flex; font-size: large; color: #11f769;" >🛠️ Improved:</strong>
-                <li> ‣  Enhanced the primary button on the homepage for greater visibility and a more polished, user-friendly appearance.</li>
-                <li> ‣  Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
-                <li> ‣  Enlarged the <strong>Preview On Car</strong> photo and plate to provide greater visibility and a more engaging, immersive preview experience.</li>
-                <li> ‣  Improved the <strong style="color: red; border: red 2px solid; border-radius: 50px; padding: 5px; text-shadow: red 0 0 10px;">RESET</strong> button in the creator for greater clarity and accessibility, and repositioned it above the plate input fields for a more intuitive user experience.</li>
-                <li> ‣  Enhanced the <strong>Badge Style</strong> feature, retaining both <i>Default</i> and <i>Compact</i> options, and introduced the ability for users to customize badge colours <span style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 20px; border: 1px #f1c40f solid;"><i style="color: #019e4d;">Green</i>, <i style="color: #104188;">Blue</i>, <i style="color: #00a4d3;">IOW</i>, or <i style="color: rgba(255, 255, 255, 0.2);">Transparant</i></span> directly within the dropdown menu for greater personalization.</li>
-                <li> ‣  Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
-                <li> ‣  Refined and consolidated dropdown menus within the creator to optimize space and streamline the user interface by merging related options and eliminating unnecessary selections.</li>
+                <li> ‣ Enhanced the primary button on the homepage for greater visibility and a more polished, user-friendly appearance.</li>
+                <li> ‣ Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
+                <li> ‣ Enlarged the <strong>Preview On Car</strong> photo and plate to provide greater visibility and a more engaging, immersive preview experience.</li>
+                <li> ‣ Improved the <strong style="color: red; border: red 2px solid; border-radius: 50px; padding: 5px; text-shadow: red 0 0 10px;">RESET</strong> button in the creator for greater clarity and accessibility, and repositioned it above the plate input fields for a more intuitive user experience.</li>
+                <li> ‣ Enhanced the <strong>Badge Style</strong> feature, retaining both <i>Default</i> and <i>Compact</i> options, and introduced the ability for users to customize badge colours <span style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 20px; border: 1px #f1c40f solid;"><i style="color: #019e4d;">Green</i>, <i style="color: #104188;">Blue</i>, <i style="color: #00a4d3;">IOW</i>, or <i style="color: rgba(255, 255, 255, 0.2);">Transparant</i></span> directly within the dropdown menu for greater personalization.</li>
+                <li> ‣ Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
+                <li> ‣ Refined and consolidated dropdown menus within the creator to optimize space and streamline the user interface by merging related options and eliminating unnecessary selections.</li>
+                <li> ‣ Enhanced the <strong>Slogan</strong> text size on plates for improved visibility.</li>
             <br>
             <strong style="text-align: left; display: flex; font-size: large; color: #11b2f7;" >🆕 Newly Added:</strong>
-                <li> ‣  Introduced a dedicated <strong>Not Supported</strong> page for users accessing the site on devices with screen widths of 768px or less, ensuring clear communication that Number Plate Creator is optimized for desktop use (Will work on a iPad, possible a tablet also).</li>
-                <li> ‣  Added a <strong>Generating Preview</strong> modal to the <strong>Save Front, Back or Both Plate</strong> feature, clearly informing users to "Please wait" while their texture preview is being prepared, ensuring a smoother and more transparent experience during the loading process.</li>                
-                <li> ‣  Introduced a dedicated <strong>Slideshow</strong> page that automatically appears after 2 minutes of user inactivity, or can be launched instantly via the Slideshow button.</li>
-                <li> ‣  Added more <strong>Random Plate Style</strong> formats — <strong>(Royal Berkshire Fire Service)</strong>, <strong>(Hampshire Fire Service)</strong>, <strong>(London Fire Brigade)</strong>, <strong>(South Central Ambulance Service)</strong>, <strong>(West Midlands Ambulance Service)</strong>, and <strong>(London Ambulance Service)</strong>.</li>
-                <li> ‣  Added two new songs for improved user experience. <strong>Rage (Charlotte Plank (Lens Remix))</strong> & <strong>Overdrive (Ofenbach (ft. Norma Jean Matrine))</strong>.</li>
-                <li> ‣  Added a professional <strong>Preview On Bike</strong> feature, allowing you to instantly visualize your custom plate on a real vehicle before downloading. Simply click the <strong>Preview On Bike</strong> button to experience your design in context.</li>
-            <br>
+                <li> ‣ Introduced a dedicated <strong>Not Supported</strong> page for users accessing the site on devices with screen widths of 768px or less, ensuring clear communication that Number Plate Creator is optimized for desktop use (Will work on a iPad, possible a tablet also).</li>
+                <li> ‣ Added a <strong>Generating Preview</strong> modal to the <strong>Save Front, Back or Both Plate</strong> feature, clearly informing users to "Please wait" while their texture preview is being prepared, ensuring a smoother and more transparent experience during the loading process.</li>                
+                <li> ‣ Introduced a dedicated <strong>Slideshow</strong> page that automatically appears after 2 minutes of user inactivity, or can be launched instantly via the Slideshow button.</li>
+                <li> ‣ Added more <strong>Random Plate Style</strong> formats — <strong>(Royal Berkshire Fire Service)</strong>, <strong>(Hampshire Fire Service)</strong>, <strong>(London Fire Brigade)</strong>, <strong>(South Central Ambulance Service)</strong>, <strong>(West Midlands Ambulance Service)</strong>, and <strong>(London Ambulance Service)</strong>.</li>
+                <li> ‣ Added two new songs for improved user experience. <strong>Rage (Charlotte Plank (Lens Remix))</strong> & <strong>Overdrive (Ofenbach (ft. Norma Jean Matrine))</strong>.</li>
+                <li> ‣ Added a professional <strong>Preview On Bike</strong> feature, allowing you to instantly visualize your custom plate on a real vehicle before downloading. Simply click the <strong>Preview On Bike</strong> button to experience your design in context.</li>
+                <li> ‣ Added a <strong>"Need Assistance?"</strong> support popup to help users join our Discord and report issues. For quick access, pressing <code>CTRL + R</code> will reopen the popup at any time.</li>
+                <br>
+            <div id="Admin">
             <strong style="text-align: left; display: flex; font-size: large; color: #f79b11;" >🆕 Newly Added<span style="color: #f1c40f;">(Admin Only)</span>:</strong>
-                <li> ‣  Introduced a secure <strong>Admin Login</strong> portal to facilitate access for BETA development and management.</li>
+                <li> ‣ Introduced a secure <strong>Admin Login</strong> portal to facilitate access for BETA development and management.</li>
+            </div>
             </ul>
         </div>
 
@@ -613,5 +616,7 @@ plates.forEach(plate => {
     plate.textContent = `${randomYear} ${randomChars()}`;
 });
     </script>
+        <script src="popup.js" defer></script>
+
 </body>
 </html>

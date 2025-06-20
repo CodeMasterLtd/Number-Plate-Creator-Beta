@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/charles-wright');
 @import url('https://fonts.cdnfonts.com/css/rubik-dirt');
+@import url('https://fonts.cdnfonts.com/css/pacifico');
 #plateType, #plateMode, #plateStyle, #styleSelect, #stampSelect, #sloganSelect, #borderEffect, #fourDEffect, #screwSelect, #tintPlate, #fontSelect, #boxStyle {
     cursor: pointer;
 }
@@ -180,20 +181,41 @@
         font-size: 12px;
     }
 h2 {
-    margin-top: -20px;
-    margin-bottom: -20px;
-    background: #0088c7;
+    margin: -20px 0;
+    font-size: 64px;
+    font-family: 'Rubik Dirt', sans-serif;
     text-align: center;
-    font-size: 60px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    opacity: 0;
-    animation: fadeIn 4s forwards;
+    padding: 15px 20px;
+    background-image: linear-gradient(135deg, #fff, #b9b9b9, #808080);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding: 10px;
+    opacity: 0;
+    animation: fadeInPop 2s ease forwards;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
     display: inline-block;
-    transition: transform 0.3s ease-in-out; 
+    gap: 10px;
+}
+
+@keyframes fadeInPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.l-plate {
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Arial Black', Impact, sans-serif;
+    transform: scale(1.1);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8), 
+                 0 0 10px rgba(255, 0, 0, 0.6),
+                 2px 2px 2px rgba(255, 0, 0, 0.4);
+    gap: 10px;
 }
 p {
     font-family: Arial, Helvetica, sans-serif;
@@ -318,10 +340,6 @@ input[type="range"]::-moz-range-thumb {
     background-color: black;
     color: white;
 }
-.button2:hover {
-    color: #a1a1a1;
-    border: 2px solid #a1a1a1;
-}
 .button1 {
     border: 2px solid #000;
     color: #000;
@@ -332,21 +350,6 @@ input[type="range"]::-moz-range-thumb {
     cursor: pointer;
     border-radius: 50px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    z-index: 1;
-}
-.button2 {
-    border: 2px solid red;
-    background-color: #00000000;
-    font-weight: bold;
-    color: #e90303;
-    padding: 5px 5px;
-    display: block; 
-    font-size: 12px;
-    margin: 5px auto;
-    margin-bottom: -20px; 
-    cursor: pointer;
-    border-radius: 50px;
-    animation: pulse 2s infinite;
     z-index: 1;
 }
 .button1col {
@@ -385,7 +388,6 @@ input[type="range"]::-moz-range-thumb {
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px #000;
 }
-
 
 .back  {
    background: #ffdf1e;
@@ -934,13 +936,6 @@ footer .social-media a:hover {
     
     .cd-icon.rotating {
         animation: rotate 3s linear infinite;
-    }
-    .clock, .weather {
-        margin-left: 10px;
-        display: block;
-        text-align: left;
-        color: white;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
     .numberPlates {
         font-family: 'Charles Wright', sans-serif;

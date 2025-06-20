@@ -4,8 +4,8 @@
     { f: "Tattoo", n: "Tattoo", a: "Loreen" },
     { f: "TheFeeling", n: "The Feeling", a: "The Feeling Lost Frequencies (Andromedik Deluxe Mix)" },
     { f: "FeelTheVibration", n: "Feel The Vibration", a: "Kanine" },
-    { f: "usedtothis", n: "Used To This", a: "Wilkinson (ft. Issey Cross)" },
-    { f: "react", n: "React", a: "Switch Disco, Robert Miles (Culture Shock Remix)" },
+    { f: "glue", n: "Glue", a: "Bicep (Original Mix)" },
+    { f: "sweetlove", n: "Sweet Love", a: "Vibe Chemistry & Debbie" },
     { f: "touch", n: "Touch", a: "Hybrid Minds (ft. Catching Cairo)" },
     { f: "nevertooold", n: "Never Too Old", a: "Monrroe (ft. Emily Makis)" },
     { f: "overdrive", n: "Overdrive", a: "Ofenbach (ft. Norma Jean Martine)"},
@@ -38,6 +38,7 @@
     const _play = () => !z && (A.play().catch(e => console.log("Autoplay blocked:", e)), z = true);
     document.body.addEventListener("click", _play);
     document.body.addEventListener("keydown", _play);
+    _play();
 
     const p = _q("plateInput"),
           s = _q("sloganInput"),
@@ -54,13 +55,13 @@
         case "Digit1":
           i = (i - 1 + _s.length) % _s.length;
           U();
-          A.src = `audio/${_s[i].f}`;
+          A.src = `audio/${_s[i].f}.mp3`;
           A.play().catch(console.log);
           break;
         case "Digit2":
           i = (i + 1) % _s.length;
           U();
-          A.src = `audio/${_s[i].f}`;
+          A.src = `audio/${_s[i].f}.mp3`;
           A.play().catch(console.log);
           break;
       }
@@ -78,7 +79,7 @@
 
   A.addEventListener("ended", () => {
     i = (i + 1) % _s.length;
-    A.src = `audio/${_s[i].f}`;
+    A.src = `audio/${_s[i].f}.mp3`;
     A.play().catch(console.log);
     U();
   });

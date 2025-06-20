@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.1/spectrum.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/slideShow.css">
     <link rel="stylesheet" href="css/btn.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<title>Number Plate Creator | Creator</title>
+    <link href="https://fonts.cdnfonts.com/css/pacifico" rel="stylesheet">
+<title>Number Plate Creator • Creator</title>
     <script src="favicon.js"></script>
 </head>
 <body>
@@ -28,10 +25,9 @@
             </div>
 
     <div class="container">
-        <div id="weather" class="weather">Fetching temperature...</div>
         <div class="header-container">
             <div class="music-info">
-                <span id="discordInfo" title="Click Me!" class="cd-icon">💿 </span><p><strong>Now Playing:</strong></p> 
+                <span id="discordInfo" title="Click Me!" class="cd-icon">💿 </span><p><strong></strong></p> 
             </div>
             <div class="version-container">
                 <a id="update"></a>
@@ -39,16 +35,16 @@
                 <a id="version"></a>
             </div>
         </div>
-            <div class="button-container">
+        <h2>NUMBER P<span class="l-plate">L</span>ATE CREATOR</h2>
+        <p>Empower yourself to craft and preserve custom uk number plates, seamlessly integrating them into your personalized vehicle designs for Grand Theft Auto V or any other creative project you have in mind.</p>
+        <br>
+        <div class="button-container">
         <button class="homeButton" onclick="window.location.href='music.html'">Music Controls</button>
         <button class="homeButton" onclick="window.location.href='miscPlates.html'">Non Premium Plates</button>
         <button class="homeButton" onclick="window.location.href='version.html'">Version History</button>
         <button class="homeButton" onclick="window.location.href='slideshow.html'">Slideshow</button>
         </div>
-        <h2>NUMBER PLATE CREATOR</h2>
-        <p>Empower yourself to craft and preserve custom uk number plates, seamlessly integrating them into your personalized vehicle designs for Grand Theft Auto V or any other creative project you have in mind.</p>
         <p style="font-size: medium; font-weight: bolder;">-----------------------------------------------------</p>
-        <button class="button button2" onclick="Reload();">RESET</button>
         <br>
         <input type="text" id="plateInput" autocomplete="on" maxlength="7"/>
         <input type="text" id="sloganInput" placeholder="Enter plate slogan eg:(Code Master)" autocomplete="on" />
@@ -85,17 +81,14 @@
         <select id="styleSelect" onchange="toggleBoxStyle()">
             <option value="none" selected style="color: red;">None</option>
             <option style="color: green; font-weight: bolder;" disabled>EV</option>
-            <option value="electric">EV</option>
+            <option value="electric">EV (Blank)</option>
             <option value="electric1">EV (ICON)</option>
-            <option value="electric8">EV (ICON 2)</option>
-            <option value="electric7">EV (ICON 3)</option>
-            <option value="electric9">EV (ICON 4)</option>
-            <option value="electric2">EV (Text EV)</option>
-            <option value="electric3">EV (GB)</option>
-            <option value="electric4">EV (UK)</option>
-            <option value="electric5">EV (CYMRU)</option>
-            <option value="electric6">EV (IOW)</option>
-            <option style="color: #00a4d3; font-weight: bolder;" disabled>Non EV</option>
+            <option value="electric2">EV (ICON 2)</option>
+            <option value="electric3">EV (ICON 3)</option>
+            <option value="electric4">EV (ICON 4)</option>
+            <option value="electric5">EV (Text EV)</option>
+            <option style="color: #00a4d3; font-weight: bolder;" disabled>Generic</option>
+            <option value="gbm">ISLE OF MAN</option>
             <option value="gb">GREAT BRITIAN</option>
             <option value="eng">ENGLAND</option>
             <option value="uk">UNITED KINGDOM</option>
@@ -107,10 +100,8 @@
             <option value="iow">IOW</option>
             <option style="color: #d3ac00; font-weight: bolder;" disabled>Custom</option>
             <option value="crip">Disabled EV</option>
-            <option value="crip2">Disabled Non EV</option>
             <option value="crip3">Crip (Text)</option>
         </select>
-        <div id="boxStyleContainer">
         <label class="label-inline" for="boxStyle">Badge Style:</label>
         <select id="boxStyle" onchange="ElectricBoxStyle()">
         <option style="color: red; font-weight: bolder;" disabled>BETA</option>
@@ -119,13 +110,13 @@
             <option value="shape-compact">Compact</option>
         </optgroup>
         <optgroup label="Badge Colour">
+            <option style="background-color: #000;" value="colour-black">Black</option>
             <option style="background-color: #019e4d;" value="colour-green">Green</option>
             <option style="background-color: #104188;" value="colour-blue">Blue</option>
             <option style="background-color: #0000007c;" value="colour-transparant">Transparant</option>
             <option style="background-color: #00a4d3;" value="colour-iow">IOW</option>
         </optgroup>
         </select>
-        </div>
         <label class="label-inline" for="showMisc">Misc:</label>
             <select id="showMisc" onchange="showMiscs()">
                 <optgroup label="British Standard">
@@ -413,14 +404,14 @@
             </footer>              
         </div>
     </div>
+    <script src="popup.js" defer></script>
+
     <script src="userCount.js"></script>
     <script src="version.js"></script>
-    <script src="weather.js"></script>
     <script defer src="music.js"></script>
     <script defer src="script.js"></script>
     <script defer src="copyright.js"></script>
     <script src="savePlate.js"></script>
-    <script src="slideShow.js"></script>
     <script src="inactive.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>

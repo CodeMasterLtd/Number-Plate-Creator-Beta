@@ -1,10 +1,9 @@
 const fileBegin = "CM";
 let lastSelectedPosition = "front";
 
-const type = document.getElementById('plateType').value;
 
-if (type !== 'motorbike') {
-    type = 'car';
+if (document.getElementById('plateType').value !== 'motorbike') {
+    document.getElementById('plateType').value = 'car';
 }
 
 function showSaveModal() {

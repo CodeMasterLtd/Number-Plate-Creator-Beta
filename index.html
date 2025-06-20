@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-
-    <title>Number Plate Creator</title>
+    <title>Number Plate Creator • Home</title>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.cdnfonts.com/css/charles-wright" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
@@ -25,9 +21,13 @@
     <form id="loginForm">
         <h2>Login</h2>
         <p>Admin login for <a href="https://number-plate-creator.codemaster.ltd/">Number Plate Creator</a>, BETA versions.</p>
-        <input id="loginUser" type="text" placeholder="Username" required autocomplete="username">
-        <input id="loginPass" type="password" placeholder="Password" required autocomplete="current-password">
-        <button type="submit">Login</button>
+        <input id="loginUser" type="text" name="Username" placeholder="Username or Email" required autocomplete="username">
+        <input id="loginPass" type="password" name="Password" placeholder="Password" required autocomplete="current-password">
+        <div>
+            <input type="checkbox" id="show-password">
+            <label for="show-password">Show Password</label>
+        </div>
+        <button id="submitBtn" type="submit">Login</button>
         <div id="loginError">Invalid or Unknown credentials.</div>
     <p class="para">
         <b id="copyright"></b>
@@ -41,7 +41,7 @@
             <img class="logo" src="./img/npc_trans.png" alt="Logo">
         </div>
         <p class="para">Create and customize your number plates with ease.</p>
-        <button class="btn" id="openCreator">CR34TOR</button>
+        <button class="btn" id="openCreator">PL4T3 CR34TOR</button>
         <button class="btn5" id="visitMusic">MU51C C0N7R0L5</button>
         <button class="btn2" id="visitVersions">V3R5I0N H15T0RY</button>
         <button class="btn3" id="openWebsite">V15I7 0UR W3BS1T3</button>
@@ -51,13 +51,12 @@
 
     <span style="position:absolute;top:30px;left:20px;font-size:12px;">Version: <span id="indexV"></span></span>
 
-
+<script src="popup.js" defer></script>
 <script defer src="userCount.js"></script>
 <script defer src="music.js"></script>
 <script defer src="copyright.js"></script>
 <script src="index.js"></script>
 <script src="slideShow.js"></script>
-<script src="inactive.js"></script>
 <script src="version.js"></script>
 </body>
 </html>

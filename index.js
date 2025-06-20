@@ -124,17 +124,83 @@ if (storedVersion) {
     document.getElementById("indexV").textContent = "Unknown Version";  
 }
 
-document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault();
-    const user = document.getElementById('loginUser').value.trim();
-    const pass = document.getElementById('loginPass').value;
-    if ((user === "smurf" || user === "crip") && pass === "SmurfCrip2k25") {
-        document.getElementById('loginModal').style.display = "none";
-        document.getElementById('mainContainer').style.display = "";
+// Toggle password visibility
+document.getElementById('show-password').addEventListener('change', function () {
+    const passInput = document.getElementById('loginPass');
+    passInput.type = this.checked ? 'text' : 'password';
+});
 
-            user.style.boxShadow = "0 0 10px rgb(0,255,0), inset 0 0 10px rgb(0,255,0)";
-            pass.style.boxShadow = "0 0 10px rgb(0,255,0), inset 0 0 10px rgb(0,255,0)";
-    } else {
+document.getElementById('loginForm').onsubmit = function (e) {
+    e.preventDefault();
+
+    const user = document.getElementById('loginUser');
+    const pass = document.getElementById('loginPass');
+    const input = user.value.trim();
+    const username = input.includes('@') ? input.split('@')[0] : input;
+    const password = pass.value;
+
+    const validUsers = ["smurf", "crip"];
+    const validPasswords = ["SmurfCrip2k25", "CripDev@CodeM@ster25"];
+    if (validUsers.includes(username) && !validPasswords.includes(password)) {
+    user.style.boxShadow = "0 0 10px rgb(0,255,0), inset 0 0 10px rgb(0,255,0)";
+    pass.style.boxShadow = "0 0 10px rgb(255,0,0), inset 0 0 10px rgb(255,0,0)";
+
+    document.getElementById('loginError').style.display = "block";
+    document.getElementById('submitBtn').style.display = "none";
+
+    document.getElementById('loginError').style.color = "rgb(255,0,0)";
+
+    if (username === "crip" || username === "smurf") {
+        const capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+        document.getElementById('loginError').textContent = `${capitalizedUsername}, You have entered an incorrect password.`;
+    }
+
+    setTimeout(function() {
+        document.getElementById('loginError').style.display = "none";
+        document.getElementById('submitBtn').style.display = "block";
+
+        user.style.boxShadow = "none";
+        pass.style.boxShadow = "none";
+    }, 5000);
+    } else if (validUsers.includes(username) && validPasswords.includes(password)) {
+        user.style.boxShadow = "0 0 10px rgb(0,255,0), inset 0 0 10px rgb(0,255,0)";
+        pass.style.boxShadow = "0 0 10px rgb(0,255,0), inset 0 0 10px rgb(0,255,0)";
+
         document.getElementById('loginError').style.display = "block";
+        document.getElementById('submitBtn').style.display = "none";
+
+        document.getElementById('loginError').style.color = "rgb(0,255,0)";
+        document.getElementById('loginError').textContent = "Succesfully logged in!";
+
+    if (username === "crip" || username === "smurf") {
+        const capitalizedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+        document.getElementById('loginError').textContent = `${capitalizedUsername}, You have succesfully logged in.`;
+    } else {
+        document.getElementById('loginError').textContent = "You have succesfully logged in.";
+    }
+
+
+        setTimeout(function() {
+            document.getElementById('loginModal').style.display = "none";
+            document.getElementById('mainContainer').style.display = "";
+        }, 2000);
+
+    } else {
+        user.style.boxShadow = "0 0 10px rgb(255,0,0), inset 0 0 10px rgb(255,0,0)";
+        pass.style.boxShadow = "0 0 10px rgb(255,0,0), inset 0 0 10px rgb(255,0,0)";
+
+        document.getElementById('loginError').style.display = "block";
+        document.getElementById('submitBtn').style.display = "none";
+
+        document.getElementById('loginError').style.color = "rgb(255,0,0)";
+        document.getElementById('loginError').textContent = "Invalid or Unknown credentials.";
+
+        setTimeout(function() {
+            document.getElementById('loginError').style.display = "none";
+            document.getElementById('submitBtn').style.display = "block";
+
+            user.style.boxShadow = "none";
+            pass.style.boxShadow = "none";
+        }, 5000);
     }
 };

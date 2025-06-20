@@ -237,7 +237,7 @@ margin-bottom: -180px;
     transform: translateY(-2px) scale(1.03);
 }
 #loginError {
-    color: #f73711;
+    color: rgb(255, 0, 0);
     margin-top: 18px;
     display: none;
     font-weight: 600;
