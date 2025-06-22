@@ -24,7 +24,7 @@
                 If you encounter any issues, press <strong>Ctrl + R</strong> to reopen this support window at any time.<br>
                 Once you’ve joined our <strong>Discord server</strong>, kindly open a support ticket so our team can assist you promptly!
             </p>
-            <a href="https://discord.com/invite/3MKyscCXkk" target="_blank" style="
+            <a href="https://discord.com/channels/1269583480631595039/1299749292441079849/1386324111529214072" target="_blank" style="
                 display: inline-block;
                 margin-top: 15px;
                 padding: 10px 20px;

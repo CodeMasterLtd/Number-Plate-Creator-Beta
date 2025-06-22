@@ -13,6 +13,14 @@
     <link href="https://fonts.cdnfonts.com/css/pacifico" rel="stylesheet">
 <title>Number Plate Creator • Creator</title>
     <script src="favicon.js"></script>
+
+    <script>
+    (function() {
+      if (window.innerWidth < 768) {
+        window.location.replace("noShow.html");
+      }
+    })();
+  </script>
 </head>
 <body>
     <audio id="loading-music" autoplay>
@@ -58,9 +66,9 @@
         <label for="plateTypes">Plate Misc:</label>
         <select id="plateTypes" onchange="updatePlateStyles()">
             <optgroup label="Plate Mode">
-                <option value="mode-default">Default (CO25 MSR)</option>
-                <option value="mode-private">Private (C06 MSR)</option>
-                <option value="mode-show">Show (C M4S7ER)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="mode-default">Default (CO25 MSR)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="mode-private">Private (C06 MSR)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="mode-show">Show (C M4S7ER)</option>
             </optgroup>
             <optgroup label="Plate Colour">
                 <option value="colour-old">Classic</option>
@@ -71,7 +79,7 @@
                 <option value="style-none" style="color: red;">None</option>
                 <option value="style-metal">Metal</option>
                 <option value="style-tinted">Tinted x2</option>
-                <option value="style-tineded">Tinted x5</option>
+                <option value="style-tinteded">Tinted x5</option>
                 <option value="style-honeycomb">Honeycomb</option>
                 <option value="style-shine">Shine</option>
             </optgroup>
@@ -110,11 +118,11 @@
             <option value="shape-compact">Compact</option>
         </optgroup>
         <optgroup label="Badge Colour">
-            <option style="background-color: #000;" value="colour-black">Black</option>
-            <option style="background-color: #019e4d;" value="colour-green">Green</option>
-            <option style="background-color: #104188;" value="colour-blue">Blue</option>
-            <option style="background-color: #0000007c;" value="colour-transparant">Transparant</option>
-            <option style="background-color: #00a4d3;" value="colour-iow">IOW</option>
+            <option style="background-color: #000; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-black">BL4CK</option>
+            <option style="background-color: #019e4d; color: #000; font-family: 'Charles Wright', sans-serif;" value="colour-green">GR33N</option>
+            <option style="background-color: #104188; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-blue">B1UE</option>
+            <option style="background-color: #0000007c; color: #000; font-family: 'Charles Wright', sans-serif;" value="colour-transparant">7R4NSP4RANT</option>
+            <option style="background-color: #00a4d3; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-iow">I0W</option>
         </optgroup>
         </select>
         <label class="label-inline" for="showMisc">Misc:</label>
@@ -129,6 +137,7 @@
                 </optgroup>
                 <optgroup label="Screws">
                     <option value="screws-hide" style="color: red;">Hide</option>
+                    <option value="screws-2v2">2 Screws V2</option>
                     <option value="screws-2">2 Screws</option>
                     <option value="screws-4">4 Screws</option>
                 </optgroup>
@@ -166,32 +175,32 @@
         <select id="genPlate" onchange="GenPlate()">
             <option value="hide" style="font-weight: bolder; background-color: rgb(255, 0, 0);" selected>Hide Button</option>
             <optgroup label="British Formats ▼" style="color: rgb(246, 255, 0); font-weight: bolder; background-color: black;">
-                <option value="normal">Default Format (<span>CO63 MSR</span>)</option>
-                <option value="private">Private Format (<span>C06 MSR</span>)</option>
-                <option value="private1">Private Format 1 (<span>C1 MSR</span>)</option>
-                <option value="private2">Private Format 2 (<span>1 MSR</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="normal">Default Format (<span>CO63 MSR</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="private">Private Format (<span>C06 MSR</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="private1">Private Format 1 (<span>C1 MSR</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="private2">Private Format 2 (<span>1 MSR</span>)</option>
             </optgroup>
             <optgroup label="Additional Formats ▼" style="color: rgb(0, 157, 29); font-weight: bolder; background-color: black;">
-                <option value="urz">URZ Format (<span>URZ 1234</span>)</option>
-                <option value="ic">IC Format (<span>IC 12345</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="urz">URZ Format (<span>URZ 1234</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="ic">IC Format (<span>IC 12345</span>)</option>
             </optgroup>
             <optgroup label="Police Formats ▼" style="color: rgb(0, 115, 255); font-weight: bolder; background-color: black;">
-                <option value="tvp">TVP Format (<span>OU21 BHJ</span>)</option>
-                <option value="hp">HP Format (<span>HX70 BVP</span>)</option>
-                <option value="msp">MSP Format (<span>DK70 FRL</span>)</option>
-                <option value="met">MET Format (<span>EU68 FZT</span>)</option>
-                <option value="gmp">GMP Format (<span>MX68 FNV</span>)</option>
-                <option value="scot">SCOT Format (<span>SF20 DVP</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="tvp">TVP Format (<span>OU21 BHJ</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="hp">HP Format (<span>HX70 BVP</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="msp">MSP Format (<span>DK70 FRL</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="met">MET Format (<span>EU68 FZT</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="gmp">GMP Format (<span>MX68 FNV</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="scot">SCOT Format (<span>SF20 DVP</span>)</option>
             </optgroup>
             <optgroup label="Fire Formats ▼" style="color: rgb(255, 0, 30); font-weight: bolder; background-color: black;">
-                <option value="rbfrs">RBFRS Format (<span>KY71 ELU</span>)</option>
-                <option value="hfrs">HFRS Format (<span>KR16 XMH</span>)</option>
-                <option value="lfb">LFB Format (<span>WX69 ZFP</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="rbfrs">RBFRS Format (<span>KY71 ELU</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="hfrs">HFRS Format (<span>KR16 XMH</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="lfb">LFB Format (<span>WX69 ZFP</span>)</option>
             </optgroup>
             <optgroup label="Ambulance Formats ▼" style="color: rgb(136, 255, 0); font-weight: bolder; background-color: black;">
-                <option value="scas">SCAS Format (<span>HX69 YZK</span>)</option>
-                <option value="wmas">WMAS Format (<span>BU20 YOO</span>)</option>
-                <option value="las">LAS Format (<span>EK72 ZFU</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="scas">SCAS Format (<span>HX69 YZK</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="wmas">WMAS Format (<span>BU20 YOO</span>)</option>
+                <option style="font-family: 'Charles Wright', sans-serif;" value="las">LAS Format (<span>EK72 ZFU</span>)</option>
             </optgroup>
         </select>
         <div id="genPlateYearsContainer">
@@ -210,11 +219,15 @@
         </div>
             <button style="display: none;" class="btnGen" id="generatePlate">! P14TE 3RR0R !</button>  
             <br>
-            
+            <button class="btnI" id="openPopupNote" title="Need Assistance in Plate Misc using Plate Mode?">i</button>  
         <div class="plate front">
             <div id="frontPlateScrew2">
                 <div class="screw-left2"></div>
                 <div class="screw-right2"></div>
+            </div>
+            <div id="frontPlateScrew2v2">
+                <div class="screw-left2v2"></div>
+                <div class="screw-right2v2"></div>
             </div>
             <div id="frontPlateScrew4">
                 <div class="screw-left-top4"></div>
@@ -240,6 +253,10 @@
             <div id="backPlateScrew2">
             <div class="screw-left2"></div>
             <div class="screw-right2"></div>
+        </div>
+        <div id="backPlateScrew2v2">
+            <div class="screw-left2v2"></div>
+            <div class="screw-right2v2"></div>
         </div>
         <div id="backPlateScrew4">
             <div class="screw-left-top4"></div>
@@ -300,8 +317,6 @@
             </div>
         </div>
 <br>
-        <p style="background-color: rgba(0,0,0,0.5); border-radius: 3px; padding: 10px; box-shadow: #ccc 0 0 10px, inset #ccc 0 0 10px;">
-    <span style="color: #d3ac00; font-weight: bolder;">Please note:</span> Loading the Texture Preview for plate downloads (PNG) may take a few moments depending on your device and browser. The preview will appear shortly—thank you for your patience.<br><br>
     <button class="button1 button4col" onclick="showSaveModal()">Save Plate</button>
 </p>
         <div id="saveModal" class="modal">
@@ -405,6 +420,7 @@
         </div>
     </div>
     <script src="popup.js" defer></script>
+    <script src="popupPlate.js" defer></script>
 
     <script src="userCount.js"></script>
     <script src="version.js"></script>

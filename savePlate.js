@@ -1,11 +1,6 @@
 const fileBegin = "CM";
 let lastSelectedPosition = "front";
 
-
-if (document.getElementById('plateType').value !== 'motorbike') {
-    document.getElementById('plateType').value = 'car';
-}
-
 function showSaveModal() {
     document.getElementById("saveModal").style.display = "block";
 }
@@ -375,7 +370,7 @@ function downloadPreview(mapType) {
                 heightSize = 2048;
                 widthSize = 4096;
             } else {
-                heightSize = 1024;
+                heightSize = 500;
                 widthSize = 2048;
             }
         } else if (plateTypeInput === "motorbike") {
@@ -403,8 +398,6 @@ function downloadPreview(mapType) {
     const ctx = scaledCanvas.getContext('2d', { willReadFrequently: true });
     ctx.drawImage(canvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
 
-    const plateTypeSave = plateTypeInput?.value || "car";
-
     let positionLabel = "";
     switch (lastSelectedPosition) {
         case "front": positionLabel = "front"; break;
@@ -414,7 +407,7 @@ function downloadPreview(mapType) {
     }
 
     const link = document.createElement('a');
-    link.download = `${fileBegin}-${plateTypeSave}_${positionLabel}_plate_${mapType}.${saveTypes}`;
+    link.download = `${fileBegin}-${plateTypeInput}_${positionLabel}_plate_${mapType}.${saveTypes}`;
     link.href = scaledCanvas.toDataURL('image/png');
     link.click();
 }

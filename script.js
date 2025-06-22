@@ -8,6 +8,8 @@ const platef = document.querySelector(".plate.front");
 const plateb = document.querySelector(".plate.back");
 const frontPlateScrew2 = document.getElementById("frontPlateScrew2");
 const backPlateScrew2 = document.getElementById("backPlateScrew2");
+const frontPlateScrew2v2 = document.getElementById("frontPlateScrew2v2");
+const backPlateScrew2v2 = document.getElementById("backPlateScrew2v2");
 const frontPlateScrew4 = document.getElementById("frontPlateScrew4");
 const backPlateScrew4 = document.getElementById("backPlateScrew4");
 const plateInput = document.getElementById("plateInput");
@@ -115,7 +117,7 @@ const plateDimensions = {
   }
 
 const elements = [
-    frontPlateScrew2, backPlateScrew2, frontPlateScrew4, backPlateScrew4,
+    frontPlateScrew2, backPlateScrew2, frontPlateScrew2v2, backPlateScrew2v2, frontPlateScrew4, backPlateScrew4,
     plateInput, sloganInput, BSDInput, frontPlate, backPlate,
     frontSlogan, backSlogan, frontGreenBox, backGreenBox,
     styleSelect, frontBorder, backBorder,
@@ -863,6 +865,8 @@ function toggleBoxStyle() {
     backBorder.style.left = borderLeftValue;
 }
 
+let lastColour = null;
+
 function ElectricBoxStyle() {
     const effect = document.getElementById('showMisc').value;
     const boxStyle = document.getElementById('boxStyle').value;
@@ -877,6 +881,7 @@ function ElectricBoxStyle() {
     let textColorfront = "#fff";
     let textColorback = "#ffe70b";
 
+    // Shape options
     if (boxStyle.startsWith("shape-")) {
         if (boxStyle === "shape-default") {
             width = "100px";
@@ -892,8 +897,14 @@ function ElectricBoxStyle() {
                 ? "0px 0px 0px rgba(0, 0, 0, 0.0)"
                 : "0px 0px 5px rgba(0, 0, 0, 0.5)";
         }
+
+        // Reapply the last selected colour
+        if (lastColour) {
+            bgColor = lastColour;
+        }
     }
 
+    // Colour options
     if (boxStyle.startsWith("colour-")) {
         switch (boxStyle) {
             case "colour-green": bgColor = "#019e4d"; break;
@@ -906,8 +917,11 @@ function ElectricBoxStyle() {
             case "colour-iow": bgColor = "#00a4d3"; break;
             case "colour-black": bgColor = "#000"; break;
         }
+
+        lastColour = bgColor; // Save the last selected colour
     }
 
+    // Plate text colours
     if (plateColour.startsWith("colour-")) {
         switch (plateColour) {
             case "colour-new":
@@ -939,6 +953,7 @@ function ElectricBoxStyle() {
     frontGreenBox.style.color = textColorfront;
     backGreenBox.style.color = textColorback;
 }
+
 
 function showElectricBox(displayStyle, type) {
     frontGreenBox.style.display = displayStyle;
@@ -1147,6 +1162,8 @@ function showMiscs() {
     const frontBorder = document.getElementById("frontBorder");
     const backBorder = document.getElementById("backBorder");
 
+    frontPlateScrew2v2.style.display = "none";
+    backPlateScrew2v2.style.display = "none";
     frontPlateScrew2.style.display = "none";
     backPlateScrew2.style.display = "none";
     frontPlateScrew4.style.display = "none";
@@ -1156,6 +1173,9 @@ function showMiscs() {
         if (value === "screws-2") {
             frontPlateScrew2.style.display = "block";
             backPlateScrew2.style.display = "block";
+        } else if (value === "screws-2v2") {
+            frontPlateScrew2v2.style.display = "block";
+            backPlateScrew2v2.style.display = "block";
         } else if (value === "screws-4") {
             frontPlateScrew4.style.display = "block";
             backPlateScrew4.style.display = "block";

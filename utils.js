@@ -1,13 +1,3 @@
-(function(_) {
-  const W = window,
-        L = W.location,
-        R = 'noShow.html';
-
-  if (W.innerWidth < 768) {
-    L.href = R;
-  }
-})();
-
 function compareVersions(verA, verB) {
     const partsA = verA.split('.').map(Number);
     const partsB = verB.split('.').map(Number);

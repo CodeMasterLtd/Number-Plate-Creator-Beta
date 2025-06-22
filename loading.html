@@ -11,6 +11,14 @@
     <title>Number Plate Creator • Loading...</title>
 
 <script src="favicon.js"></script>
+
+<script>
+    (function() {
+      if (window.innerWidth < 768) {
+        window.location.replace("noShow.html");
+      }
+    })();
+  </script>
 </head>
 <div class="bg-slideshow"></div>
 <body>
@@ -50,6 +58,5 @@
   <script src="music.js"></script>
   <script defer src="copyright.js"></script>
   <script src="slideShow.js"></script>
-  <script src="utils.js"></script>
 </body>
 </html>
