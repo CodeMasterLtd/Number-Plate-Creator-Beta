@@ -19,6 +19,7 @@
       window.location.replace("noShow.html");
     }
   </script>
+
 </head>
 <body>
     <audio id="loading-music" autoplay>
@@ -111,16 +112,18 @@
         <label class="label-inline" for="boxStyle">Badge Style:</label>
         <select id="boxStyle" onchange="ElectricBoxStyle()">
         <option style="color: red; font-weight: bolder;" disabled>BETA</option>
-        <optgroup label="Bagde Shape">
-            <option value="shape-default" selected>Default</option>
-            <option value="shape-compact">Compact</option>
-        </optgroup>
         <optgroup label="Badge Colour">
-            <option style="background-color: #000; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-black">BL4CK</option>
-            <option style="background-color: #019e4d; color: #000; font-family: 'Charles Wright', sans-serif;" value="colour-green">GR33N</option>
-            <option style="background-color: #104188; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-blue">B1UE</option>
-            <option style="background-color: #0000007c; color: #000; font-family: 'Charles Wright', sans-serif;" value="colour-transparant">7R4NSP4RANT</option>
-            <option style="background-color: #00a4d3; color: #fff; font-family: 'Charles Wright', sans-serif;" value="colour-iow">I0W</option>
+            <option style="color: red; font-weight: bolder;" selected>None</option>
+            <option style="background-color: #019e4d; color: #000; font-family: 'Charles Wright', sans-serif;" value="shape-default+colour-green">Default Green</option>
+            <option style="background-color: #019e4d; color: #000; font-family: 'Charles Wright', sans-serif;" value="shape-compact+colour-green">Compact Green</option>
+            <option style="background-color: #104188; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-default+colour-blue">Default Blue</option>
+            <option style="background-color: #104188; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-compact+colour-blue">Compact Blue</option>
+            <option style="background-color: #00a4d3; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-default+colour-iow">Default IOW</option>
+            <option style="background-color: #00a4d3; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-compact+colour-iow">Compact IOW</option>
+            <option style="background-color: #000; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-default+colour-black">Default Black</option>
+            <option style="background-color: #000; color: #fff; font-family: 'Charles Wright', sans-serif;" value="shape-compact+colour-black">Compact Black</option>
+            <option style="background-color: #0000007c; color: #000; font-family: 'Charles Wright', sans-serif;" value="shape-default+colour-transparent">Default Transparent</option>
+            <option style="background-color: #0000007c; color: #000; font-family: 'Charles Wright', sans-serif;" value="shape-compact+colour-transparent">Compact Transparent</option>
         </optgroup>
         </select>
         <label class="label-inline" for="showMisc">Misc:</label>
@@ -282,7 +285,7 @@
         <div id="carPreviewModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:9999;">
             <span onclick="closeCarPreview('car')" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
             <div style="position:relative; display:inline-block;">
-                <img id="carImage" src="img/carPreview/bmw-m2.png" style="width:1000px; max-width:550vw; border-radius:12px;">
+                <img id="carImage" src="img/carPreview/bmw-m2.png" alt="BMW M2" style="width:1000px; max-width:550vw; border-radius:12px;">
                 <canvas id="plateOnCar"
                 width="400" height="300"
                 style="
@@ -300,7 +303,7 @@
         <div id="bikePreviewModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; z-index:9999;">
             <span onclick="closeCarPreview('bike')" style="position:absolute;top:20px;right:40px;font-size:40px;color:white;cursor:pointer;">&times;</span>
             <div style="position:relative; display:inline-block;">
-                <img id="carImage" src="img/carPreview/pulsar-ns.png" style="width:1200px; max-width:650vw; border-radius:12px;">
+                <img id="carImage" src="img/carPreview/pulsar-ns.png" alt="Pulsar NS" style="width:1200px; max-width:650vw; border-radius:12px;">
                 <canvas id="plateOnBike"
                 width="400" height="300"
                 style="
@@ -406,25 +409,24 @@
                 <footer>
                 <div class="foot">
                 <p id="copyright"></p>
-            <p>🤝 In partnership with <a style="color: #ccc;" href="https://discord.com/invite/ZDCGZCguBW" target="_blank">Crip Developments</a></p>
-                <div class="social-media">
-                    <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
-                    <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
-                    <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
-                    <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
+            <p>🤝 In partnership with <a href="https://discord.com/invite/ZDCGZCguBW" target="_blank" title="Crip Developments">Crip Developments</a></p>
+            <div class="social-media">
+                <a href="https://discord.com/invite/3MKyscCXkk" target="_blank"><i class="fab fa-discord" style="color: #44abff;" title="Code Master - Discord"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: #008cff;" title="Code Master - Facebook"></i></a>
+                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;" title="Code Master - Instagram"></i></a>
+                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: #ffead0;" title="Code Master - Email"></i></a>
+                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;" title="Code Master - YouTube"></i></a>
+                <a href="https://www.codemaster.ltd/" target="_blank"><i class="fa-brands fa-web-awesome" style="color: orange;" title="Code Master - Website"></i></a>
                 </div> 
-            </footer>              
+            </footer>            
         </div>
     </div>
     <script src="popup.js" defer></script>
     <script src="popupPlate.js" defer></script>
 
-    <script src="userCount.js"></script>
-    <script src="version.js"></script>
+    <script src="utils.js"></script>
     <script defer src="music.js"></script>
     <script defer src="script.js"></script>
-    <script defer src="copyright.js"></script>
     <script src="savePlate.js"></script>
     <script src="inactive.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>

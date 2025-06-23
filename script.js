@@ -133,6 +133,7 @@ const elements = [
   }
 
   function updatePlateStyles() { 
+    ElectricBoxStyle();
     const plateTypes = document.getElementById("plateTypes").value;
     const front = document.querySelector(".front");
     const back = document.querySelector(".back");
@@ -155,7 +156,6 @@ const elements = [
             frontSloganBase = "#c6c8ca";
             backSloganBase = "#f78711";
         }
-        ElectricBoxStyle();
 
         front.style.background = frontBase;
         back.style.background = backBase;
@@ -868,77 +868,69 @@ function toggleBoxStyle() {
 let lastColour = null;
 
 function ElectricBoxStyle() {
-    const effect = document.getElementById('showMisc').value;
-    const boxStyle = document.getElementById('boxStyle').value;
+    const boxStyleRaw = document.getElementById('boxStyle').value;
     const plateColour = document.getElementById('plateTypes').value;
+
+    const styles = boxStyleRaw.split("+");
+    let shapeStyle = "";
+    let colourStyle = "";
+
+    styles.forEach(style => {
+        if (style.startsWith("shape-")) shapeStyle = style;
+        if (style.startsWith("colour-")) colourStyle = style;
+    });
 
     let width = "95px";
     let height = "95%";
     let marginLeft = "6px";
     let borderRadius = "10px";
-    let shadow = "none";
     let bgColor = "transparent";
     let textColorfront = "#fff";
     let textColorback = "#ffe70b";
+    let isTransparent = false;
 
-    // Shape options
-    if (boxStyle.startsWith("shape-")) {
-        if (boxStyle === "shape-default") {
-            width = "100px";
-            height = "100%";
-            marginLeft = "0px";
-            borderRadius = "10px 0 0 10px";
-        } else if (boxStyle === "shape-compact") {
-            width = "95px";
-            height = "95%";
-            marginLeft = "6px";
-            borderRadius = "10px";
-            shadow = effect === "4d-yes"
-                ? "0px 0px 0px rgba(0, 0, 0, 0.0)"
-                : "0px 0px 5px rgba(0, 0, 0, 0.5)";
-        }
-
-        // Reapply the last selected colour
-        if (lastColour) {
-            bgColor = lastColour;
-        }
+    if (shapeStyle === "shape-default") {
+        width = "100px";
+        height = "100%";
+        marginLeft = "0px";
+        borderRadius = "10px 0 0 10px";
+    } else if (shapeStyle === "shape-compact") {
+        width = "95px";
+        height = "95%";
+        marginLeft = "6px";
+        borderRadius = "10px";
     }
 
-    // Colour options
-    if (boxStyle.startsWith("colour-")) {
-        switch (boxStyle) {
-            case "colour-green": bgColor = "#019e4d"; break;
-            case "colour-blue": bgColor = "#104188"; break;
-            case "colour-transparent":
-                bgColor = "transparent";
-                textColorfront = "#000";
-                textColorback = "#000";
-                break;
-            case "colour-iow": bgColor = "#00a4d3"; break;
-            case "colour-black": bgColor = "#000"; break;
-        }
-
-        lastColour = bgColor; // Save the last selected colour
+    if (colourStyle === "colour-green") {
+        bgColor = "#019e4d";
+        isTransparent = false;
+    } else if (colourStyle === "colour-blue") {
+        bgColor = "#104188";
+        isTransparent = false;
+    } else if (colourStyle === "colour-transparent") {
+        bgColor = "transparent";
+        isTransparent = true;
+    } else if (colourStyle === "colour-iow") {
+        bgColor = "#00a4d3";
+        isTransparent = false;
+    } else if (colourStyle === "colour-black") {
+        bgColor = "#000";
+        isTransparent = false;
     }
 
-    // Plate text colours
-    if (plateColour.startsWith("colour-")) {
-        switch (plateColour) {
-            case "colour-new":
-                textColorfront = "#fff";
-                textColorback = "#f78711";
-                break;
-            case "colour-old":
-                textColorfront = "#fff";
-                textColorback = "#ffe70b";
-                break;
-            default:
-                if (boxStyle === "colour-transparent") {
-                    textColorfront = "#000";
-                    textColorback = "#000";
-                }
-                break;
-        }
+    lastColour = bgColor;
+
+    if (plateColour === "colour-new") {
+        textColorfront = "#fff";
+        textColorback = "#f78711";
+    } else if (plateColour === "colour-old") {
+        textColorfront = "#fff";
+        textColorback = "#ffe70b";
+    }
+
+    if (isTransparent) {
+        textColorfront = "#000";
+        textColorback = "#000";
     }
 
     [frontGreenBox, backGreenBox].forEach(box => {
@@ -946,7 +938,6 @@ function ElectricBoxStyle() {
         box.style.height = height;
         box.style.marginLeft = marginLeft;
         box.style.borderRadius = borderRadius;
-        box.style.boxShadow = shadow;
         box.style.backgroundColor = bgColor;
     });
 
@@ -965,10 +956,8 @@ function showElectricBox(displayStyle, type) {
         removeBadge(frontGreenBox);
         removeBadge(backGreenBox);
     } else {
-        const frontBadgeColor = '#ffffff';
-        const backBadgeColor = '#f7b009';
-        addBadge(type, frontGreenBox, frontBadgeColor);
-        addBadge(type, backGreenBox, backBadgeColor);
+        addBadge(type, frontGreenBox);
+        addBadge(type, backGreenBox);
     }
 }
 
@@ -981,7 +970,7 @@ function removeBadge(box) {
     if (existingText) existingText.remove();
 }
 
-function addBadge(type, box, textColor) {
+function addBadge(type, box) {
     const existingFlag = box.querySelector(".uk-flag");
     const existingText = box.querySelector(".uk-text");
 
@@ -1370,12 +1359,12 @@ document.getElementById("discordInfo").addEventListener("click", function() {
 
 function getLastModifiedDate() {
     let modifiedDate = new Date(this.document.lastModified);
-    let day = "22";
+    let day = "23";
     let month = "June"; // Months are zero-based
     let year = modifiedDate.getFullYear();
 
-    let hour = "16";
-    let min = "20";
+    let hour = "15";
+    let min = "01";
     let type = hour > 12 ? "pm" : "am";
 
     let isBST = new Date().getTimezoneOffset() === -60;

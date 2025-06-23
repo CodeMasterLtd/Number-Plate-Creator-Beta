@@ -3,8 +3,6 @@
         css = t => document.head.appendChild(Object.assign(document.createElement('style'), { textContent: t })),
         add = (q, o) => Object.assign(q.style, o);
 
-  const credits = ["772 Modifications", "Code Master", "Crip Developments", "Jack Gamer 45"].sort();
-
   const ALLOW = true,
         TIMER = 5000,
         PCREDIT = "Photo Credits: ",
@@ -17,6 +15,8 @@
 
   const V = [
     { s: `${MPIC}`, c: "", d: "" },
+    { s: `${DIR}v13${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
+    { s: `${DIR}v14${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v1${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
     { s: `${DIR}v2${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
     { s: `${DIR}v3${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
@@ -27,7 +27,8 @@
     { s: `${DIR}v8${PTYPE[0]}`, c: "Crip Developments", d: "ZDCGZCguBW" },
     { s: `${DIR}v9${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v10${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
-    { s: `${DIR}v11${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" }
+    { s: `${DIR}v11${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v12${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" }
   ];
 
   const box = document.querySelector(".bg-slideshow"),
@@ -78,7 +79,7 @@
       slides[cur].classList.remove("active");
       cur++;
       if (cur >= slides.length) cur = LOAD ? 0 : 1;
-      if (cur === 0 && ALLOW && innerWidth < 768) location.href = "noShow.html";
+      if (cur === 0 && ALLOW && screen.width < 768) location.href = "noShow.html";
       slides[cur].classList.add("active");
       cred.innerHTML = `<span class="credit-text">${PCREDIT} ${V[cur + start].c}</span>`;
       showDiscord(cur);

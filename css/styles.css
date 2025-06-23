@@ -1009,6 +1009,7 @@ footer .social-media a:hover {
     color: rgb(255, 255, 255);
 }
 .btnI {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: block;
     top: 20px;
     right: 20px;

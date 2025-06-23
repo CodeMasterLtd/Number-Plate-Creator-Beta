@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="css/btn.css">
 
 	<script src="favicons.js"></script>
+        <script>
+    if (screen.width < 768) {
+      window.location.replace("noShow.html");
+    }
+  </script>
     <title>Number Plate Creator • Version History</title>
 </head>
 <body>
- <script src="version.js"></script>
+ <script src="utils.js"></script>
     <div class="button-container">
     <button class="homeButton" id="musicBtn">Music Controls</button>
     <button class="homeButton" id="creatorBtn">Plate Creator</button>
@@ -43,10 +48,11 @@
                 <li> ‣ Enhanced the primary button on the homepage for greater visibility and a more polished, user-friendly appearance.</li>
                 <li> ‣ Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
                 <li> ‣ Enlarged the <strong>Preview On Car</strong> photo and plate to provide greater visibility and a more engaging, immersive preview experience.</li>
-                <li> ‣ Enhanced the <strong>Badge Style</strong> feature, retaining both <i>Default</i> and <i>Compact</i> options, and introduced the ability for users to customize badge colours <span style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 20px; border: 1px #f1c40f solid;"><i style="color: #019e4d;">Green</i>, <i style="color: #104188;">Blue</i>, <i style="color: #00a4d3;">IOW</i>, or <i style="color: rgba(255, 255, 255, 0.2);">Transparant</i></span> directly within the dropdown menu for greater personalization.</li>
+                <li> ‣ Enhanced the <strong>Badge Style</strong> feature, retaining both <i>Default</i> and <i>Compact</i> options, and introduced the ability for users to customize badge colours <span style="background-color: rgba(0, 0, 0, 0.5); padding: 8px; border-radius: 20px; border: 1px #f1c40f solid;"><i style="color: #019e4d;">Green</i>, <i style="color: #104188;">Blue</i>, <i style="color: #00a4d3;">IOW</i>, <i style="color: rgba(255, 255, 255, 0.2);">Transparant</i>, or <i style="color: rgba(0, 0, 0, 1.0); text-shadow: #fff 0 0 1px;">Black</i></span> directly within the dropdown menu for greater personalization.</li>
                 <li> ‣ Improved the prominence and clarity of navigation headers for supplementary page links, delivering a more intuitive and accessible user interface.</li>
                 <li> ‣ Refined and consolidated dropdown menus within the creator to optimize space and streamline the user interface by merging related options and eliminating unnecessary selections.</li>
                 <li> ‣ Enhanced the <strong>Slogan</strong> text size on plates for improved visibility.</li>
+                <li> ‣ Expanded the dynamic slideshow with 3 additional high-quality images.</li>
             <br>
             <strong style="text-align: left; display: flex; font-size: large; color: #11b2f7;" >🆕 Newly Added:</strong>
                 <li> ‣ Introduced a dedicated <strong>Not Supported</strong> page for users accessing the site on devices with screen widths of 768px or less, ensuring clear communication that Number Plate Creator is optimized for desktop use (Will work on a iPad, possible a tablet also).</li>
@@ -56,6 +62,7 @@
                 <li> ‣ Added two new songs for improved user experience. <strong>Rage (Charlotte Plank (Lens Remix))</strong> & <strong>Overdrive (Ofenbach (ft. Norma Jean Matrine))</strong>.</li>
                 <li> ‣ Added a professional <strong>Preview On Bike</strong> feature, allowing you to instantly visualize your custom plate on a real vehicle before downloading. Simply click the <strong>Preview On Bike</strong> button to experience your design in context.</li>
                 <li> ‣ Added a <strong>"Need Assistance?"</strong> support popup to help users join our Discord and report issues. For quick access, pressing <code>CTRL + R</code> will reopen the popup at any time.</li>
+                <li> ‣ Introduced a <strong>"Need Assistance with Plate Mode?"</strong> help popup to guide users through Plate Mode functionality. Press <code>i</code> icon in the creator to reopen the popup at any time.</li>
                 <br>
             <div id="Admin">
             <strong style="text-align: left; display: flex; font-size: large; color: #f79b11;" >🆕 Newly Added<span style="color: #f1c40f;">(Admin Only)</span>:</strong>
@@ -536,21 +543,22 @@
             <li> ‣ 📝 Previous versions were in development, now transitioning to public releases.</li>
         </ul>
     </div>
-    <footer class="footer">
-        <div>
+        <footer class="footer">
             <p id="copyright">&copy; 2025 Crip Developments. All Rights Reserved.</p>
+            <p>🤝 In partnership with <a href="https://discord.com/invite/ZDCGZCguBW" target="_blank" title="Crip Developments">Crip Developments</a></p>
             <div class="social-media">
-                <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
-                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
-                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
-                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
-            </div> 
-        </div>
-    </footer>
+                <a href="https://discord.com/invite/3MKyscCXkk" target="_blank"><i class="fab fa-discord" style="color: #44abff;" title="Code Master - Discord"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: #008cff;" title="Code Master - Facebook"></i></a>
+                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;" title="Code Master - Instagram"></i></a>
+                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: #ffead0;" title="Code Master - Email"></i></a>
+                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;" title="Code Master - YouTube"></i></a>
+                <a href="https://www.codemaster.ltd/" target="_blank"><i class="fa-brands fa-web-awesome" style="color: orange;" title="Code Master - Website"></i></a>
+            </div>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="userCount.js"></script>
+    <script src="utils.js"></script>
     <script>
         const version = document.getElementById("currentVersion");
         version.textContent = `Version ${currentVersion}`;

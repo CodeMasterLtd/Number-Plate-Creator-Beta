@@ -12,17 +12,14 @@
 
 <script src="favicon.js"></script>
 
-<script>
-    (function() {
-      if (window.innerWidth < 768) {
-        window.location.replace("noShow.html");
-      }
-    })();
+    <script>
+    if (screen.width < 768) {
+      window.location.replace("noShow.html");
+    }
   </script>
 </head>
 <div class="bg-slideshow"></div>
 <body>
-    <script src="version.js"></script>
     <script src="utils.js"></script>
     <audio id="loading-music" autoplay>
         <source src="audio/TheFeeling.mp3" type="audio/mp3">
@@ -42,21 +39,19 @@
       </div>
 
     <footer class="footer">
-        <div>
             <p id="copyright"></p>
-            <p>🤝 In partnership with <a style="color: #ccc;" href="https://discord.com/invite/ZDCGZCguBW" target="_blank">Crip Developments</a></p>
+            <p>🤝 In partnership with <a href="https://discord.com/invite/ZDCGZCguBW" target="_blank" title="Crip Developments">Crip Developments</a></p>
             <div class="social-media">
-                <a href="https://discord.com/invite/3MKyscCXkk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank"><i class="fab fa-discord" style="color: rgb(68, 171, 255);"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: rgb(0, 140, 255);"></i></a>
-                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;"></i></a>
-                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: rgb(255, 234, 208);"></i></a>
-                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;"></i></a>
-            </div> 
-        </div>
-    </footer>
+                <a href="https://discord.com/invite/3MKyscCXkk" target="_blank"><i class="fab fa-discord" style="color: #44abff;" title="Code Master - Discord"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61559501661235" target="_blank"><i class="fab fa-facebook-f" style="color: #008cff;" title="Code Master - Facebook"></i></a>
+                <a href="https://www.instagram.com/code.master24/" target="_blank"><i class="fab fa-instagram" style="color: orangered;" title="Code Master - Instagram"></i></a>
+                <a href="mailto:info@codemaster.ltd" target="_blank"><i class="fa fa-envelope" style="color: #ffead0;" title="Code Master - Email"></i></a>
+                <a href="https://www.youtube.com/@CodeMaster2024" target="_blank"><i class="fab fa-youtube" style="color: red;" title="Code Master - YouTube"></i></a>
+                <a href="https://www.codemaster.ltd/" target="_blank"><i class="fa-brands fa-web-awesome" style="color: orange;" title="Code Master - Website"></i></a>
+            </div>
+        </footer>
   <script src="loading.js"></script>
   <script src="music.js"></script>
-  <script defer src="copyright.js"></script>
   <script src="slideShow.js"></script>
 </body>
 </html>

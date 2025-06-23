@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="css/btn.css">
 
     <script src="favicon.js"></script>
+  <script>
+    if (screen.width < 768) {
+      window.location.replace("noShow.html");
+    }
+  </script>
 </head>
 <body>
 
@@ -38,7 +43,7 @@
 <div style="display: none;" id="mainContainer">
     <div class="mainBtnPage">
         <div class="logobackground">
-            <img class="logo" src="./img/npc_trans.png" alt="Logo">
+            <img class="logo" src="./img/npc_trans.png" alt="Number Plate Creator Logo">
         </div>
         <p class="para">Create and customize your number plates with ease.</p>
         <button class="btn" id="openCreator">PL4T3 CR34TOR</button>
@@ -52,11 +57,9 @@
     <span style="position:absolute;top:30px;left:20px;font-size:12px;">Version: <span id="indexV"></span></span>
 
 <script src="popup.js" defer></script>
-<script defer src="userCount.js"></script>
 <script defer src="music.js"></script>
-<script defer src="copyright.js"></script>
 <script src="index.js"></script>
 <script src="slideShow.js"></script>
-<script src="version.js"></script>
+<script src="utils.js"></script>
 </body>
 </html>
