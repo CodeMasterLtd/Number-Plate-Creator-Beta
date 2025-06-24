@@ -1,3 +1,4 @@
+/* Background Slideshow Container */
 .bg-slideshow {
     position: fixed;
     top: 0;
@@ -8,11 +9,14 @@
     overflow: hidden;
 }
 
-.bg-slideshow::before, .bg-slideshow::after {
+/* Gradient Overlays */
+.bg-slideshow::before,
+.bg-slideshow::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(to right, #000 60%, #222 100%);
     opacity: 0.5;
     z-index: 2;
@@ -24,13 +28,103 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    left: 0; top: 0;
+    left: 0;
+    top: 0;
     opacity: 0;
-    transition: opacity 5s;
+    transition: opacity 5s ease-in-out;
     z-index: 1;
 }
 
 .bg-slideshow img.active {
     opacity: 1;
     z-index: 1;
+}
+
+.music-info {
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: white;
+    padding: 0.5em 1em;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5em;
+    max-width: 90%;
+    text-align: center;
+    z-index: 3;
+}
+
+.cd-icon {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.cd-icon.rotating {
+    animation: rotate 3s linear infinite;
+}
+
+   .btc {
+    display: block;
+    position: fixed;
+    z-index: 1000001;
+    top: 24px;
+    left: 24px;
+    padding: 12px 28px 12px 20px;
+    background: transparent;
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+    outline: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btc:hover, .btc:focus {
+    background: linear-gradient(90deg, #f7b00983 0%, #ffe06681 100%);
+    color: #fff;
+    box-shadow: 0 6px 32px #0003, 0 2px 0 #fff8 inset;
+}
+.btc i {
+    font-size: 1.2em;
+    margin-right: 6px;
+}
+.fancy-font {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.0em;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .btc {
+        display: none;
+    }
+    .music-info {
+        display: none;
+        top: 0.75rem;
+        font-size: 0.85rem;
+        padding: 0.4em 0.8em;
+        border-radius: 0.4em;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .bg-slideshow::before,
+    .bg-slideshow::after {
+        background: linear-gradient(to bottom, #000 70%, #222 100%);
+        opacity: 0.6;
+    }
 }
