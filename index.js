@@ -1,6 +1,8 @@
 const openWebsite = document.getElementById("openWebsite");
 const openCreator = document.getElementById("openCreator");
 const donateBtn = document.getElementById('checkout-button');
+const showPasswordIcon = document.getElementById('show-password-icon');
+const passwordInput = document.getElementById('loginPass');
 localStorage.getItem("loginForm", loginForm);
 
 donateBtn.addEventListener("click", () => {
@@ -15,37 +17,15 @@ openCreator.addEventListener("click", () => {
     window.location.href = "loading.html";
 });
 
-function copyToClipboard() {
-    const copyElement = document.getElementById("copyCode");
-    const originalText = copyElement.textContent;
-    
-    const textArea = document.createElement("textarea");
-    textArea.value = originalText;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-
-    copyElement.textContent = "Copied Code!";
-    copyElement.style.color = 'green';
-    
-    setTimeout(() => {
-        copyElement.textContent = originalText;
-        copyElement.style.removeProperty('color');
-    }, 2000);
-}
-
 window.addEventListener('DOMContentLoaded', function() {
     const mainContainer = document.getElementById('mainContainer');
     mainContainer.style.opacity = 0;
     mainContainer.style.display = '';
     mainContainer.style.transition = 'opacity 1s';
 
-    // Hide login modal initially
     const loginModal = this.document.getElementById("loginModal");
     loginModal.style.display = "none";
 
-    // Create overlay blocker
     const blocker = document.createElement('div');
     blocker.style.position = 'fixed';
     blocker.style.top = 0;
@@ -56,7 +36,6 @@ window.addEventListener('DOMContentLoaded', function() {
     blocker.style.background = 'transparent';
     blocker.style.pointerEvents = 'auto';
 
-    // Welcome message
     const welcomeMsg = document.createElement('div');
     welcomeMsg.style.position = 'fixed';
     welcomeMsg.style.top = '50%';
@@ -72,12 +51,11 @@ window.addEventListener('DOMContentLoaded', function() {
     welcomeMsg.innerHTML = `<strong>Welcome to</strong><br><br>`;
     welcomeMsg.style.transition = 'opacity 1s';
 
-        // mainCredit message
     const mainCredit = document.createElement('div');
     mainCredit.style.position = 'fixed';
-    mainCredit.style.bottom = '20px'; // Distance from bottom
-    mainCredit.style.left = '32px';   // Distance from left
-    mainCredit.style.transform = 'none'; // Remove center transform
+    mainCredit.style.bottom = '20px';
+    mainCredit.style.left = '32px';  
+    mainCredit.style.transform = 'none'; 
     mainCredit.style.color = '#fff';
     mainCredit.style.padding = '18px 28px';
     mainCredit.style.borderRadius = '12px';
@@ -103,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function() {
         mainContainer.style.opacity = 1;
         blocker.remove();
         mainCredit.remove();
-    }, 5000);
+    }, 4600);
 });
 
 document.getElementById('visitVersions').addEventListener('click', function() {
@@ -124,17 +102,59 @@ if (storedVersion) {
     document.getElementById("indexV").textContent = "Unknown Version";  
 }
 
-// Toggle password visibility
-document.getElementById('show-password').addEventListener('change', function () {
-    const passInput = document.getElementById('loginPass');
-    passInput.type = this.checked ? 'text' : 'password';
+const rememberMeIcon = document.getElementById('remember-me-icon');
+const usernameInput = document.getElementById('loginUser');
+
+let rememberMeChecked = false;
+
+showPasswordIcon.addEventListener('click', () => {
+    const isHidden = passwordInput.type === 'password';
+    passwordInput.type = isHidden ? 'text' : 'password';
+
+    // Toggle icon appearance
+    showPasswordIcon.classList.toggle('active');
+    showPasswordIcon.classList.toggle('fa-eye');
+    showPasswordIcon.classList.toggle('fa-eye-slash');
 });
+
+rememberMeIcon.addEventListener('click', () => {
+    rememberMeChecked = !rememberMeChecked;
+    rememberMeIcon.classList.toggle('active');
+    rememberMeIcon.classList.toggle('fa-square-check');
+    rememberMeIcon.classList.toggle('fa-square');
+
+    if (rememberMeChecked) {
+        localStorage.setItem('rememberedUsername', usernameInput.value);
+        localStorage.setItem('rememberedPassword', passwordInput.value);
+    } else {
+        localStorage.removeItem('rememberedUsername');
+        localStorage.removeItem('rememberedPassword');
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const Usersaved = localStorage.getItem('rememberedUsername');
+    const Passwordsaved = localStorage.getItem('rememberedPassword');
+    if (Usersaved && Passwordsaved) {
+        usernameInput.value = Usersaved;
+        passwordInput.value = Passwordsaved;
+        rememberMeChecked = true;
+        rememberMeIcon.classList.toggle('active');
+        rememberMeIcon.classList.remove('fa-square');
+        rememberMeIcon.classList.add('fa-square-check');
+    } else {
+        rememberMeIcon.classList.remove('fa-square-check');
+        rememberMeIcon.classList.add('fa-square');
+        rememberMeIcon.classList.remove('active');
+    }
+});
+
 
 document.getElementById('loginForm').onsubmit = function (e) {
     e.preventDefault();
 
     const user = document.getElementById('loginUser');
-    const pass = document.getElementById('loginPass');
+    const pass = passwordInput;
     const input = user.value.trim();
     const username = input.includes('@') ? input.split('@')[0] : input;
     const password = pass.value;

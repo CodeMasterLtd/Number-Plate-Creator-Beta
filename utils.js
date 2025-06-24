@@ -5,32 +5,40 @@
     localStorage.setItem("loginForm", loginForm);
     localStorage.setItem("inactiveTime", inactiveTime);
 
-document.addEventListener('DOMContentLoaded', function() {
-    localStorage.getItem("Index");
-    let CurrentIndex = 1;
+document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = parseInt(localStorage.getItem("Index")) || 1;
 
-    function ClearCurrentSettings() {
-        if (CurrentIndex < 1) {
+    // Ensure Index is always at least 1
+    function clearCurrentSettings() {
+        if (currentIndex < 1) {
             localStorage.clear();
-            CurrentIndex = 1;
-            localStorage.setItem("Index", CurrentIndex);
+            currentIndex = 1;
+            localStorage.setItem("Index", currentIndex);
         }
     }
 
-    const fromIndex = sessionStorage.getItem('fromIndex') === 'yes';
+    // Redirect to loading screen
     function goToLoading() {
         window.location.href = 'loading.html';
     }
+
+    // Button elements
     const musicBtn = document.getElementById('musicBtn');
     const creatorBtn = document.getElementById('creatorBtn');
     const miscBtn = document.getElementById('miscBtn');
 
+    const onIndexPage = location.pathname.endsWith("index.html");
+    const fromIndex = sessionStorage.getItem('fromIndex') === 'yes';
+
     if (musicBtn && creatorBtn && miscBtn) {
+        if (onIndexPage) {
+            sessionStorage.setItem('fromIndex', 'yes');
+        }
+
         if (fromIndex) {
             musicBtn.addEventListener('click', goToLoading);
             creatorBtn.addEventListener('click', goToLoading);
             miscBtn.addEventListener('click', goToLoading);
-
             sessionStorage.removeItem('fromIndex');
         } else {
             musicBtn.onclick = () => window.location.href = 'music.html';
@@ -39,8 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    ClearCurrentSettings();
+    clearCurrentSettings();
 });
+
 
 (async function trackGlobalVisit() {
     const v = typeof currentVersion !== "undefined" ? currentVersion : "v4";
@@ -103,3 +112,44 @@ function _R(n) {
         while (n >= r[i][0]) s += r[i][1], n -= r[i][0];
     return s;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const PageNames = () => {
+      const baseTitle = "Number Plate Creator";
+      const baseDescription = "Empower yourself to craft and preserve custom uk number plates, seamlessly integrating them into your personalized vehicle designs for Grand Theft Auto V or any other creative project you have in mind.";
+
+      const pageMap = {
+        "index.html":        { title: "Home",         desc: "Create and customize your number plates with ease." },
+        "loading.html":      { title: "Loading",      desc: "Preparing the Number Plate Creator experience." },
+        "music.html":        { title: "Music Controls", desc: "Control your background music while designing plates." },
+        "creator.html":      { title: "Creator",      desc: baseDescription },
+        "miscPlates.html":   { title: "Misc Plates",  desc: "Explore miscellaneous plate styles and formats." },
+        "slideshow.html":    { title: "Slideshow",    desc: "View your plates in a stylish slideshow mode." },
+        "version.html":      { title: "Changelogs",   desc: "Check out the latest updates and changes." },
+        "noShow.html":       { title: "Unsupported Device", desc: "This device is not supported by the Number Plate Creator." }
+      };
+
+      const currentPage = location.pathname.split("/").pop();
+      const pageInfo = pageMap[currentPage] || { title: "Unknown Page", desc: "Explore the Number Plate Creator." };
+
+      document.title = `${baseTitle} • ${pageInfo.title}`;
+
+      let descMeta = document.querySelector("meta[name='description']");
+      if (!descMeta) {
+        descMeta = document.createElement("meta");
+        descMeta.name = "description";
+        document.head.appendChild(descMeta);
+      }
+      descMeta.content = pageInfo.desc;
+
+      let keywordsMeta = document.querySelector("meta[name='keywords']");
+      if (!keywordsMeta) {
+        keywordsMeta = document.createElement("meta");
+        keywordsMeta.name = "keywords";
+        keywordsMeta.content = "GTA V, number plate generator, license plate maker, custom plates, GTA mods, GTA5Mods, LCPDFR, Code Master, Code Master Ltd, number plate creator, vehicle customization, GTA V number plates, carreg, crip developments, plate generator";
+        document.head.appendChild(keywordsMeta);
+      }
+    };
+
+    PageNames();
+  });

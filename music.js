@@ -15,7 +15,7 @@
   const _q = (id) => document.getElementById(id),
         _p = (sel) => document.querySelector(sel),
         A = _q("loading-music"),
-        I = _q("discordInfo"),
+        I = _q("musciInfo"),
         M = _p(".music-info p");
 
   let i = parseInt(localStorage.getItem("musicIndex")) || 0;
@@ -25,10 +25,21 @@
   A.currentTime = parseFloat(localStorage.getItem("musicTime")) || 0;
 
   const U = () => {
+    if (screen.width < 768 && location.pathname.endsWith("slideshow.html")) {
+      A.muted = true;
+    }
     const t = _s[i];
-    const m = A.muted;
-    M.innerHTML = `<strong class="fancy-font" style="color: ${m ? 'red' : 'green'};">${t.n} <span style="color: white;">•</span> <strong style="color: grey;">${t.a}</strong>`;
-    I.classList[m ? 'remove' : 'add']("rotating");
+    M.innerHTML = `<strong class="fancy-font" style="color: ${A.muted ? 'red' : 'green'};">${t.n} <span style="color: white;">•</span> <strong style="color: grey;">${t.a}</strong>`;
+    I.classList[A.muted ? 'remove' : 'add']("rotating");
+
+    if (location.pathname.endsWith("slideshow.html")) {
+      if (A.muted) {
+      document.title = `Number Plate Creator • Slideshow`;
+      } else {
+        document.title = `Number Plate Creator • Slideshow • ${t.n} - ${t.a}`;
+      }
+    }
+
   };
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -78,6 +89,7 @@
   });
 
   A.addEventListener("ended", () => {
+    if (A.paused) return;
     i = (i + 1) % _s.length;
     A.src = `audio/${_s[i].f}.mp3`;
     A.play().catch(console.log);

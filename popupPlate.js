@@ -55,7 +55,7 @@
     const HIDE_DURATION_MS = 60 * 60 * 1000;
 
     function showPopup() {
-        const lastClosed = localStorage.getItem('notePopupClosedAt');
+        const lastClosed = sessionStorage.getItem('notePopupClosedAt');
         const now = Date.now();
 
         if (lastClosed && now - parseInt(lastClosed, 10) < HIDE_DURATION_MS) {
@@ -70,7 +70,7 @@
             document.getElementById('closePopup').onclick = () => {
                 const popup = document.getElementById('notePopup');
                 if (popup) popup.remove();
-                localStorage.setItem('notePopupClosedAt', Date.now().toString());
+                sessionStorage.setItem('notePopupClosedAt', Date.now().toString());
             };
         }
     }
@@ -80,7 +80,7 @@
             const popup = document.getElementById('notePopup');
             if (popup) {
                 popup.remove();
-                localStorage.setItem('notePopupClosedAt', Date.now().toString());
+                sessionStorage.setItem('notePopupClosedAt', Date.now().toString());
             }
         }
     });
@@ -88,7 +88,7 @@
     showPopup();
 
     document.getElementById('openPopupNote')?.addEventListener('click', () => {
-        localStorage.removeItem('notePopupClosedAt');
+        sessionStorage.removeItem('notePopupClosedAt');
         showPopup();
     });
 })();

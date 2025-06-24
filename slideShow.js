@@ -15,6 +15,9 @@
 
   const V = [
     { s: `${MPIC}`, c: "", d: "" },
+    { s: `${DIR}v17${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
+    { s: `${DIR}v16${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
+    { s: `${DIR}v15${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v13${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v14${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v1${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
@@ -35,7 +38,7 @@
         slides = [];
 
   for (let i = start; i < V.length; i++) {
-    const im = Object.assign(new Image(), { src: V[i].s });
+    const im = Object.assign(new Image(), { src: V[i].s, title: "Number Plate Creator Slideshow" });
     if (i === start) im.classList.add("active");
     box.appendChild(im);
     slides.push(im);
@@ -112,3 +115,8 @@
     }, TIMER);
   }
 })();
+
+document.getElementById("musciInfo").addEventListener("click", function() {
+        window.location.href = "music.html";
+});
+

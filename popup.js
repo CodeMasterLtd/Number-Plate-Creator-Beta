@@ -61,7 +61,7 @@
     const HIDE_DURATION_MS = 60 * 60 * 1000;
 
     function showPopup() {
-        const lastClosed = localStorage.getItem('supportPopupClosedAt');
+        const lastClosed = sessionStorage.getItem('supportPopupClosedAt');
         const now = Date.now();
 
         if (lastClosed && now - parseInt(lastClosed, 10) < HIDE_DURATION_MS) {
@@ -76,7 +76,7 @@
             document.getElementById('closePopup').onclick = () => {
                 const popup = document.getElementById('supportPopup');
                 if (popup) popup.remove();
-                localStorage.setItem('supportPopupClosedAt', Date.now().toString());
+                sessionStorage.setItem('supportPopupClosedAt', Date.now().toString());
             };
         }
     }
@@ -84,7 +84,7 @@
         document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key.toLowerCase() === 'r') {
             e.preventDefault();
-            localStorage.removeItem('supportPopupClosedAt');
+            sessionStorage.removeItem('supportPopupClosedAt');
             showPopup();
         }
 
@@ -92,8 +92,9 @@
             const popup = document.getElementById('supportPopup');
             if (popup) {
                 popup.remove();
-                localStorage.setItem('supportPopupClosedAt', Date.now().toString());
+                sessionStorage.setItem('supportPopupClosedAt', Date.now().toString());
             }
         }
     });
+    showPopup();
 })();

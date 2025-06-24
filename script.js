@@ -44,7 +44,7 @@ document.getElementById("genPlate").addEventListener("change", GenPlate);
 plateStyleElement.addEventListener("change", toggleBoxStyle);
 plateStyleElement.addEventListener("change", updatePlate);
 
-
+plateInput.scrollIntoView({ behavior: "smooth", block: "start" });
 
 showElectricBox("none", 'none')
 showBorder("none");
@@ -133,6 +133,7 @@ const elements = [
   }
 
   function updatePlateStyles() { 
+    updatePlate();
     ElectricBoxStyle();
     const plateTypes = document.getElementById("plateTypes").value;
     const front = document.querySelector(".front");
@@ -1246,12 +1247,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const version = document.getElementById('version');
     if (version) {
-        version.textContent = `V${currentVersion}`;
+        version.textContent = `V${currentVersion}` || "Unknown";
     }
 
     const update = document.getElementById('update');
     if (update) {
-        update.textContent = `Last Updated: ${updated}`;
+        update.textContent = `Last Updated: ${updated}` || "Unknown";
     }
 });
 
@@ -1353,18 +1354,18 @@ function changeTextShadow() {
     }
 }
 
-document.getElementById("discordInfo").addEventListener("click", function() {
+document.getElementById("musciInfo").addEventListener("click", function() {
         window.location.href = "music.html";
 });
 
 function getLastModifiedDate() {
     let modifiedDate = new Date(this.document.lastModified);
-    let day = "23";
+    let day = "24";
     let month = "June"; // Months are zero-based
     let year = modifiedDate.getFullYear();
 
-    let hour = "15";
-    let min = "01";
+    let hour = "04";
+    let min = "50";
     let type = hour > 12 ? "pm" : "am";
 
     let isBST = new Date().getTimezoneOffset() === -60;

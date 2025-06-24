@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Number Plate Creator • Home</title>
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -26,12 +24,14 @@
     <form id="loginForm">
         <h2>Login</h2>
         <p>Admin login for <a href="https://number-plate-creator.codemaster.ltd/">Number Plate Creator</a>, BETA versions.</p>
-        <input id="loginUser" type="text" name="Username" placeholder="Username or Email" required autocomplete="username">
-        <input id="loginPass" type="password" name="Password" placeholder="Password" required autocomplete="current-password">
-        <div>
-            <input type="checkbox" id="show-password">
-            <label for="show-password">Show Password</label>
+        <input id="loginUser" type="text" name="Username" placeholder="Username or Email" required>
+        <input id="loginPass" type="password" name="Password" placeholder="Password" required>
+
+        <div id="login-options">
+            <i class="fa-regular fa-eye-slash" id="show-password-icon" title="Show Password"> Show Password</i> •
+            <i class="fa-regular fa-square-check" id="remember-me-icon" title="Remember Me"> Remember Me</i>
         </div>
+
         <button id="submitBtn" type="submit">Login</button>
         <div id="loginError">Invalid or Unknown credentials.</div>
     <p class="para">
