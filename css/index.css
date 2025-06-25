@@ -159,13 +159,13 @@ margin-bottom: -180px;
     color: #fffb00;
     font-weight: bold;
 }
-#show-password-icon, #remember-me-icon {
+#remember-me-icon {
     font-size: 1.2rem;
     cursor: pointer;
     color: #555;
 }
 
-#show-password-icon.active, #remember-me-icon.active {
+#remember-me-icon.active {
     color: #007bff;
 }
 #login-options {
@@ -265,4 +265,7 @@ margin-bottom: -180px;
     font-weight: 600;
     letter-spacing: 0.02em;
     text-shadow: 0 1px 6px #0002;
+}
+#loginPass {
+  font-family: 'Poppins', sans-serif;
 }
