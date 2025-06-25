@@ -10,7 +10,7 @@
             color: white;
             padding: 25px 35px;
             border-radius: 16px;
-            z-index: 9999;
+            z-index: 1000000;
             font-family: 'Poppins', sans-serif;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
             max-width: 400px;

@@ -4,9 +4,9 @@
         add = (q, o) => Object.assign(q.style, o);
 
   const ALLOW = true,
-        TIMER = 5000,
+        TIMER = 6000,
         PCREDIT = "Photo Credits: ",
-        PTYPE = [".png", ".jpg"],
+        PTYPE = [".png", ".jpg", ".jpeg"],
         MPIC = "img/npc.png",
         DIR = "img/background/",
         LOAD = p("loading.html"),
@@ -15,23 +15,26 @@
 
   const V = [
     { s: `${MPIC}`, c: "", d: "" },
+    { s: `${DIR}v20${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v19${PTYPE[2]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v18${PTYPE[0]}`, c: "Dodo McGee", d: "sDSxcRcadH" },
     { s: `${DIR}v17${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
     { s: `${DIR}v16${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
     { s: `${DIR}v15${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
-    { s: `${DIR}v13${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
     { s: `${DIR}v14${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
-    { s: `${DIR}v1${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
-    { s: `${DIR}v2${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
-    { s: `${DIR}v3${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
-    { s: `${DIR}v4${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
-    { s: `${DIR}v5${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
-    { s: `${DIR}v6${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
+    { s: `${DIR}v13${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
+    { s: `${DIR}v12${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
+    { s: `${DIR}v11${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
+    { s: `${DIR}v10${PTYPE[0]}`, c: "772 Modifications", d: "5XjvTFVRq3" },
+    { s: `${DIR}v9${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v8${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
     { s: `${DIR}v7${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
-    { s: `${DIR}v8${PTYPE[0]}`, c: "Crip Developments", d: "ZDCGZCguBW" },
-    { s: `${DIR}v9${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
-    { s: `${DIR}v10${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
-    { s: `${DIR}v11${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
-    { s: `${DIR}v12${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" }
+    { s: `${DIR}v6${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
+    { s: `${DIR}v5${PTYPE[0]}`, c: "Crip Developments", d: "ZDCGZCguBW" },
+    { s: `${DIR}v4${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" },
+    { s: `${DIR}v3${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v2${PTYPE[1]}`, c: "Code Master", d: "3MKyscCXkk" },
+    { s: `${DIR}v1${PTYPE[0]}`, c: "Jack Gamer 45", d: "JjARfPEpMP" }
   ];
 
   const box = document.querySelector(".bg-slideshow"),
@@ -116,7 +119,7 @@
   }
 })();
 
-document.getElementById("musciInfo").addEventListener("click", function() {
-        window.location.href = "music.html";
+const musicInfo = document.getElementById("musciInfo");
+musicInfo.addEventListener("click", () => {
+    window.location.href = "music.html";
 });
-

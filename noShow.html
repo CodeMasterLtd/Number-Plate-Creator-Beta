@@ -3,78 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- External Stylesheets -->
+
+    <title>Unsupported Device • Number Plate Creator</title>
+    <meta name="twitter:description" content="This device is not supported by the Number Plate Creator. Please use a desktop browser for the best experience.">
+    <meta property="og:description" content="This device is not supported by the Number Plate Creator. Please use a desktop browser for the best experience.">
+    <meta name="description" content="This device is not supported by the Number Plate Creator. Please use a desktop browser for the best experience." />
+    <meta name="keywords" content="GTA V, number plate generator, license plate maker, custom plates, GTA mods, GTA5Mods, LCPDFR, Code Master, Code Master Ltd, number plate creator, vehicle customization, GTA V number plates, carreg, crip developments, plate generator" />
+    <meta name="author" content="Code Master Ltd." />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
 
-    <!-- Custom Scripts -->
     <script src="favicon.js"></script>
 
-    <!-- Page Styles -->
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: white;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
 
-        .container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 600px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            margin-top: 30px;
-        }
+.container {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    z-index: 1;
+}
 
-        .btn-primary {
-            background-color: #0d9fc4;
-            border: none;
-        }
+.btn-primary {
+    background-color: #0d9fc4;
+    border: none;
+}
 
-        .btn-primary:hover {
-            background-color: #08aed8;
-        }
+.btn-primary:hover {
+    background-color: #08aed8;
+}
 
-        .footer {
-            margin-top: 30px;
-            font-size: 13px;
-            color: #fff;
-        }
+.footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #fff;
+}
 
-        .social-media a {
-            margin: 0 10px;
-            font-size: 24px;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+.social-media a {
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
 
-        .social-media a:hover {
-            transform: scale(1.1);
-        }
+.social-media a:hover {
+    transform: scale(1.1);
+}
 
-        a {
-            text-decoration: underline;
-            color: #ccc;
-        }
-        .user-counts {
-            font-size: 20px;
-            margin-top: 20px;
-        }
-        .user-counts h4 {
-            margin: 10px 0;
-        }
-        .btn3 {
+a {
+    text-decoration: underline;
+    color: #ccc;
+}
+.btn3 {
     display: block;
     width: 100%;
     padding: 12px;
@@ -94,12 +91,38 @@
     background:#ffb700;
     color: #333;
 }
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    backdrop-filter: blur(5px);
+}
+
     </style>
 </head>
 <body>
+    <video autoplay muted loop id="bgVideo">
+        <source src="img/background/ex90.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+<div class="overlay"></div>
+
     <div class="container">
         <a href="https://number-plate-creator.codemaster.ltd/" target="_blank">
-            <img src="img/npc_trans.png" alt="Number Plate Creator Logo" style="width: 250px; margin-top: -80px; margin-bottom: -60px;">
+            <img src="img/npc_trans.png" alt="Number Plate Creator Logo" style="width: 250px; margin-top: -80px; margin-bottom: -60px; border: none;">
         </a>
         <h1>Unsupported Device</h1>
         <p><strong>Number Plate Creator</strong> is not optimized for mobile or tablet screens.</p>

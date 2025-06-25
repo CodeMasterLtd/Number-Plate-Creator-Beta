@@ -1360,12 +1360,12 @@ document.getElementById("musciInfo").addEventListener("click", function() {
 
 function getLastModifiedDate() {
     let modifiedDate = new Date(this.document.lastModified);
-    let day = "24";
+    let day = "25";
     let month = "June"; // Months are zero-based
     let year = modifiedDate.getFullYear();
 
-    let hour = "04";
-    let min = "50";
+    let hour = "09";
+    let min = "25";
     let type = hour > 12 ? "pm" : "am";
 
     let isBST = new Date().getTimezoneOffset() === -60;

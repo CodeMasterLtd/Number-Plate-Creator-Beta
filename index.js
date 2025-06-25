@@ -1,9 +1,9 @@
 const openWebsite = document.getElementById("openWebsite");
 const openCreator = document.getElementById("openCreator");
 const donateBtn = document.getElementById('checkout-button');
-const showPasswordIcon = document.getElementById('show-password-icon');
 const passwordInput = document.getElementById('loginPass');
-localStorage.getItem("loginForm", loginForm);
+const storedLoginForm = localStorage.getItem("loginForm");
+
 
 donateBtn.addEventListener("click", () => {
     window.open('https://donate.stripe.com/6oE7u329x3KLaRi289', '_blank');
@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }, 4500);
 
     setTimeout(function() {
-        if (loginForm) {
+        if (storedLoginForm) {
             loginModal.style.display = "flex";
         }
         mainContainer.style.opacity = 1;
@@ -105,17 +105,7 @@ if (storedVersion) {
 const rememberMeIcon = document.getElementById('remember-me-icon');
 const usernameInput = document.getElementById('loginUser');
 
-let rememberMeChecked = false;
-
-showPasswordIcon.addEventListener('click', () => {
-    const isHidden = passwordInput.type === 'password';
-    passwordInput.type = isHidden ? 'text' : 'password';
-
-    // Toggle icon appearance
-    showPasswordIcon.classList.toggle('active');
-    showPasswordIcon.classList.toggle('fa-eye');
-    showPasswordIcon.classList.toggle('fa-eye-slash');
-});
+let rememberMeChecked = true;
 
 rememberMeIcon.addEventListener('click', () => {
     rememberMeChecked = !rememberMeChecked;
@@ -126,9 +116,13 @@ rememberMeIcon.addEventListener('click', () => {
     if (rememberMeChecked) {
         localStorage.setItem('rememberedUsername', usernameInput.value);
         localStorage.setItem('rememberedPassword', passwordInput.value);
+        rememberMeChecked = true;
     } else {
+        rememberMeChecked = false;
         localStorage.removeItem('rememberedUsername');
         localStorage.removeItem('rememberedPassword');
+        usernameInput.value = "";
+        passwordInput.value = "";
     }
 });
 
@@ -138,14 +132,16 @@ window.addEventListener('DOMContentLoaded', () => {
     if (Usersaved && Passwordsaved) {
         usernameInput.value = Usersaved;
         passwordInput.value = Passwordsaved;
-        rememberMeChecked = true;
         rememberMeIcon.classList.toggle('active');
         rememberMeIcon.classList.remove('fa-square');
         rememberMeIcon.classList.add('fa-square-check');
+        rememberMeChecked = true;
     } else {
         rememberMeIcon.classList.remove('fa-square-check');
         rememberMeIcon.classList.add('fa-square');
         rememberMeIcon.classList.remove('active');
+        usernameInput.value = "";
+        passwordInput.value = "";
     }
 });
 
